@@ -1,0 +1,35 @@
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 32.5rem;
+  padding: 4rem;
+  border-radius: var(--border-radius);
+  background: var(--color-white);
+}
+
+.login__subheader {
+  display: block;
+  color: var(--color-grey-normal);
+}
+
+.login__subheader > * {
+  color: var(--color-grey-normal);
+}
+
+.login__remember-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.875rem;
+}
+/*# sourceMappingURL=login.css.map */
