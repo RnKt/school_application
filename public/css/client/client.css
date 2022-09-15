@@ -1,0 +1,29 @@
+.index_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  min-height: 40vh;
+  border: 1px solid;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+}
+
+.index_wrapper .applicate_box {
+  border: 1px solid;
+  width: 100%;
+}
+
+.index_wrapper .test_box {
+  border: 1px solid;
+  width: 100%;
+}
+/*# sourceMappingURL=client.css.map */

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\ApplicantController;
+use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['as' => 'admin.'], function () {
@@ -23,6 +24,7 @@ Route::group(['as' => 'admin.'], function () {
     Route::get('/admin/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-// Route::group(['as' => 'web.'], function () {
-//         Route::get('/', [ApplicantController::class, 'index'])->name('home');
-// });
+Route::group(['as' => 'web.'], function () {
+        Route::get('/', [ClientController::class, 'index'])->name('client');
+        Route::get('/personal', [ClientController::class, 'personal']);
+});

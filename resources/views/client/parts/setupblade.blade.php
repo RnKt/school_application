@@ -1,4 +1,4 @@
-@extends('admin.parts.main')
+@extends('client.parts.main')
 
 @section('content')
   @yield('content')

@@ -1,0 +1,23 @@
+.index_wrapper {
+    display: flex;
+    width: 70%;
+    min-height: 40vh;
+    border: 1px solid;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-between;
+    text-align: center;
+
+    .applicate_box {
+        border: 1px solid;
+        width: 100%;
+    }
+
+    .test_box {
+        border: 1px solid;
+        width: 100%;
+    }
+}
