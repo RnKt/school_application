@@ -1,6 +1,4 @@
-@extends('dashboard.template.without_header')
-
-@section('title', format_title(__('seo.title.auth.login')))
+@extends('admin.parts.main')
 
 @section('content')
   <div class="content">
@@ -9,23 +7,23 @@
         <div class="login__wrapper">
           <form class="form" action="{{ route("admin.login") }}" method="POST">
             @csrf
-            <h1 class="login__header heading heading--2 mb-2">{{ __('app.title.auth.login') }}</h1>
+            <h1 class="login__header heading heading--2 mb-2">{{ __('app.action.login') }}</h1>
             <span
-              class="login__subheader mb-8">{!! __('app.context.auth.login_subheader', ['name' => config('settings.app_name')]) !!}</span>
+              class="login__subheader mb-8">{{__('auth.login_subheader') }}</span>
             <label class="label label--required mb-4" for="email"><span
-                class="label__text">{{ __('form.field.auth.email') }}</span>
+                class="label__text">{{ __('app.data.email') }}</span>
               <input class="input input--secondary" type="email"
                      name="email"
-                     placeholder="{{ __('form.field.auth.email') }}">
+                     placeholder="{{ __('app.data.email') }}">
             </label>
             @error('email')
             <span>{{ $message }}</span>
             @enderror
             <label class="label label--required mb-8" for="password"><span
-                class="label__text">{{ __('form.field.auth.password') }}</span>
+                class="label__text">{{ __('app.data.passwd') }}</span>
               <input class="input input--secondary" type="password"
                      name="password"
-                     placeholder="{{ __('form.field.auth.password') }}">
+                     placeholder="{{ __('app.data.passwd') }}">
             </label>
             @error('password')
             <span>{{ $message }}</span>
@@ -44,10 +42,10 @@
                       </svg>
                     </div>
                   </div>
-                  {{ __('form.field.auth.remember') }}
+                  {{ __('app.data.remember') }}
                 </label>
               </div>
-              <button class="button" type="submit">{{ __('form.action.login') }}</button>
+              <button class="button" type="submit">{{ __('app.action.login') }}</button>
             </div>
           </form>
         </div>

@@ -6,19 +6,19 @@
     <ul class="menu__items">
       <li class="menu__group mb-4">
         <ul>
-          <li class="menu__item{{ request()->is('/') ? ' menu__item--active' : '' }}">
+          <li class="menu__item{{ request()->is('admin') ? ' menu__item--active' : '' }}">
             <a class="menu__item-link"
-               href="">test</a>
+               href="{{ route('admin.home') }}">Prehlad</a>
           </li>
           <li
-            class="menu__item has-children{{ request()->is('user') || request()->is('user/*') ? ' menu__item--active' : '' }}">
-            <a class="menu__item-span" href="">test</a>
+            class="menu__item has-children{{ request()->is('admin/applicant') ? ' menu__item--active' : '' }}">
+            <a class="menu__item-span" href="{{ route('admin.applicant.index') }}">Prihlasky</a>
             <ul class="menu__children">
-              <li class="menu__item menu__item--child{{ request()->is('user') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('applicant') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
                    href="">skuska</a>
               </li>
-              <li class="menu__item menu__item--child{{ request()->is('user/create') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('applicant/create') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
                    href="">{{ __('menu.item.user.create') }}</a>
               </li>
