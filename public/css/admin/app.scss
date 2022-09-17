@@ -1,5 +1,5 @@
-@import "helpers";
-@import "components";
+@import "../helpers";
+@import "../components";
 
 :root {
     // Colors
@@ -86,13 +86,11 @@ body {
     background: var(--color-accent);
     overflow-x: hidden;
     color: var(--color-primary);
-
     &.has-sidemenu {
         .content {
             margin-left: 20rem;
         }
     }
-
     &.has-header {
         .content {
             margin-top: 5rem;
@@ -296,5 +294,13 @@ body {
                 grid-template-columns: 2fr 1fr;
             }
         }
+    }
+}
+
+.menu__logo-link {
+    .menu__logo-img {
+        width: auto;
+        min-height: 3.5rem;
+        color: white;
     }
 }

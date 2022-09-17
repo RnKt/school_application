@@ -38,6 +38,7 @@ return [
         'visibility' => 'Viditeľnosť',
         'created_at' => 'Dátum vytvorenia',
         'creator' => 'Tvorca',
+        'home' => 'Domov',
     ],
 
     'action' => [
@@ -64,5 +65,9 @@ return [
             'create' => 'pridať prihlášku', 
         ],
     ],
+
+    'division' => [
+        'create' => 'Vytvoriť odbor'
+    ]
 
 ];

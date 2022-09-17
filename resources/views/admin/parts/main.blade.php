@@ -18,6 +18,7 @@
     crossorigin="anonymous"></script>
   <link href="{{ asset('css/admin/app.css') }}" rel="stylesheet" type="text/css"/>
   <link href="{{ asset('css/admin/login.css') }}" rel="stylesheet" type="text/css"/>
+  <link href="{{ asset('css/admin/admin.css') }}" rel="stylesheet" type="text/css"/>
   @yield('head', '')
 </head>
 <body class="@yield('class_body', 'body')">
