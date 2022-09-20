@@ -8,47 +8,47 @@
         <ul>
           <li class="menu__item{{ request()->is('admin') ? ' menu__item--active' : '' }}">
             <a class="menu__item-link"
-               href="{{ route('admin.home') }}">Prehlad</a>
+               href="{{ route('admin.home') }}">{{ __('app.context.overview') }}</a>
           </li>
           <li
-            class="menu__item has-children{{ request()->is('admin/applicant') ? ' menu__item--active' : '' }}">
-            <a class="menu__item-span" href="{{ route('admin.applicant.index') }}">Prihlasky</a>
+            class="menu__item has-children{{ request()->is('admin/division') ? ' menu__item--active' : '' }}">
+            <a class="menu__item-span" href="{{ route('admin.division.index') }}">{{ __('app.division.title.many') }}</a>
             <ul class="menu__children">
-              <li class="menu__item menu__item--child{{ request()->is('applicant') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('admin/division') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
-                   href="">skuska</a>
+                   href="">{{ __('app.division.overview') }}</a>
               </li>
-              <li class="menu__item menu__item--child{{ request()->is('applicant/create') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('admin/division/create') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
-                   href="">{{ __('menu.item.user.create') }}</a>
+                   href="">{{ __('app.division.create') }}</a>
               </li>
             </ul>
           </li>
           <li
             class="menu__item has-children{{ request()->is('admin/class') ? ' menu__item--active' : '' }}">
-            <a class="menu__item-span" href="{{ route('admin.class.index') }}">Triedy</a>
+            <a class="menu__item-span" href="{{ route('admin.class.index') }}">{{ __('app.class.title.many') }}</a>
             <ul class="menu__children">
-              <li class="menu__item menu__item--child{{ request()->is('class') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('admin/class') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
-                   href="">skuska</a>
+                   href="{{ route('admin.class.index') }}">{{ __('app.class.overview') }}</a>
               </li>
-              <li class="menu__item menu__item--child{{ request()->is('class/create') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('admin/class/create') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
-                   href="">{{ __('menu.item.user.create') }}</a>
+                   href="{{ route('admin.class.create') }}">{{ __('app.class.create') }}</a>
               </li>
             </ul>
           </li>
           <li
-            class="menu__item has-children{{ request()->is('admin/class') ? ' menu__item--active' : '' }}">
-            <a class="menu__item-span" href="{{ route('admin.class.index') }}">Predmety</a>
+            class="menu__item has-children{{ request()->is('admin/subject') ? ' menu__item--active' : '' }}">
+            <a class="menu__item-span" href="{{ route('admin.subject.index') }}">{{ __('app.subject.title.many') }}</a>
             <ul class="menu__children">
-              <li class="menu__item menu__item--child{{ request()->is('class') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('admin/subject') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
-                   href="">skuska</a>
+                   href="{{ route('admin.subject.index') }}">{{ __('app.subject.overview') }}</a>
               </li>
-              <li class="menu__item menu__item--child{{ request()->is('class/create') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('admin/subject/create') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
-                   href="">{{ __('menu.item.user.create') }}</a>
+                   href="{{ route('admin.subject.create') }}">{{ __('app.subject.create') }}</a>
               </li>
             </ul>
           </li>

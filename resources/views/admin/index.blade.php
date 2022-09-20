@@ -3,7 +3,6 @@
 @section('title', 'Prehľad')
 
 @section('content')
-@include('admin.parts.sidemenu')
   <div class="content">
     <div class="content__wrapper divsion__wrapper">
       @foreach ($divisions as $division)

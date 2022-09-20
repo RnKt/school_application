@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\ApplicantController;
 use App\Http\Controllers\Admin\DivisionController;
+use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Admin\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['as' => 'admin.'], function () {

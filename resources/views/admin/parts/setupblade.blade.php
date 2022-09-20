@@ -5,5 +5,6 @@
 
 @section('content')
   @include('admin.parts.header')
+  @include('admin.parts.sidemenu')
   @yield('content')
 @overwrite

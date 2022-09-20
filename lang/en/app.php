@@ -7,17 +7,7 @@ return [
     'context' => [
         
         'overview' => 'Prehľad',
-        'tab' => [
-            'general' => 'Všeobecné',
-        ],
-        'word' => [
-            'of' => 'z',
-            'from' => 'z',
-            'or' => 'alebo',
-        ],
-        'file' => [
-            'drop' => 'Sem presuňte súbory',
-        ],
+
     ],
 
     'data' => [
@@ -57,6 +47,7 @@ return [
         'notaccepted' => 'neprijatý',
         'all' => 'všetci',
         'todecide' => 'nevyriešené',
+        
     ],
 
     'pages' => [
@@ -67,7 +58,33 @@ return [
     ],
 
     'division' => [
-        'create' => 'Vytvoriť odbor'
-    ]
+        'title' => [
+            'many' => 'Odbory',
+            'one' => 'Odbor',
+            'few' => 'Odborov',
+        ],
+        'create' => 'Pridať odbor',
+        'overview' => 'Prehľad odborov',
+    ],
 
+    'class' => [ 
+        'title' => [
+            'many' => 'Triedy',
+            'one' => 'Tieda',
+            'few' => 'Tried',
+        ],
+        'students_count' => 'Počet žiakov',
+        'create' => 'Pridať triedu',
+        'overview' => 'Prehľad tried',
+    ],
+
+    'subject' => [ 
+        'title' => [
+            'many' => 'Predmety',
+            'one' => 'Predmet',
+            'few' => 'Predmetov',
+        ],
+        'create' => 'Pridať predmet',
+        'overview' => 'Prehľad predmetov',
+    ],
 ];
