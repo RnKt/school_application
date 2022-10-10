@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('divisionrequirement', function (Blueprint $table) {
+        Schema::create('test_requirement', function (Blueprint $table) {
             $table->id();
             $table->foreignId('division_id');
-            $table->foreignId('subject_id');
+            $table->foreignId('test_id');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('divisionrequirement');
+        Schema::dropIfExists('test_requirement');
     }
 };

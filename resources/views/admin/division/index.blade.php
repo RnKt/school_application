@@ -1,17 +1,17 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Uchádzači')
+@section('title', __('app.pages.class.title'))
 
 
 @section('content')
   <div class="content">
     <div class="heading-action mb-1">
-      <h1 class="heading heading--2 d-inline-block">{{ __('app.pages.applicant.title') }}</h1>
-      <a href="{{ route('admin.applicant.create') }}"
-         class="heading-action__button button button--small">{{ __('app.pages.applicant.create') }}</a>
+      <h1 class="heading heading--2 d-inline-block">{{ __('app.division.title.many') }}</h1>
+      <a href="{{ route('admin.division.create') }}"
+         class="heading-action__button button button--small">{{ __('app.division.create') }}</a>
     </div>
     <div class="content__wrapper">
-      <form action="{{ route('admin.applicant.action') }}" method="POST" id="main_form">
+      <form action="{{ route('admin.division.action') }}" method="POST" id="main_form">
         @csrf
         <div class="actions mb-4">
           <div class="w-20 mr-1">
@@ -38,13 +38,9 @@
               <div
                 class="table__cell-content table__cell-content--head">{{ __('app.manage.name') }}</div>
             </th>
-            <th class="table__cell table__cell--head w-60">
+            <th class="table__cell table__cell--head">
               <div
-                class="table__cell-content table__cell-content--head">{{ __('app.manage.category') }}</div>
-            </th>
-            <th class="table__cell table__cell--head w-40">
-              <div
-                class="table__cell-content table__cell-content--head">{{ __('app.manage.visibility') }}</div>
+                class="table__cell-content table__cell-content--head">{{ __('app.manage.classes') }}</div>
             </th>
             <th class="table__cell table__cell--head w-40 align-right">
               <div
@@ -53,12 +49,12 @@
           </tr>
           </thead>
           <tbody class="table__body">
-          @foreach($applicant as $ap)
-            <tr class="table__row" data-id="{{ $ap->id }}">
+          @foreach($divisions as $division)
+            <tr class="table__row" data-id="{{ $division->id }}">
               <td class="table__cell">
                 <div class="table__cell-content align-center">
                   <div class="checkbox-wrapper mx-center">
-                    <input type="checkbox" class="checkbox pseudo" name="applicant[]" value="{{ $ap->id }}"/>
+                    <input type="checkbox" class="checkbox pseudo" name="divisions[]" value="{{ $division->id }}"/>
                     <div class="checkbox__body">
                       <svg class="checkbox__icon icon icon--white" viewBox="0 0 448 512">
                         <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -70,33 +66,19 @@
                 </div>
               </td>
               <td class="table__cell">
-                <a href="{{ route('admin.applicant.show', ['ap' => $ap->id]) }}"
+                <a href="{{ route('admin.division.show', ['division' => $division->id]) }}"
                    class="table__cell-content hover hover--underline">
-                  {{ $ap->name }}
+                  {{ $division->name }}
                 </a>
               </td>
-              <td class="table__cell">
+              <td class="table__cell align-right">
                 <div class="table__cell-content">
-                  @foreach($categories as $category)
-                    @if($category->id == $ap->category_id)
-                      {{$category->name}}
-                    @endif
-                  @endforeach
-                
-                </div>
-              </td>
-              <td class="table__cell">
-                <div class="table__cell-content">
-                  @if($ap->visibility)
-                    <div class="square square--success"></div>
-                  @else
-                    <div class="square square--error"></div>
-                  @endif
+                  kjbd
                 </div>
               </td>
               <td class="table__cell align-right">
                 <div class="table__cell-content">
-                  {{ $ap->created_at->format('d.m.Y') }}
+                  {{ $division->created_at->format('d.m.Y') }}
                 </div>
               </td>
             </tr>
@@ -104,7 +86,7 @@
           </tbody>
         </table>
       </form>
-      @include('admin.parts.pagination', ['currentUrl' => 'admin.ap.index'])
+      @include('admin.parts.pagination', ['currentUrl' => 'admin.division.index'])
     </div>  
   </div>
 @endsection

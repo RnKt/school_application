@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Classes extends Model
+class Test extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'class';
+    protected $table = 'test';
 
     protected $fillable = [
         'name',
-        'student_count',
+        'slug',
     ];
 
 }

@@ -6,7 +6,7 @@
   <div class="content">
     <div>
       <h1>{{ __('app.class.create') }}</h1>
-        <form action="{{ route('admin.subject.store') }}" id="main_form" method="POST">
+        <form action="{{ route('admin.test.store') }}" id="main_form" method="POST">
           @csrf
             <label class="label label--required mb-2" for="name"><span
                 class="label__text">{{ __('app.manage.name') }}</span>

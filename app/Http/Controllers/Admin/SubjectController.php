@@ -39,6 +39,7 @@ class SubjectController extends Controller
     {
         Subject::create([
             'name' => $request->post('name'),
+            'slug' => $request->post('slug'),
         ]);
 
         return redirect(route('admin.subject.index'));
@@ -49,6 +50,7 @@ class SubjectController extends Controller
         $subject = Subject::find($id);
         $subject->update([
             'name' => $request->post('name'),
+            'slug' => $request->post('slug'),
         ]);
         return redirect(route('admin.subject.show', ['subject' => $id]));
     }

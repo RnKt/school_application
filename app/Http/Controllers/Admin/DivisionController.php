@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Division;
+use App\Models\Subject;
+use App\Models\Test;
 
 class DivisionController extends Controller
 {
@@ -18,7 +20,7 @@ class DivisionController extends Controller
 
         $divisions = $divisions->paginate(20);
         
-        return view('admin.index', compact('divisions', 'totalCount', 'page', 'lastPage'));
+        return view('admin.division.index', compact('divisions', 'totalCount', 'page', 'lastPage'));
     }
 
     public function show(Request $request, $id)
@@ -31,8 +33,11 @@ class DivisionController extends Controller
 
     public function create()
     {
+        $divisions = Division::all();
+        $subjects = Subject::all();
+        $tests = Test::all();
 
-        return view('admin.division.create');
+        return view('admin.division.create', compact('divisions', 'subjects', 'tests'));
     }
 
     public function store(Request $request)
@@ -40,8 +45,9 @@ class DivisionController extends Controller
         Division::create([
             'name' => $request->post('name'),
             'slug' => $request->post('slug'),
+            'student_count' => $request->post('student_count'),
         ]);
-
+        
         return redirect(route('admin.home'));
     }
 

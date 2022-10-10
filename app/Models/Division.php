@@ -14,6 +14,7 @@ class Division extends Model
     protected $fillable = [
         'name',
         'slug',
+        'student_count'
     ];
 
 }

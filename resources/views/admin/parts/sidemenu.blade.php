@@ -25,20 +25,6 @@
             </ul>
           </li>
           <li
-            class="menu__item has-children{{ request()->is('admin/class') ? ' menu__item--active' : '' }}">
-            <a class="menu__item-span" href="{{ route('admin.class.index') }}">{{ __('app.class.title.many') }}</a>
-            <ul class="menu__children">
-              <li class="menu__item menu__item--child{{ request()->is('admin/class') ? ' menu__item--active' : '' }}">
-                <a class="menu__item-link"
-                   href="{{ route('admin.class.index') }}">{{ __('app.class.overview') }}</a>
-              </li>
-              <li class="menu__item menu__item--child{{ request()->is('admin/class/create') ? ' menu__item--active' : '' }}">
-                <a class="menu__item-link"
-                   href="{{ route('admin.class.create') }}">{{ __('app.class.create') }}</a>
-              </li>
-            </ul>
-          </li>
-          <li
             class="menu__item has-children{{ request()->is('admin/subject') ? ' menu__item--active' : '' }}">
             <a class="menu__item-span" href="{{ route('admin.subject.index') }}">{{ __('app.subject.title.many') }}</a>
             <ul class="menu__children">
@@ -49,6 +35,20 @@
               <li class="menu__item menu__item--child{{ request()->is('admin/subject/create') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
                    href="{{ route('admin.subject.create') }}">{{ __('app.subject.create') }}</a>
+              </li>
+            </ul>
+          </li>
+          <li
+            class="menu__item has-children{{ request()->is('admin/test') ? ' menu__item--active' : '' }}">
+            <a class="menu__item-span" href="{{ route('admin.test.index') }}">{{ __('app.test.title.many') }}</a>
+            <ul class="menu__children">
+              <li class="menu__item menu__item--child{{ request()->is('admin/test') ? ' menu__item--active' : '' }}">
+                <a class="menu__item-link"
+                   href="{{ route('admin.test.index') }}">{{ __('app.test.overview') }}</a>
+              </li>
+              <li class="menu__item menu__item--child{{ request()->is('admin/test/create') ? ' menu__item--active' : '' }}">
+                <a class="menu__item-link"
+                   href="{{ route('admin.test.create') }}">{{ __('app.test.create') }}</a>
               </li>
             </ul>
           </li>

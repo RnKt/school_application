@@ -87,4 +87,15 @@ return [
         'create' => 'Pridať predmet',
         'overview' => 'Prehľad predmetov',
     ],
+
+    
+    'test' => [ 
+        'title' => [
+            'many' => 'Testy',
+            'one' => 'Test',
+            'few' => 'Testov',
+        ],
+        'create' => 'Pridať test',
+        'overview' => 'Prehľad testov',
+    ],
 ];
