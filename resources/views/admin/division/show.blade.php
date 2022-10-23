@@ -3,35 +3,42 @@
 @section('title', 'Vytvorit')
 
 @section('content')
-  <div class="content">
-    <div>
-      <h1>{{ __('app.division.create') }}</h1>
-        <form action="{{ route('admin.division.store') }}" id="main_form" method="POST">
-          @csrf
+  <div class="content content--split">
+    <div class="heading-action mb-8">
+      <h1 class="heading heading--2 d-inline-block">{{ __('app.division.edit') }}</h1>
+    </div>
+    <div class="content__wrapper">
+      <form action="{{ route('admin.division.update', ['division' => $division->id]) }}" id="main_form" method="POST">
+        @csrf
+        @method('PUT')
             <label class="label label--required mb-2" for="name"><span
                 class="label__text">{{ __('app.manage.name') }}</span>
               <input class="input" type="text"
                     name="name" id="name"
-                    placeholder="{{ __('app.manage.name') }}">
+                    placeholder="{{$division->name}}"
+                    value="{{$division->name}}">
             </label>
             <label class="label label--grid mb-4" for="slug"><span
                 class="label__text">{{ __('app.manage.slug') }}</span>
               <input class="input input--small" type="text"
                     name="slug" id="slug"
-                    placeholder="{{ __('app.manage.slug') }}">
+                    placeholder="{{$division->slug}}"
+                    value="{{$division->slug}}">
             </label>
 
             <label class="label label--grid mb-4" for="student_count"><span
                 class="label__text">{{ __('app.division.student_count') }}</span>
               <input class="input input--small" type="number"
                     name="student_count" id="student_count"
-                    placeholder="{{ __('app.division.student_count') }}">
+                    placeholder="{{$division->student_count}}"
+                    value="{{$division->student_count}}">
             </label> 
             <div class="popup" if="popup">
               <div id="selected_hidden" ></div>
               <div class="popup__selected" id="selected-subject" ></div>
               <div class="popup__items">
-                <input type="hidden" name="subject_hidden" id="subject_hidden">
+                <input type="hidden" name="subject_hidden" id="subject_hidden" 
+                  value="{{$required_subjects}}">
                 @foreach ($subjects as $subject)  
                   <div class="popup__items-part" onClick="addSubject({{$subject->id}}, 'subject')">
                     <input id="subject{{$subject->id}}" value="{{$subject->name}}" type="checkbox"/>{{$subject->name}}
@@ -43,7 +50,8 @@
               <div id="selected_hidden" ></div>
               <div class="popup__selected" id="selected-test" ></div>
               <div class="popup__items">
-              <input type="hidden" name="test_hidden" id="test_hidden">
+              <input type="hidden" name="test_hidden" 
+              id="test_hidden" value="{{$required_tests}}">
                 @foreach ($tests as $test)  
                   <div class="popup__items-part" onClick="addSubject({{$test->id}}, 'test')">
                     <input id="test{{$test->id}}" value="{{$test->name}}" type="checkbox"/>{{$test->name}}
@@ -61,18 +69,24 @@
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script>
 
-    function clearSession(){
-      if(sessionStorage.getItem('subject')){
-        sessionStorage.setItem('subject', '')
-      }
-      if(sessionStorage.getItem('test')){
-        sessionStorage.setItem('test', '')
-      }
-      console.log("aa")
+    
+function fillSession(){
+      var required_subjects = document.getElementById('subject_hidden').value
+      var required_tests = document.getElementById('test_hidden').value
+
+      required_subjects = required_subjects.split(",")
+      required_subjects.map(id => {
+        addSubject(parseInt(id), 'subject')
+      })
+
+      required_tests = required_tests.split(",")
+      required_tests.map(id => {
+        addSubject(parseInt(id), 'test')
+      })
     }
-    clearSession()
+    fillSession()
     function addSubject(id, session){
-      var item = document.getElementById(session + id)
+      var item = document.getElementById(session + id)      
       item.checked =  !item.checked
 
       var selectedDiv =  document.getElementById('selected-' + session)  
@@ -83,21 +97,17 @@
       }
 
       if(Array.isArray(sessionItems)){
-        console.log("add")
         if(!sessionItems.includes(id)){
-          console.log("add")
           sessionItems.push(id)
           sessionStorage.setItem(session, JSON.stringify(sessionItems))
         }
         else if(sessionItems.includes(id) && item.checked == false){
-          console.log("delete")
           sessionItems = sessionItems.filter(item => item !== id)
           sessionStorage.setItem(session, JSON.stringify(sessionItems))
         }
         
       }
       else{
-        console.log("else")
         var array = [id]
         sessionStorage.setItem(session, JSON.stringify(array));  
       } 
@@ -119,6 +129,7 @@
       console.log(document.getElementById(session + '_hidden').value)
     }
 
+
     var quill = new Quill('#editor', {
       theme: 'snow'
     });
@@ -136,5 +147,9 @@
       const data = document.querySelector('#editor').children[0].innerHTML
       document.querySelector('#content__input').setAttribute('value', data)
     })
+
+    if(document.getElementById('hidden__visibility__input').value == 1){
+      document.getElementById('visibility__input').checked = true;
+    }
   </script>
 @endsection
