@@ -5,8 +5,14 @@
 @section('content')
   <div class="content">
     <div class="index_wrapper">
-      <a class="applicate_box">prihlasit</a>
-      <a class="test_box">testy</a>
+      <a class="box">
+        <h2>{{__('client.client.login')}}</h2>
+        <img src="{{asset('media/icons/file.png')}}" alt="">
+      </a>
+      <a class="box">
+        <h2>{{__('client.client.tests')}}</h2>
+        <img src="{{asset('media/icons/paper.png')}}" alt="">
+      </a>
     </div>
   </div>
 @endsection
