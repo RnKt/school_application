@@ -45,4 +45,8 @@
 .index_wrapper .box:nth-child(1) {
   background-color: #5BA7DE;
 }
+
+.form_wrapper {
+  border: solid red;
+}
 /*# sourceMappingURL=client.css.map */

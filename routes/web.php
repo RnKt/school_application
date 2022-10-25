@@ -34,5 +34,5 @@ Route::group(['as' => 'admin.'], function () {
 
 Route::group(['as' => 'web.'], function () {
         Route::get('/', [ClientController::class, 'index'])->name('client');
-        Route::get('/personal', [ClientController::class, 'personal']);
+        Route::get('/personal', [ClientController::class, 'personal'])->name('client');
 });
