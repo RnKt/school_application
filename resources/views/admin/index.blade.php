@@ -16,7 +16,7 @@
                 <img class="icon-m"  src="{{ asset('media/icons/group.png') }}" alt="person-icon">
               </div>
             </div>
-            <a href="{{ route('admin.division.create') }}"
+            <a href="{{ route('admin.division.show', ['division' => $division->id]) }}"
           class="button button--small">Upravit</a>
           </div>
         </div>

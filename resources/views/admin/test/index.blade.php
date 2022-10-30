@@ -5,31 +5,14 @@
 
 @section('content')
   <div class="content">
-    <div class="heading-action mb-1">
+    <div class="heading-action mb-8">
       <h1 class="heading heading--2 d-inline-block">{{ __('app.test.title.many') }}</h1>
       <a href="{{ route('admin.test.create') }}"
          class="heading-action__button button button--small">{{ __('app.test.create') }}</a>
     </div>
     <div class="content__wrapper">
-      <form action="{{ route('admin.test.action') }}" method="POST" id="main_form">
+      <form action="{{ route('admin.test.delete') }}" method="POST" id="main_form">
         @csrf
-        <div class="actions mb-4">
-          <div class="w-20 mr-1">
-            <select class="actions__select input input--empty "
-                    name="action"
-                    id="action__input">
-              <option value="delete">{{ __('app.action.all') }}</option>
-              <option value="delete">{{ __('app.action.todecide') }}</option>
-              <option value="">{{ __('app.action.accepted') }}</option>
-              <option value="delete">{{ __('app.action.notaccepted') }}</option>
-            </select>
-          </div>
-          <button class="button button--primary" type="submit"
-                  data-action="open-popup">{{ __('app.action.perform') }}</button>
-          @error('action')
-          {{ $message }}
-          @enderror
-        </div>
         <table class="table mb-8">
           <thead class="table__head">
           <tr class="table__row table__row--head">
@@ -37,6 +20,10 @@
             <th class="table__cell table__cell--head">
               <div
                 class="table__cell-content table__cell-content--head">{{ __('app.manage.name') }}</div>
+            </th>
+            <th class="table__cell table__cell--head align-right">
+              <div
+                class="table__cell-content table__cell-content--head">{{ __('app.test.used_in') }}</div>
             </th>
           </tr>
           </thead>
@@ -63,10 +50,19 @@
                   {{ $test->name }}
                 </a>
               </td>
+              <td class="table__cell align-right">
+               <div class="table__cell-content">
+                  {{$test_requirement->where('test_id', '=', $test->id)->count()}}
+                </div>
+              </td>
             </tr>
           @endforeach
           </tbody>
         </table>
+        <div class="actions mb-4 delete">
+          <button class="button button--primary" type="submit"
+                  data-action="open-popup">{{ __('app.action.delete') }}</button>
+        </div>
       </form>
       @include('admin.parts.pagination', ['currentUrl' => 'admin.test.index'])
     </div>  

@@ -14,16 +14,20 @@ Route::group(['as' => 'admin.'], function () {
       
         Route::get('/admin', [OverviewController::class, 'index'])->name('home');
         
-        Route::post('/admin/division/action', [DivisionController::class, 'action'])->name('division.action');
+        Route::post('/admin/division/delete', [DivisionController::class, 'delete'])->name('division.delete');
         Route::resource('/admin/division', DivisionController::class)
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
 
-        Route::post('/admin/subject/action', [SubjectController::class, 'action'])->name('subject.action');
+        Route::post('/admin/subject/delete', [SubjectController::class, 'delete'])->name('subject.delete');
         Route::resource('/admin/subject', SubjectController::class)
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
 
-        Route::post('/admin/test/action', [TestController::class, 'action'])->name('test.action');
+        Route::post('/admin/test/delete', [TestController::class, 'delete'])->name('test.delete');
         Route::resource('/admin/test', TestController::class)
+            ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
+
+        Route::post('/admin/applicant/filter', [ApplicantController::class, 'filter'])->name('applicant.filter');
+        Route::resource('/admin/applicant', ApplicantController::class)
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
     });
 

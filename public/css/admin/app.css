@@ -96,6 +96,10 @@
   margin-left: 3rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -205,7 +209,8 @@
   font-weight: 700;
 }
 
-.hidden, .closed {
+.hidden,
+.closed {
   visibility: hidden;
   pointer-events: none;
 }

@@ -124,29 +124,16 @@ class DivisionController extends Controller
                 ]);
             }
         } 
-           
-        
-
-
-
-       
+            
         return redirect(route('admin.division.show', ['division' => $id]));
     }
 
-    public function action(Request $request)
+    public function delete(Request $request)
     {
-        $action = $request->post('action');
-        if ($action) {
-            switch ($action) {
-                case 'delete':
-                    foreach ($request->post('division') as $id) {
-                        Division::destroy($id);
-                    }
-                    return redirect(route('admin.division.index'));
-                default:
-                    return redirect(route('admin.division.index'))->withErrors(['action' => '123']);
-            }
+        foreach ($request->post('divisions') as $id) {
+            Division::destroy($id);
         }
-        return redirect(route('admin.division.index'))->withErrors(['action' => '1243']);
+        
+        return redirect(route('admin.division.index'));
     }
 }

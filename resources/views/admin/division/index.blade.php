@@ -5,31 +5,14 @@
 
 @section('content')
   <div class="content">
-    <div class="heading-action mb-1">
+    <div class="heading-action mb-8">
       <h1 class="heading heading--2 d-inline-block">{{ __('app.division.title.many') }}</h1>
       <a href="{{ route('admin.division.create') }}"
          class="heading-action__button button button--small">{{ __('app.division.create') }}</a>
     </div>
     <div class="content__wrapper">
-      <form action="{{ route('admin.division.action') }}" method="POST" id="main_form">
+      <form action="{{ route('admin.division.delete') }}" method="POST" id="main_form">
         @csrf
-        <div class="actions mb-4">
-          <div class="w-20 mr-1">
-            <select class="actions__select input input--empty "
-                    name="action"
-                    id="action__input">
-              <option value="delete">{{ __('app.action.all') }}</option>
-              <option value="delete">{{ __('app.action.todecide') }}</option>
-              <option value="">{{ __('app.action.accepted') }}</option>
-              <option value="delete">{{ __('app.action.notaccepted') }}</option>
-            </select>
-          </div>
-          <button class="button button--primary" type="submit"
-                  data-action="open-popup">{{ __('app.action.perform') }}</button>
-          @error('action')
-          {{ $message }}
-          @enderror
-        </div>
         <table class="table mb-8">
           <thead class="table__head">
           <tr class="table__row table__row--head">
@@ -38,9 +21,9 @@
               <div
                 class="table__cell-content table__cell-content--head">{{ __('app.manage.name') }}</div>
             </th>
-            <th class="table__cell table__cell--head">
+            <th class="table__cell table__cell--head w-40 align-right">
               <div
-                class="table__cell-content table__cell-content--head">{{ __('app.manage.classes') }}</div>
+                class="table__cell-content table__cell-content--head">{{ __('app.division.student_count') }}</div>
             </th>
             <th class="table__cell table__cell--head w-40 align-right">
               <div
@@ -73,7 +56,7 @@
               </td>
               <td class="table__cell align-right">
                 <div class="table__cell-content">
-                  kjbd
+                  {{$division->student_count}}
                 </div>
               </td>
               <td class="table__cell align-right">
@@ -85,8 +68,12 @@
           @endforeach
           </tbody>
         </table>
+        <div class="actions delete">
+          <button class="button button--primary" type="submit"
+                  >{{ __('app.action.delete') }}</button>
+          </div>
       </form>
-      @include('admin.parts.pagination', ['currentUrl' => 'admin.division.index'])
+      @include('admin.parts.pagination', ['currentUrl' => 'admin.division.index'])   
     </div>  
   </div>
 @endsection
@@ -94,24 +81,5 @@
 @section('scripts_body')
   <script>
     window._state_ = {}
-  </script>
-  <script>
-    $(document).on('click', '[data-action="submit-form"]', function () {
-      $('#main_form').submit()
-      $('#overlay').addClass('hidden')
-    })
-
-    $(document).on('change', '[data-action="auto-change-order"]', function () {
-      const url = new URL(window.location)
-      url.searchParams.set('order_by', $('[name="order_by"]').find(":selected").val())
-      window.location = url
-    })
-
-    $(document).on('click', '[data-action="change-search"]', function () {
-      const url = new URL(window.location)
-      url.searchParams.set('search', $('[name="search"]').val())
-      url.searchParams.delete('page')
-      window.location = url
-    })
   </script>
 @endsection

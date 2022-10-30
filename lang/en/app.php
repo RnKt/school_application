@@ -50,13 +50,6 @@ return [
         
     ],
 
-    'pages' => [
-        'applicant' => [
-            'title' => 'Uchádzači',
-            'create' => 'pridať prihlášku', 
-        ],
-    ],
-
     'division' => [
         'title' => [
             'many' => 'Odbory',
@@ -67,18 +60,8 @@ return [
         'choose_subject' => 'Požadované predmety',
         'choose_test' => 'Požadované testy',
         'create' => 'Pridať odbor',
+        'edit' => 'Upraviť odbor',
         'overview' => 'Prehľad odborov',
-    ],
-
-    'class' => [ 
-        'title' => [
-            'many' => 'Triedy',
-            'one' => 'Tieda',
-            'few' => 'Tried',
-        ],
-        'students_count' => 'Počet žiakov',
-        'create' => 'Pridať triedu',
-        'overview' => 'Prehľad tried',
     ],
 
     'subject' => [ 
@@ -89,6 +72,8 @@ return [
         ],
         'create' => 'Pridať predmet',
         'overview' => 'Prehľad predmetov',
+        'edit' => 'Upraviť predmet',
+        'used_in' => 'použité v odboroch'
     ],
 
     
@@ -100,5 +85,19 @@ return [
         ],
         'create' => 'Pridať test',
         'overview' => 'Prehľad testov',
+        'edit' => 'Upraviť test', 
+        'used_in' => 'použité v testoch'  
+    ],
+
+    'applicant' => [
+        'title' => [
+            'many' => 'Uchádzači',
+            'one' => 'Uchádzač',
+            'few' => 'Uchádzačov',
+        ],
+        'create' => 'pridať prihlášku', 
+        'name' => 'meno',
+        'age' => 'vek',
+        'status' => 'status prijatia'
     ],
 ];

@@ -5,27 +5,38 @@
 
 @section('content')
   <div class="content">
-    <div class="heading-action mb-1">
-      <h1 class="heading heading--2 d-inline-block">{{ __('app.pages.applicant.title') }}</h1>
+    <div class="heading-action mb-8">
+      <h1 class="heading heading--2 d-inline-block">{{ __('app.applicant.title.many') }}</h1>
       <a href="{{ route('admin.applicant.create') }}"
-         class="heading-action__button button button--small">{{ __('app.pages.applicant.create') }}</a>
+         class="heading-action__button button button--small">{{ __('app.applicant.create') }}</a>
     </div>
     <div class="content__wrapper">
-      <form action="{{ route('admin.applicant.action') }}" method="POST" id="main_form">
+      <form action="{{ route('admin.applicant.filter') }}" method="POST" id="main_form">
         @csrf
         <div class="actions mb-4">
-          <div class="w-20 mr-1">
+          <div class="w-20 mr-3 wrapper">
+            <label class="mb-4" for="year">rok:</label>
             <select class="actions__select input input--empty "
-                    name="action"
+                    name="year"
                     id="action__input">
-              <option value="delete">{{ __('app.action.all') }}</option>
-              <option value="delete">{{ __('app.action.todecide') }}</option>
-              <option value="">{{ __('app.action.accepted') }}</option>
-              <option value="delete">{{ __('app.action.notaccepted') }}</option>
+              @for($year = date("Y"); $year >= date("Y") - 7; $year--)
+                <option value="{{$year}}">{{$year}}</option>
+              @endfor
             </select>
           </div>
-          <button class="button button--primary" type="submit"
-                  data-action="open-popup">{{ __('app.action.perform') }}</button>
+          <div class="w-20 mr-3 wrapper">
+            <label class="mb-4"  for="division">odbor:</label>
+            <select class="actions__select input input--empty "
+                    name="division"
+                    id="action__input">
+              @foreach($divisions as $division)
+              <option value="{{$division->id}}">{{$division->name}}</option>
+              @endforeach
+            </select>
+          </div>
+          <button class="button button--primary ml-auto" type="submit">
+            {{ __('app.action.perform') }}
+          </button>
           @error('action')
           {{ $message }}
           @enderror
@@ -36,29 +47,33 @@
             <th class="table__cell table__cell--head align-center w-4"></th>
             <th class="table__cell table__cell--head">
               <div
-                class="table__cell-content table__cell-content--head">{{ __('app.manage.name') }}</div>
+                class="table__cell-content table__cell-content--head">{{ __('app.applicant.name') }}</div>
             </th>
             <th class="table__cell table__cell--head w-60">
               <div
-                class="table__cell-content table__cell-content--head">{{ __('app.manage.category') }}</div>
+                class="table__cell-content table__cell-content--head">{{ __('app.division.title.one') }}</div>
             </th>
             <th class="table__cell table__cell--head w-40">
               <div
-                class="table__cell-content table__cell-content--head">{{ __('app.manage.visibility') }}</div>
+                class="table__cell-content table__cell-content--head">{{ __('app.data.email') }}</div>
+            </th>
+            <th class="table__cell table__cell--head w-40">
+              <div
+                class="table__cell-content table__cell-content--head">{{ __('app.applicant.points') }}</div>
             </th>
             <th class="table__cell table__cell--head w-40 align-right">
               <div
-                class="table__cell-content table__cell-content--head">{{ __('app.manage.created_at') }}</div>
+                class="table__cell-content table__cell-content--head">{{ __('app.applicant.status') }}</div>
             </th>
           </tr>
           </thead>
           <tbody class="table__body">
-          @foreach($applicant as $ap)
-            <tr class="table__row" data-id="{{ $ap->id }}">
+          @foreach($applicants as $applicant)
+            <tr class="table__row" data-id="{{ $applicant->id }}">
               <td class="table__cell">
                 <div class="table__cell-content align-center">
                   <div class="checkbox-wrapper mx-center">
-                    <input type="checkbox" class="checkbox pseudo" name="applicant[]" value="{{ $ap->id }}"/>
+                    <input type="checkbox" class="checkbox pseudo" name="applicants[]" value="{{ $applicant->id }}"/>
                     <div class="checkbox__body">
                       <svg class="checkbox__icon icon icon--white" viewBox="0 0 448 512">
                         <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -70,33 +85,31 @@
                 </div>
               </td>
               <td class="table__cell">
-                <a href="{{ route('admin.applicant.show', ['ap' => $ap->id]) }}"
+                <a href="{{ route('admin.applicant.show', ['applicant' => $applicant->id]) }}"
                    class="table__cell-content hover hover--underline">
-                  {{ $ap->name }}
+                  {{ $applicant->first_name }} {{ $applicant->last_name }}
                 </a>
               </td>
               <td class="table__cell">
                 <div class="table__cell-content">
-                  @foreach($categories as $category)
-                    @if($category->id == $ap->category_id)
-                      {{$category->name}}
-                    @endif
-                  @endforeach
-                
+                {{ $divisions->where('id', '=', $applicant->division_id)->pluck('name')->first() }}
                 </div>
               </td>
               <td class="table__cell">
                 <div class="table__cell-content">
-                  @if($ap->visibility)
-                    <div class="square square--success"></div>
-                  @else
-                    <div class="square square--error"></div>
-                  @endif
+                {{ $applicant->email }}  {{$data}}
+                </div>
+              </td>
+              <td class="table__cell">
+                <div class="table__cell-content">
+                points
                 </div>
               </td>
               <td class="table__cell align-right">
                 <div class="table__cell-content">
-                  {{ $ap->created_at->format('d.m.Y') }}
+                  <div class="{{$applicant->status == 'accepted' ? 'status-green' : 'status-orange'}}">
+                    {{ $applicant->status }}
+                  </div>        
                 </div>
               </td>
             </tr>
@@ -104,7 +117,7 @@
           </tbody>
         </table>
       </form>
-      @include('admin.parts.pagination', ['currentUrl' => 'admin.ap.index'])
+      @include('admin.parts.pagination', ['currentUrl' => 'admin.applicant.index'])
     </div>  
   </div>
 @endsection

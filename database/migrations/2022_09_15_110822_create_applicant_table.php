@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->foreignId('division_id');
+            $table->integer('school_year');
             $table->integer('age');
             $table->string('email')->unique();
             $table->string('status');

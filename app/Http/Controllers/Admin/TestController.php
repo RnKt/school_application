@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Test;
+use App\Models\TestRequirement;
 
 class TestController extends Controller
 {
     public function index(Request $request)
     {
         $tests = new Test();
+        $test_requirement = TestRequirement::all();
 
         $totalCount = $tests->count();
         $page = $request->get('page') ? $request->get('page') : 1;
@@ -18,20 +20,18 @@ class TestController extends Controller
 
         $tests = $tests->paginate(20);
         
-        return view('admin.test.index', compact('tests', 'totalCount', 'page', 'lastPage'));
+        return view('admin.test.index', compact('tests', 'totalCount', 'page', 'lastPage', 'test_requirement'));
     }
 
     public function show(Request $request, $id)
     {
-       // $subject = Test::find($id);
+        $test = Test::find($id);
 
-        //return view('admin.tests.show', compact('test', 'id'));
-        return view('admin.test.show');
+        return view('admin.test.show', compact('test', 'id'));
     }
 
     public function create()
     {
-
         return view('admin.test.create');
     }
 
@@ -55,20 +55,11 @@ class TestController extends Controller
         return redirect(route('admin.test.show', ['test' => $id]));
     }
 
-    public function action(Request $request)
+    public function delete(Request $request)
     {
-        $action = $request->post('action');
-        if ($action) {
-            switch ($action) {
-                case 'delete':
-                    foreach ($request->post('test') as $id) {
-                        Test::destroy($id);
-                    }
-                    return redirect(route('admin.test.index'));
-                default:
-                    return redirect(route('admin.test.index'))->withErrors(['action' => '123']);
-            }
+        foreach ($request->post('tests') as $id) {
+            Test::destroy($id);
         }
-        return redirect(route('admin.test.index'))->withErrors(['action' => '1243']);
+        return redirect(route('admin.test.index'));
     }
 }

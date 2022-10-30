@@ -123,14 +123,6 @@
       theme: 'snow'
     });
 
-    new Modules.Datatable('#datatable_1')
-
-    function handleTabChange(table_id, tab_id) {
-      $(`#${table_id} .datatable__menu-item[data-toggle!=${tab_id}]`).removeClass('datatable__menu-item--active')
-      $(`#${table_id} .datatable__menu-item[data-toggle=${tab_id}]`).addClass('datatable__menu-item--active')
-      $(`#${table_id} .datatable__tab[data-id!=${tab_id}]`).removeClass('datatable__tab--active')
-      $(`#${table_id} .datatable__tab[data-id=${tab_id}]`).addClass('datatable__tab--active')
-    }
 
     document.querySelector('#main_form').addEventListener('submit', function (e) {
       const data = document.querySelector('#editor').children[0].innerHTML
