@@ -1,23 +1,36 @@
+$primary:#5BA7DE;
+$grey-light:#aaaaaa;
 .index_wrapper {
     display: flex;
     width: 70%;
-    min-height: 40vh;
-    border: 1px solid;
+    min-height: 70vh;
     margin: 0 auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     justify-content: space-between;
-    text-align: center;
+    
 
-    .applicate_box {
-        border: 1px solid;
+    .box {
+    
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 40%;
+            transform: rotate(25deg);
+        }
+        h2{
+            margin: 3rem 0;
+        }
+        &:nth-child(1){
+            background-color: $primary;
+        }
     }
-
-    .test_box {
-        border: 1px solid;
-        width: 100%;
-    }
+}
+.form_wrapper{
+    border: solid red ;
 }
