@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TestController;
+use App\Http\Controllers\Admin\ExamController;
+use App\Http\Controllers\Admin\ExamCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['as' => 'admin.'], function () {
@@ -28,6 +30,15 @@ Route::group(['as' => 'admin.'], function () {
 
         Route::post('/admin/applicant/filter', [ApplicantController::class, 'filter'])->name('applicant.filter');
         Route::resource('/admin/applicant', ApplicantController::class)
+            ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
+
+        Route::post('/admin/exam/delete', [ExamController::class, 'delete'])->name('exam.delete');
+        Route::resource('/admin/exam', ExamController::class)
+            ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
+
+        
+        Route::post('/admin/examCategory/delete', [ExamCategoryController::class, 'delete'])->name('examCategory.delete');
+        Route::resource('/admin/examCategory', ExamCategoryController::class)
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
     });
 

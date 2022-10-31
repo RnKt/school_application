@@ -66,6 +66,34 @@
               </li>
             </ul>
           </li>
+          <li
+            class="menu__item has-children{{ request()->is('admin/exam') || request()->is('admin/exam/create')  ? ' menu__item--active' : '' }}">
+            <a class="menu__item-span" href="{{ route('admin.exam.index') }}">{{ __('app.exam.title.many') }}</a>
+            <ul class="menu__children">
+              <li class="menu__item menu__item--child{{ request()->is('admin/exam') ? ' menu__item--active' : '' }}">
+                <a class="menu__item-link"
+                   href="{{ route('admin.exam.index') }}">{{ __('app.exam.overview') }}</a>
+              </li>
+              <li class="menu__item menu__item--child{{ request()->is('admin/exam/create') ? ' menu__item--active' : '' }}">
+                <a class="menu__item-link"
+                   href="{{ route('admin.exam.create') }}">{{ __('app.exam.create') }}</a>
+              </li>
+            </ul>
+          </li>
+          <li
+            class="menu__item has-children{{ request()->is('admin/examCategory') || request()->is('admin/examCategory/create')  ? ' menu__item--active' : '' }}">
+            <a class="menu__item-span" href="{{ route('admin.examCategory.index') }}">{{ __('app.exam.title.many') }}</a>
+            <ul class="menu__children">
+              <li class="menu__item menu__item--child{{ request()->is('admin/examCategory') ? ' menu__item--active' : '' }}">
+                <a class="menu__item-link"
+                   href="{{ route('admin.examCategory.index') }}">{{ __('app.exam.overview') }}</a>
+              </li>
+              <li class="menu__item menu__item--child{{ request()->is('admin/exam/create') ? ' menu__item--active' : '' }}">
+                <a class="menu__item-link"
+                   href="{{ route('admin.examCategory.create') }}">{{ __('app.exam.create') }}</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </li>
     </ul>

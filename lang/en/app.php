@@ -29,6 +29,7 @@ return [
         'created_at' => 'Dátum vytvorenia',
         'creator' => 'Tvorca',
         'home' => 'Domov',
+        'year' => 'Rok'
     ],
 
     'action' => [
@@ -95,12 +96,25 @@ return [
             'one' => 'Uchádzač',
             'few' => 'Uchádzačov',
         ],
-        'create' => 'pridať prihlášku', 
-        'name' => 'meno',
-        'age' => 'vek',
-        'status' => 'status prijatia',
-        'application_created' => 'vytvorenie prihlášky',
-        'school_year' => 'Školský rok'
+        'create' => 'Pridať prihlášku', 
+        'name' => 'Meno',
+        'age' => 'Vek',
+        'status' => 'Status prijatia',
+        'application_created' => 'Vytvorenie prihlášky',
+        'school_year' => 'Školský rok',
+        'points' => 'Body'
+    ],
 
+    'exam' => [
+        'title' => [
+            'many' => 'Skúšobne Testy',
+            'one' => 'Skúšobny Test',
+            'few' => 'Skúšobnych Testov',
+        ],
+        'create' => 'Pridať Test', 
+        'overview' => 'Prehľad testov',
+        'edit' => 'Upraviť test', 
+        'used_in' => 'použité v testoch', 
+        'exam_created' => 'Vytvorenie testu',
     ],
 ];

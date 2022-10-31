@@ -1360,6 +1360,10 @@ input[type="file"]::file-selector-button {
           align-items: center;
 }
 
+.actions .wrapper {
+  width: 100%;
+}
+
 .applicant__wrapper-box {
   display: -webkit-box;
   display: -ms-flexbox;

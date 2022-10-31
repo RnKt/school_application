@@ -15,26 +15,24 @@
         @csrf
         <div class="actions mb-4">
           <div class="w-20 mr-3 wrapper">
-            <label class="mb-4" for="year">rok:</label>
+            <label class="mb-4" for="year">{{ __('app.manage.year') }}:</label>
             <select class="actions__select input input--empty "
                     name="year"
                     id="action__year"
-                    value="{{$filter_year}}"
                     >
-                    <option value="all">all</option>
+                    <option value="all">{{ __('app.action.all') }}</option>
               @for($year = date("Y"); $year >= date("Y") - 7; $year--)
                 <option value="{{$year}}">{{$year}}</option>
               @endfor
             </select>
           </div>
           <div class="w-20 mr-3 wrapper">
-            <label class="mb-4"  for="division">odbor:</label>
+            <label class="mb-4"  for="division">{{ __('app.division.title.one') }}:</label>
             <select class="actions__select input input--empty "
                     name="division"
                     id="action__division"
-                    value="setValue({{$filter_division}})"
                     >
-                    <option value="all">all</option>
+                    <option value="all">{{ __('app.action.all') }}</option>
               @foreach($divisions as $division)
               <option value="{{$division->id}}">{{$division->name}}</option>
               @endforeach
@@ -43,9 +41,6 @@
           <button class="button button--primary ml-auto" type="submit">
             {{ __('app.action.perform') }}
           </button>
-          @error('action')
-          {{ $message }}
-          @enderror
         </div>
         <table class="table mb-8">
           <thead class="table__head">
@@ -133,25 +128,6 @@
     window._state_ = {}
   </script>
   <script>
-    document.getElementById('action__division').value = {{$filter_division}} 
-    document.getElementById('action__year').value = {{$filter_year}} 
 
-    $(document).on('click', '[data-action="submit-form"]', function () {
-      $('#main_form').submit()
-      $('#overlay').addClass('hidden')
-    })
-
-    $(document).on('change', '[data-action="auto-change-order"]', function () {
-      const url = new URL(window.location)
-      url.searchParams.set('order_by', $('[name="order_by"]').find(":selected").val())
-      window.location = url
-    })
-
-    $(document).on('click', '[data-action="change-search"]', function () {
-      const url = new URL(window.location)
-      url.searchParams.set('search', $('[name="search"]').val())
-      url.searchParams.delete('page')
-      window.location = url
-    })
   </script>
 @endsection
