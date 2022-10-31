@@ -54,11 +54,11 @@
           </li>
           <li
             class="menu__item has-children{{ request()->is('admin/applicant') || request()->is('admin/applicant/create')  ? ' menu__item--active' : '' }}">
-            <a class="menu__item-span" href="{{ route('admin.applicant.index', ['year' => 2019]) }}">{{ __('app.applicant.title.many') }}</a>
+            <a class="menu__item-span" href="{{ route('admin.applicant.index') }}">{{ __('app.applicant.title.many') }}</a>
             <ul class="menu__children">
               <li class="menu__item menu__item--child{{ request()->is('admin/applicant') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
-                   href="{{ route('admin.applicant.index', ['year' => 2019]) }}">{{ __('app.applicant.overview') }}</a>
+                   href="{{ route('admin.applicant.index') }}">{{ __('app.applicant.overview') }}</a>
               </li>
               <li class="menu__item menu__item--child{{ request()->is('admin/applicant/create') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"

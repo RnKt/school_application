@@ -138,3 +138,9 @@
         }
     }
 }
+
+.applicant__wrapper {
+    &-box {
+        display: flex;
+    }
+}

@@ -18,7 +18,10 @@
             <label class="mb-4" for="year">rok:</label>
             <select class="actions__select input input--empty "
                     name="year"
-                    id="action__input">
+                    id="action__year"
+                    value="{{$filter_year}}"
+                    >
+                    <option value="all">all</option>
               @for($year = date("Y"); $year >= date("Y") - 7; $year--)
                 <option value="{{$year}}">{{$year}}</option>
               @endfor
@@ -28,7 +31,10 @@
             <label class="mb-4"  for="division">odbor:</label>
             <select class="actions__select input input--empty "
                     name="division"
-                    id="action__input">
+                    id="action__division"
+                    value="setValue({{$filter_division}})"
+                    >
+                    <option value="all">all</option>
               @foreach($divisions as $division)
               <option value="{{$division->id}}">{{$division->name}}</option>
               @endforeach
@@ -85,7 +91,7 @@
                 </div>
               </td>
               <td class="table__cell">
-                <a href="{{ route('admin.applicant.show', ['applicant' => $applicant->id]) }}"
+                <a href="{{ route('admin.applicant.show', ['applicant' => $applicant->id, 'type' => 'show']) }}"
                    class="table__cell-content hover hover--underline">
                   {{ $applicant->first_name }} {{ $applicant->last_name }}
                 </a>
@@ -97,7 +103,7 @@
               </td>
               <td class="table__cell">
                 <div class="table__cell-content">
-                {{ $applicant->email }}  {{$data}}
+                {{ $applicant->email }} 
                 </div>
               </td>
               <td class="table__cell">
@@ -127,6 +133,9 @@
     window._state_ = {}
   </script>
   <script>
+    document.getElementById('action__division').value = {{$filter_division}} 
+    document.getElementById('action__year').value = {{$filter_year}} 
+
     $(document).on('click', '[data-action="submit-form"]', function () {
       $('#main_form').submit()
       $('#overlay').addClass('hidden')

@@ -98,6 +98,9 @@ return [
         'create' => 'pridať prihlášku', 
         'name' => 'meno',
         'age' => 'vek',
-        'status' => 'status prijatia'
+        'status' => 'status prijatia',
+        'application_created' => 'vytvorenie prihlášky',
+        'school_year' => 'Školský rok'
+
     ],
 ];

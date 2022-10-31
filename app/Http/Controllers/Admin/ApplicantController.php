@@ -9,12 +9,26 @@ use App\Models\Division;
 
 class ApplicantController extends Controller
 {
-    public function index(Request $request, $data = null)
+    public function index(Request $request)
     {
         $applicants = new Applicant();
         $divisions = Division::all();
-        
-        // $applicants = Applicant::where('division_id', '=', $divisionID )->where('school_year', '=', $division_id);
+
+        $filter_division = $request->get('division');
+        $filter_year = $request->get('year');
+
+        if($filter_division == null){$filter_division = 'all';}
+        if($filter_year == null){$filter_year = 'all';}
+
+        if($filter_division != 'all' && $filter_year != 'all'){
+            $applicants = Applicant::where('division_id', '=', $filter_division)->where('school_year', '=', $filter_year);
+        }
+        else if($filter_division != 'all' && $filter_year == 'all'){
+            $applicants = Applicant::where('division_id', '=', $filter_division);
+        } 
+        else if($filter_division == 'all' && $filter_year != 'all'){
+            $applicants = Applicant::where('schooly_ear', '=', $filter_year);
+        }
 
        
         $totalCount = $applicants->count();
@@ -23,15 +37,23 @@ class ApplicantController extends Controller
 
         $applicants = $applicants->paginate(20);
         
-        return view('admin.applicant.index', compact('applicants', 'totalCount', 'page', 'lastPage', 'divisions', 'data'));
+        return view('admin.applicant.index',
+         compact('applicants', 'totalCount', 'page', 'lastPage', 'divisions', 'filter_division', 'filter_year'));
     }
 
     public function show(Request $request, $id)
     {
         $applicant = Applicant::find($id);
+        $divisions = Division::all();
 
-        return view('admin.applicant.show', compact('applicant', 'id'));
+        if($request->get('type') == 'show'){
+            return view('admin.applicant.show', compact('applicant', 'id', 'divisions'));
+        }
+        else if($request->get('type') == 'edit'){
+            return view('admin.applicant.edit', compact('applicant', 'id', 'divisions'));
+        }   
     }
+
 
     public function create()
     {
@@ -70,7 +92,7 @@ class ApplicantController extends Controller
         $year = $request->post('year');
         $divisionID = $request->post('division');
 
-        return redirect(route('admin.applicant.index', ['year' => $year, 'division_id' => "$divisionID"]));
+        return redirect(route('admin.applicant.index', ['year' => $year, 'division' => "$divisionID"]));
     }
 
     public function action(Request $request)

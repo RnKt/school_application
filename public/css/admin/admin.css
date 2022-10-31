@@ -1359,4 +1359,10 @@ input[type="file"]::file-selector-button {
       -ms-flex-align: center;
           align-items: center;
 }
+
+.applicant__wrapper-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 /*# sourceMappingURL=admin.css.map */
