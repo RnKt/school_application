@@ -10,6 +10,7 @@ $grey-light:#aaaaaa;
     left: 50%;
     transform: translate(-50%, -50%);
     justify-content: space-between;
+    border: 1px solid;
     
 
     .box {
@@ -30,7 +31,43 @@ $grey-light:#aaaaaa;
             background-color: $primary;
         }
     }
+
+ 
+
+    .form_division{
+        padding-top: 7%;
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: #5BA7DE;
+        &-button{
+            background: none;
+            border: 1px solid white;
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            margin: 1rem auto;
+            width: 70%;
+            color: white;
+            &:hover{
+                color: rgb(247, 210, 1);
+                border-color: rgb(247, 210, 1);
+                transition: 0.3s;
+            }
+        }
+    }
+    .form_applicant{
+        flex: 2;
+        border: 1px solid green;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        &-header{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    
 }
-.form_wrapper{
-    border: solid red ;
-}
+

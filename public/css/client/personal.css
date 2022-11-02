@@ -1,0 +1,25 @@
+.form_wrapper {
+  width: 1000px;
+  padding: 100px 40px;
+}
+
+.form_wrapper .personal_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form_wrapper .personal_form .form_division {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid red;
+}
+
+.form_wrapper .personal_form .from_applicant {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  border: 1px solid green;
+}
+/*# sourceMappingURL=personal.css.map */

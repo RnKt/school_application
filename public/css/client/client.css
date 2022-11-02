@@ -13,6 +13,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border: 1px solid;
 }
 
 .index_wrapper .box {
@@ -46,7 +47,60 @@
   background-color: #5BA7DE;
 }
 
-.form_wrapper {
-  border: solid red;
+.index_wrapper .form_division {
+  padding-top: 7%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #5BA7DE;
+}
+
+.index_wrapper .form_division-button {
+  background: none;
+  border: 1px solid white;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+  width: 70%;
+  color: white;
+}
+
+.index_wrapper .form_division-button:hover {
+  color: #f7d201;
+  border-color: #f7d201;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.index_wrapper .form_applicant {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  border: 1px solid green;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.index_wrapper .form_applicant-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=client.css.map */

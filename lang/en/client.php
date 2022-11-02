@@ -8,6 +8,5 @@ return [
         
         'login' => 'Prihlásiť sa',
         'tests' => 'Skušobné testy',
-
     ],
 ];

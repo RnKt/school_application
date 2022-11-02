@@ -1,0 +1,16 @@
+.form_wrapper{
+    width: 1000px;
+    padding: 100px 40px;
+    .personal_form{
+        display: flex;
+
+        .form_division{
+            flex: 1;
+            border: 1px solid red;
+        }
+        .from_applicant{
+            flex: 3;
+            border: 1px solid green;
+        }
+    }
+}
