@@ -24,7 +24,7 @@
           <label for="name">Meno</label>
           <input type="Text"name="Name">
         </div>
-        <div class="boinput_boxx">
+        <div class="input_box">
           <label for="name">Meno</label>
           <input type="Text"name="Name">
         </div>
@@ -33,7 +33,7 @@
           <input type="Text"name="Name">
         </div>
       </div>
-      <div>
+      <div class="form_applicant-footer">
         <button class="personal_form-submit">Submit</button>
         <a href="">Zistit udaje</a>
       </div>

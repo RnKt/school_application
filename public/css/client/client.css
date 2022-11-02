@@ -103,4 +103,56 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
+
+.index_wrapper .form_applicant-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 40px auto;
+}
+
+.index_wrapper .form_applicant-inputs .input_box {
+  margin-bottom: 30px;
+  width: calc(100% / 2 - 40px);
+}
+
+.index_wrapper .form_applicant-inputs .input_box label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.index_wrapper .form_applicant-inputs .input_box input {
+  height: 30px;
+  width: 70%;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 2px solid black;
+}
+
+.index_wrapper .form_applicant-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 40px;
+  margin: 30px auto;
+}
+
+.index_wrapper .form_applicant-footer .personal_form-submit {
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  color: black;
+  font-size: 18px;
+  font-weight: 5px;
+  cursor: pointer;
+}
 /*# sourceMappingURL=client.css.map */

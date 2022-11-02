@@ -66,6 +66,45 @@ $grey-light:#aaaaaa;
             display: flex;
             justify-content: center;
         }
+        &-inputs{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px auto;
+            .input_box{
+                margin-bottom: 30px;
+                width: calc(100% / 2 - 40px);
+                label{
+                    display: block;
+                    margin-bottom: 8px;
+                }
+                input{
+                    height: 30px;
+                    width: 70%;
+                    font-size: 16px;
+                    border-radius: 5px;
+                    padding-left: 15px;
+                    border: 2px solid black;
+                }
+            }
+        }
+        &-footer{
+            display: flex;
+            align-content: center;
+            height: 40px;
+            margin: 30px auto;
+            .personal_form-submit{
+                padding: 20px;
+                height: 100%;
+                width: 100%;
+                border-radius: 1rem;
+                color: black;
+                font-size: 18px;
+                font-weight: 5px;
+                cursor: pointer;
+            }
+            
+        }
     }
 
     
