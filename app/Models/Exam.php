@@ -13,6 +13,6 @@ class Exam extends Model
 
     protected $fillable = [
         'name',
-        'test_category',
+        'exam_category',
     ];
 }

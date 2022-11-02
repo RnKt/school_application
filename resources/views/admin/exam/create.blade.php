@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="content">
-      <h1>{{ __('app.class.create') }}</h1>
+      <h1>{{ __('app.exam.create') }}</h1>
         <form action="{{ route('admin.exam.store') }}" id="main_form" method="POST">
           @csrf
             <label class="label label--required mb-2" for="name"><span
@@ -13,17 +13,11 @@
                     name="name" id="name"
                     placeholder="{{ __('app.manage.name') }}">
             </label>
-            <label class="label label--grid mb-4" for="slug"><span
-                class="label__text">{{ __('app.manage.slug') }}</span>
-              <input class="input input--small" type="text"
-                    name="slug" id="slug"
-                    placeholder="{{ __('app.manage.slug') }}">
-            </label>
             <div class="w-20 mr-3 wrapper">
-            <label class="mb-4"  for="division">{{ __('app.division.title.one') }}:</label>
+            <label class="mb-4"  for="exam_category">{{ __('app.exam.title.one') }}:</label>
             <select class="actions__select input input--empty "
-                    name="division"
-                    id="action__division"
+                    name="exam_category"
+                    id="exam_category"
                     >
                     <option value="all">{{ __('app.action.all') }}</option>
               @foreach($exam_categories as $exam_category)
@@ -31,10 +25,7 @@
               @endforeach
             </select>
           </div>
-          <button onClick="addQuestion()">pridať otazku</button>
-          <div class="test_creating_Wrapper">
-            
-          </div>
+
             <button class="button" type="submit">{{ __('app.action.save') }}</button>
         </form>
   </div>

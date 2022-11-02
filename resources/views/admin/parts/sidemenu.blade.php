@@ -11,6 +11,25 @@
                href="{{ route('admin.home') }}">{{ __('app.context.overview') }}</a>
           </li>
           <li
+            class="menu__item has-children{{ request()->is('admin/applicant') || request()->is('admin/applicant/create')  ? ' menu__item--active' : '' }}">
+            <a class="menu__item-span" href="{{ route('admin.applicant.index') }}">{{ __('app.applicant.title.many') }}</a>
+            <ul class="menu__children">
+              <li class="menu__item menu__item--child{{ request()->is('admin/applicant') ? ' menu__item--active' : '' }}">
+                <a class="menu__item-link"
+                   href="{{ route('admin.applicant.index') }}">{{ __('app.applicant.overview') }}</a>
+              </li>
+              <li class="menu__item menu__item--child{{ request()->is('admin/applicant/create') ? ' menu__item--active' : '' }}">
+                <a class="menu__item-link"
+                   href="{{ route('admin.applicant.create') }}">{{ __('app.applicant.create') }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="menu__group mb-4">
+        <span class="menu__group-title">{{ __('app.division.overview') }}</span>
+        <ul>
+          <li
             class="menu__item has-children{{ request()->is('admin/division') || request()->is('admin/division/create')  ? ' menu__item--active' : '' }}">
             <a class="menu__item-span" href="{{ route('admin.division.index') }}">{{ __('app.division.title.many') }}</a>
             <ul class="menu__children">
@@ -52,20 +71,11 @@
               </li>
             </ul>
           </li>
-          <li
-            class="menu__item has-children{{ request()->is('admin/applicant') || request()->is('admin/applicant/create')  ? ' menu__item--active' : '' }}">
-            <a class="menu__item-span" href="{{ route('admin.applicant.index') }}">{{ __('app.applicant.title.many') }}</a>
-            <ul class="menu__children">
-              <li class="menu__item menu__item--child{{ request()->is('admin/applicant') ? ' menu__item--active' : '' }}">
-                <a class="menu__item-link"
-                   href="{{ route('admin.applicant.index') }}">{{ __('app.applicant.overview') }}</a>
-              </li>
-              <li class="menu__item menu__item--child{{ request()->is('admin/applicant/create') ? ' menu__item--active' : '' }}">
-                <a class="menu__item-link"
-                   href="{{ route('admin.applicant.create') }}">{{ __('app.applicant.create') }}</a>
-              </li>
-            </ul>
-          </li>
+        </ul>
+      </li>
+      <li class="menu__group mb-4">
+        <span class="menu__group-title">{{ __('app.exam.overview') }}</span>
+        <ul>
           <li
             class="menu__item has-children{{ request()->is('admin/exam') || request()->is('admin/exam/create')  ? ' menu__item--active' : '' }}">
             <a class="menu__item-span" href="{{ route('admin.exam.index') }}">{{ __('app.exam.title.many') }}</a>
@@ -82,13 +92,13 @@
           </li>
           <li
             class="menu__item has-children{{ request()->is('admin/examCategory') || request()->is('admin/examCategory/create')  ? ' menu__item--active' : '' }}">
-            <a class="menu__item-span" href="{{ route('admin.examCategory.index') }}">{{ __('app.exam.title.many') }}</a>
+            <a class="menu__item-span" href="{{ route('admin.examCategory.index') }}">{{ __('app.exam.exam_category.title.many') }}</a>
             <ul class="menu__children">
               <li class="menu__item menu__item--child{{ request()->is('admin/examCategory') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
                    href="{{ route('admin.examCategory.index') }}">{{ __('app.exam.overview') }}</a>
               </li>
-              <li class="menu__item menu__item--child{{ request()->is('admin/exam/create') ? ' menu__item--active' : '' }}">
+              <li class="menu__item menu__item--child{{ request()->is('admin/examCategory/create') ? ' menu__item--active' : '' }}">
                 <a class="menu__item-link"
                    href="{{ route('admin.examCategory.create') }}">{{ __('app.exam.create') }}</a>
               </li>

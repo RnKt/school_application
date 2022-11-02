@@ -141,7 +141,38 @@
 }
 
 .applicant__wrapper {
-    &-box {
-        display: flex;
+    display: flex;
+    .wrapper__personal {
+        flex: 2;
+        &-box {
+            display: flex;
+            border-bottom: 1px solid gray;
+            line-height: 2rem;
+            justify-content: space-between;
+        }
+    }
+    .wrapper__foto {
+        flex: 1;
+        border: 1px solid;
+        height: 20rem;
+        margin-left: 4rem;
+    }
+    margin-bottom: 5rem;
+}
+
+.applicant__table {
+    width: 50%;
+    min-width: 35rem;
+    text-align: center;
+    line-height: 2rem;
+    &-header {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid gray;
+    }
+    &-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid gray;
     }
 }

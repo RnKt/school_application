@@ -27,7 +27,7 @@ class ApplicantController extends Controller
             $applicants = Applicant::where('division_id', '=', $filter_division);
         } 
         else if($filter_division == 'all' && $filter_year != 'all'){
-            $applicants = Applicant::where('schooly_ear', '=', $filter_year);
+            $applicants = Applicant::where('school_year', '=', $filter_year);
         }
 
        

@@ -128,6 +128,7 @@
     window._state_ = {}
   </script>
   <script>
-
+    document.getElementById('action__division').value = '{{$filter_division}}'
+    document.getElementById('action__year').value = '{{$filter_year}}'  
   </script>
 @endsection

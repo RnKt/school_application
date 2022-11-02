@@ -9,10 +9,10 @@ class Question extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'applicant';
+    protected $table = 'question';
 
     protected $fillable = [
-        'test_id',
+        'exam_id',
         'question',
     ];
 }

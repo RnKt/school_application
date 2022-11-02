@@ -23,7 +23,11 @@
             </th>
             <th class="table__cell table__cell--head align-right">
               <div
-                class="table__cell-content table__cell-content--head">{{ __('app.exam.used_in') }}</div>
+                class="table__cell-content table__cell-content--head">pocet otazok SS</div>
+            </th>
+            <th class="table__cell table__cell--head align-right">
+              <div
+                class="table__cell-content table__cell-content--head">viditelne SS</div>
             </th>
           </tr>
           </thead>
@@ -49,6 +53,11 @@
                    class="table__cell-content hover hover--underline">
                   {{ $exam->name }}
                 </a>
+              </td>
+              <td class="table__cell align-right">
+               <div class="table__cell-content">
+                  asd
+                </div>
               </td>
               <td class="table__cell align-right">
                <div class="table__cell-content">

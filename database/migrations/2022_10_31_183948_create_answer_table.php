@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('answer');
             $table->foreignId('question_id');
-            $table->boolean('isTrue');
+            $table->boolean('isTrue')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -102,7 +102,8 @@ return [
         'status' => 'Status prijatia',
         'application_created' => 'Vytvorenie prihlášky',
         'school_year' => 'Školský rok',
-        'points' => 'Body'
+        'points' => 'Body',
+        'overview' => 'Prehľad užívatelov'
     ],
 
     'exam' => [
@@ -116,5 +117,16 @@ return [
         'edit' => 'Upraviť test', 
         'used_in' => 'použité v testoch', 
         'exam_created' => 'Vytvorenie testu',
+        'question' => [
+            'add' => 'Pridať otázku'
+        ],
+        'overview' => 'Prehľad testov',
+
+        'exam_category' => [
+            'title' => [
+                'many' => 'Kategorie skušobných testov',
+                'one' => 'Kategoria skušobneho testu',
+            ],
+        ]
     ],
 ];

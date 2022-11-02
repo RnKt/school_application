@@ -1,14 +1,14 @@
 @extends('admin.parts.setupblade')
 
-@section('title', __('app.exam_categories.title.one'))
+@section('title', __('app.exam.title.one'))
 
 
 @section('content')
   <div class="content">
     <div class="heading-action mb-8">
-      <h1 class="heading heading--2 d-inline-block">{{ __('app.exam_categories.title.many') }}</h1>
+      <h1 class="heading heading--2 d-inline-block">{{ __('app.exam.exam_category.title.many') }}</h1>
       <a href="{{ route('admin.examCategory.create') }}"
-         class="heading-action__button button button--small">{{ __('app.exam_categories.create') }}</a>
+         class="heading-action__button button button--small">{{ __('app.exam.create') }}</a>
     </div>
     <div class="content__wrapper">
       <form action="{{ route('admin.examCategory.delete') }}" method="POST" id="main_form">
@@ -23,7 +23,7 @@
             </th>
             <th class="table__cell table__cell--head align-right">
               <div
-                class="table__cell-content table__cell-content--head">{{ __('app.exam_categories.used_in') }}</div>
+                class="table__cell-content table__cell-content--head">{{ __('app.exam.used_in') }}</div>
             </th>
           </tr>
           </thead>

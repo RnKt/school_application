@@ -1364,9 +1364,59 @@ input[type="file"]::file-selector-button {
   width: 100%;
 }
 
-.applicant__wrapper-box {
+.applicant__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 5rem;
+}
+
+.applicant__wrapper .wrapper__personal {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.applicant__wrapper .wrapper__personal-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid gray;
+  line-height: 2rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.applicant__wrapper .wrapper__foto {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid;
+  height: 20rem;
+  margin-left: 4rem;
+}
+
+.applicant__table {
+  width: 50%;
+  min-width: 35rem;
+  text-align: center;
+  line-height: 2rem;
+}
+
+.applicant__table-header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid gray;
+}
+
+.applicant__table-row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid gray;
 }
 /*# sourceMappingURL=admin.css.map */
