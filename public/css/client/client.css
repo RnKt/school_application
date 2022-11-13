@@ -44,7 +44,7 @@
 }
 
 .index_wrapper .box:nth-child(1) {
-  background-color: #5BA7DE;
+  background-color: #5ba7de;
 }
 
 .index_wrapper .form_division {
@@ -60,24 +60,35 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #5BA7DE;
+  background-color: #5ba7de;
 }
 
-.index_wrapper .form_division-button {
-  background: none;
+.index_wrapper .form_division .choose {
+  text-align: center;
   border: 1px solid white;
   border-radius: 1rem;
   padding: 1rem 2rem;
   margin: 1rem auto;
-  width: 70%;
+  width: 50%;
   color: white;
 }
 
-.index_wrapper .form_division-button:hover {
+.index_wrapper .form_division .choose:hover {
   color: #f7d201;
   border-color: #f7d201;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.index_wrapper .form_division .radio[type="radio"]:checked + label {
+  color: #f7d201;
+  border-color: #f7d201;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.index_wrapper .form_division .radio {
+  display: none;
 }
 
 .index_wrapper .form_applicant {

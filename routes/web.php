@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Client\PersonalController;
+use App\Http\Controllers\Client\ResultController;
 use App\Http\Controllers\Client\CodeController;
 
 Route::group(['as' => 'admin.'], function () {
@@ -55,6 +56,9 @@ Route::get('/', [ClientController::class, 'index'])->name('client');
 
 Route::group(['as' => 'login.'], function () {
     Route::resource('/login/personal', PersonalController::class)
+    ->only(['index', 'store']);
+
+    Route::resource('/login/result', ResultController::class)
     ->only(['index', 'store']);
 
     Route::resource('/login/code', CodeController::class)
