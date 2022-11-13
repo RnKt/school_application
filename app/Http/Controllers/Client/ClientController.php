@@ -13,8 +13,4 @@ class ClientController extends Controller
         return view('client.index');
     }
 
-    public function personal()
-    {
-        return view('client.applicantData.personal');
-    }
 }

@@ -5,7 +5,7 @@
 @section('content')
   <div class="content">
     <div class="index_wrapper">
-      <a class="box">
+      <a href="{{ route('login.personal.index')}}" class="box">
         <h2>{{__('client.client.login')}}</h2>
         <img src="{{asset('media/icons/file.png')}}" alt="">
       </a>

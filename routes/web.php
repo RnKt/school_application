@@ -4,12 +4,14 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\ApplicantController;
 use App\Http\Controllers\Admin\DivisionController;
-use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TestController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\ExamCategoryController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Client\PersonalController;
 
 Route::group(['as' => 'admin.'], function () {
     Route::group(['middleware' => ['auth.admin']], function () {
@@ -47,7 +49,13 @@ Route::group(['as' => 'admin.'], function () {
     Route::get('/admin/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::group(['as' => 'web.'], function () {
-        Route::get('/', [ClientController::class, 'index'])->name('client');
-        Route::get('/personal', [ClientController::class, 'personal'])->name('client');
+
+Route::get('/', [ClientController::class, 'index'])->name('client');
+
+
+Route::group(['as' => 'login.'], function () {
+    Route::resource('/login/personal', PersonalController::class)
+    ->only(['index', 'store']);
 });
+
+
