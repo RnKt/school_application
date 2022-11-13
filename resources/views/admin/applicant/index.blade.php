@@ -34,8 +34,20 @@
                     >
                     <option value="all">{{ __('app.action.all') }}</option>
               @foreach($divisions as $division)
-              <option value="{{$division->id}}">{{$division->name}}</option>
+              <option value="{{$division->id}}" >{{$division->name}}</option>
               @endforeach
+            </select>
+          </div>
+
+          <div class="w-20 mr-3 wrapper">
+            <label class="mb-4"  for="order_by_points">zoradit body</label>
+            <select class="actions__select input input--empty "
+                    name="order_by_points"
+                    id="action__order_by_points"
+                    >
+              <option value="none">nezoradene</option>
+              <option value="down">zhor dole</option>
+              <option value="up">zdola hore</option>
             </select>
           </div>
           <button class="button button--primary ml-auto" type="submit">
@@ -92,9 +104,10 @@
                 </a>
               </td>
               <td class="table__cell">
-                <div class="table__cell-content">
+                <a href="{{ route('admin.division.show', ['division' => $applicant->division_id, 'type' => 'show']) }}"
+                   class="table__cell-content hover hover--underline">
                 {{ $divisions->where('id', '=', $applicant->division_id)->pluck('name')->first() }}
-                </div>
+                </a>
               </td>
               <td class="table__cell">
                 <div class="table__cell-content">
@@ -103,7 +116,11 @@
               </td>
               <td class="table__cell">
                 <div class="table__cell-content">
-                points
+                  @foreach($subjectGrades as $subjectGrade)
+                    @if($subjectGrade['applicant_id'] == $applicant->id)
+                      {{$subjectGrade['points']}}
+                    @endif
+                  @endforeach
                 </div>
               </td>
               <td class="table__cell align-right">

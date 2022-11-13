@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Applicant;
 use App\Models\Division;
+use App\Models\SubjectGrade;
 
 class ApplicantController extends Controller
 {
@@ -16,6 +17,7 @@ class ApplicantController extends Controller
 
         $filter_division = $request->get('division');
         $filter_year = $request->get('year');
+        $filter_order = $request->get('order');
 
         if($filter_division == null){$filter_division = 'all';}
         if($filter_year == null){$filter_year = 'all';}
@@ -30,15 +32,44 @@ class ApplicantController extends Controller
             $applicants = Applicant::where('school_year', '=', $filter_year);
         }
 
+
        
         $totalCount = $applicants->count();
         $page = $request->get('page') ? $request->get('page') : 1;
         $lastPage = ceil($totalCount / 20);
 
         $applicants = $applicants->paginate(20);
+
+        $subjectGrades = [];
+        foreach($applicants as $applicant){
+            $applicant_points = 0;
+            foreach(
+                SubjectGrade::where('applicant_id', '=', $applicant->id)->pluck('points')
+                as $grade_points
+            ){
+                $applicant_points += $grade_points;
+            }
+
+
+            array_push($subjectGrades, [
+                'applicant_id' => $applicant->id,
+                'points' =>  $applicant_points
+            ]);
+        }
+
+        
         
         return view('admin.applicant.index',
-         compact('applicants', 'totalCount', 'page', 'lastPage', 'divisions', 'filter_division', 'filter_year'));
+         compact(
+            'applicants', 
+            'totalCount', 
+            'page', 
+            'lastPage', 
+            'divisions', 
+            'filter_division', 
+            'filter_year',
+            'subjectGrades'
+        ));
     }
 
     public function show(Request $request, $id)
@@ -91,8 +122,10 @@ class ApplicantController extends Controller
     {
         $year = $request->post('year');
         $divisionID = $request->post('division');
+        $order_by_points = $request->post('order_by_points');
 
-        return redirect(route('admin.applicant.index', ['year' => $year, 'division' => "$divisionID"]));
+        return redirect(route('admin.applicant.index',
+         ['year' => $year, 'division' => $divisionID, "order" => $order_by_points]));
     }
 
     public function action(Request $request)

@@ -8,15 +8,19 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('exam_category', function (Blueprint $table) {
+        Schema::create('applicant_subject_grades', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('subject_id');
+            $table->foreignId('applicant_id');
+            $table->enum('grade', [1, 2, 3, 4, 5]);
+            $table->integer('points');
             $table->softDeletes();
             $table->timestamps();
         });
     }
+
     public function down()
     {
-        Schema::dropIfExists('exam_category');
+        Schema::dropIfExists('applicant_subject_grades');
     }
 };
