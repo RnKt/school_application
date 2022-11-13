@@ -49,13 +49,13 @@ Route::group(['as' => 'admin.'], function () {
     Route::get('/admin/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-
 Route::get('/', [ClientController::class, 'index'])->name('client');
 
 
 Route::group(['as' => 'login.'], function () {
     Route::resource('/login/personal', PersonalController::class)
     ->only(['index', 'store']);
-});
+})
+
 
 
