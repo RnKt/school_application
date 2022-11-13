@@ -106,7 +106,18 @@ $grey-light:#aaaaaa;
             
         }
     }
-
-    
+    .form_applicant-container{
+        margin-left: 17rem;    
+        
+        &-input_box{
+           
+        input{    
+           
+        }
+        &-submit_img{
+            
+        }
+    }
 }
 
+}
