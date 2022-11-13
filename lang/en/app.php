@@ -5,9 +5,8 @@ return [
 
 
     'context' => [
-        
         'overview' => 'Prehľad',
-
+        'school_name' => 'Stredná priemyselná škola elektrotechnická',
     ],
 
     'data' => [

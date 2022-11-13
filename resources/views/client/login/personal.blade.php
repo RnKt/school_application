@@ -6,15 +6,21 @@
   <form action="{{ route('login.personal.store') }}" method="POST" id="index_wrapper" class="index_wrapper">
     @csrf  
     <div class="form_division">
-      <img src="" alt="">
-      <button class= "form_division-button">Lyceum</button>
-      <button class= "form_division-button">PCI</button>
-      <button class= "form_division-button">ELE</button>
+      <input type="hidden" id="division" name="division">
+      @foreach($divisions as $division)        
+        <input 
+          type="radio"
+          name="division"
+          class= "radio"
+          value="{{$division->id}}"
+          id="{{$division->id}}"/>
+          <label class= "choose" for="{{$division->id}}">{{$division->name}}</label>
+      @endforeach
     </div>
     <div class="form_applicant">
       <div class="form_applicant-header">
         <img src="" alt="">
-        <h3>Stredna Priemyselna skola Elektrotechnicka</h3>
+        <h3>{{ __('app.context.school_name') }}</h3>
       </div>
       <div class="form_applicant-inputs">
         <div class="input_box">
@@ -40,4 +46,10 @@
       </div>
     </div>
   </form>
+@endsection
+
+@section('scripts_body')
+<script>
+
+</script>
 @endsection

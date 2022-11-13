@@ -1,5 +1,5 @@
-$primary:#5BA7DE;
-$grey-light:#aaaaaa;
+$primary: #5ba7de;
+$grey-light: #aaaaaa;
 .index_wrapper {
     display: flex;
     width: 70%;
@@ -11,74 +11,78 @@ $grey-light:#aaaaaa;
     transform: translate(-50%, -50%);
     justify-content: space-between;
     border: 1px solid;
-    
 
     .box {
-    
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        img{
+        img {
             width: 40%;
             transform: rotate(25deg);
         }
-        h2{
+        h2 {
             margin: 3rem 0;
         }
-        &:nth-child(1){
+        &:nth-child(1) {
             background-color: $primary;
         }
     }
 
- 
-
-    .form_division{
+    .form_division {
         padding-top: 7%;
         flex: 1;
         width: 100%;
         display: flex;
         flex-direction: column;
-        background-color: #5BA7DE;
-        &-button{
-            background: none;
+        background-color: #5ba7de;
+        .choose {
+            text-align: center;
             border: 1px solid white;
             border-radius: 1rem;
             padding: 1rem 2rem;
             margin: 1rem auto;
-            width: 70%;
+            width: 50%;
             color: white;
-            &:hover{
+            &:hover {
                 color: rgb(247, 210, 1);
                 border-color: rgb(247, 210, 1);
                 transition: 0.3s;
             }
         }
+        .radio[type="radio"]:checked + label {
+            color: rgb(247, 210, 1);
+            border-color: rgb(247, 210, 1);
+            transition: 0.3s;
+        }
+        .radio {
+            display: none;
+        }
     }
-    .form_applicant{
+    .form_applicant {
         flex: 2;
         border: 1px solid green;
         width: 100%;
         display: flex;
         flex-direction: column;
-        &-header{
+        &-header {
             display: flex;
             justify-content: center;
         }
-        &-inputs{
+        &-inputs {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin: 40px auto;
-            .input_box{
+            .input_box {
                 margin-bottom: 30px;
                 width: calc(100% / 2 - 40px);
-                label{
+                label {
                     display: block;
                     margin-bottom: 8px;
                 }
-                input{
+                input {
                     height: 30px;
                     width: 70%;
                     font-size: 16px;
@@ -88,12 +92,14 @@ $grey-light:#aaaaaa;
                 }
             }
         }
-        &-footer{
+        &-results {
+        }
+        &-footer {
             display: flex;
             align-content: center;
             height: 40px;
             margin: 30px auto;
-            .personal_form-submit{
+            .personal_form-submit {
                 padding: 20px;
                 height: 100%;
                 width: 100%;
@@ -103,7 +109,6 @@ $grey-light:#aaaaaa;
                 font-weight: 5px;
                 cursor: pointer;
             }
-            
         }
     }
     .form_applicant-container{
