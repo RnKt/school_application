@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('school_year');
             $table->date('date_of_birth');
             $table->string('email')->unique();
-            $table->string('status');
+            $table->string('status')->default('pending');
             $table->timestamps();
             $table->softDeletes();
         });

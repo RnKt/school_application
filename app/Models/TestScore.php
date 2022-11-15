@@ -14,7 +14,7 @@ class TestScore extends Model
     protected $fillable = [
         'test_id',
         'applicant_id',
-        'sore',
+        'score',
         'points', 
     ];
 }

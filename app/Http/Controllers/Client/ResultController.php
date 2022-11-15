@@ -7,34 +7,75 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
+use App\Models\Applicant;
 use App\Models\SubjectRequirement;
 use App\Models\TestRequirement;
+use App\Models\SubjectGrade;
+use App\Models\TestScore;
 
 class ResultController extends Controller
 {
     public function index()
     {
 
-        $subjectRequirements = SubjectRequirement::where('division_id', '=', 
-        json_decode(Cookie::get('personal'))->division_id);
-       
-        
+      $subjectRequirements = SubjectRequirement::
+      join('subject', 'subject_requirement.subject_id', '=', 'subject.id')
+      ->where('division_id', '=', intval(json_decode(Cookie::get('personal'))->division_id))
+      ->get();
 
-        return view('client.login.result', compact('subjectRequirements'));
+      $testRequirements = TestRequirement::
+      join('test', 'test_requirement.test_id', '=', 'test.id')
+      ->where('division_id', '=', intval(json_decode(Cookie::get('personal'))->division_id))
+      ->get();
+     
+
+        return view('client.login.result', compact('subjectRequirements', 'testRequirements'));
     }
 
     public function store(Request $request)
     {
       
-      $getData = array(
-        "first_name" => $request->post('first_name'), 
-        "last_name" => $request->post('last_name'),
-        "date_of_birth" => $request->post('date_of_birth'),
-        "email" => $request->post('email'),
-      );
+      $applicant_cookies = json_decode(Cookie::get('personal'));
 
-      Cookie::queue('personal', json_encode($getData), 120);
-      
+      $applicant = Applicant::create([
+        'first_name' => $applicant_cookies->first_name,
+        'last_name' => $applicant_cookies->last_name,
+        'division_id' =>  intval($applicant_cookies->division_id),
+        'school_year' => date("Y"),
+        'date_of_birth' =>  date($applicant_cookies->date_of_birth),
+        'email' => $applicant_cookies->email,
+        'status' => 'pending'
+      ]);
+
+      $division_subject = SubjectRequirement::
+      join('subject', 'subject_requirement.subject_id', '=', 'subject.id')
+      ->where('division_id', '=', intval($applicant_cookies->division_id))
+      ->get();
+
+      foreach ($division_subject as $subject){
+        $get_grade = $request->post('subject_', $subject->subject_id);
+        SubjectGrade::create([
+          'subject_id' => $subject->subject_id,
+          'applicant_id' => $applicant->id,
+          'grade' =>  $get_grade,
+          'points' => 20 
+        ]);
+      }
+
+      $division_test = TestRequirement::
+      join('test', 'test_requirement.test_id', '=', 'test.id')
+      ->where('division_id', '=', intval($applicant_cookies->division_id))
+      ->get();
+
+      foreach ($division_test as $test){
+        $get_grade = $request->post('test_', $test->test_id);
+        TestScore::create([
+          'test_id' => $test->test_id,
+          'applicant_id' => $applicant->id,
+          'score' =>  70,
+          'points' => 70 
+        ]);
+      }
 
       return redirect(route('login.personal.index'));
     }

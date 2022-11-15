@@ -12,11 +12,12 @@ class Applicant extends Model
     protected $table = 'applicant';
 
     protected $fillable = [
-        'name',
         'first_name',
         'last_name',
+        'division_id',
+        'school_year',
         'date_of_birth',
-        'e-mail',
+        'email',
         'status',
     ];
 

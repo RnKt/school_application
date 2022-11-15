@@ -30,7 +30,7 @@ class PersonalController extends Controller
       Cookie::queue('personal', json_encode($getData), 120);
       
 
-      return redirect(route('login.personal.index'));
+      return redirect(route('login.result.index'));
     }
 
 }
