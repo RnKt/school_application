@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', __('app.subject.title.one'))
+@section('title', __('app.test.title.one'))
 
 
 @section('content')
@@ -11,25 +11,8 @@
          class="heading-action__button button button--small">{{ __('app.testtest.create') }}</a>
     </div>
     <div class="content__wrapper">
-      <form action="{{ route('admin.test.action') }}" method="POST" id="main_form">
+      <form action="{{ route('admin.test.delete') }}" method="POST" id="main_form">
         @csrf
-        <div class="actions mb-4">
-          <div class="w-20 mr-1">
-            <select class="actions__select input input--empty "
-                    name="action"
-                    id="action__input">
-              <option value="delete">{{ __('app.action.all') }}</option>
-              <option value="delete">{{ __('app.action.todecide') }}</option>
-              <option value="">{{ __('app.action.accepted') }}</option>
-              <option value="delete">{{ __('app.action.notaccepted') }}</option>
-            </select>
-          </div>
-          <button class="button button--primary" type="submit"
-                  data-action="open-popup">{{ __('app.action.perform') }}</button>
-          @error('action')
-          {{ $message }}
-          @enderror
-        </div>
         <table class="table mb-8">
           <thead class="table__head">
           <tr class="table__row table__row--head">
@@ -38,15 +21,19 @@
               <div
                 class="table__cell-content table__cell-content--head">{{ __('app.manage.name') }}</div>
             </th>
+            <th class="table__cell table__cell--head align-right">
+              <div
+                class="table__cell-content table__cell-content--head">{{ __('app.subject.used_in') }}</div>
+            </th>
           </tr>
           </thead>
           <tbody class="table__body">
-          @foreach($subjects as $subject)
-            <tr class="table__row" data-id="{{ $subject->id }}">
+          @foreach($tests as $test)
+            <tr class="table__row" data-id="{{ $test->id }}">
               <td class="table__cell">
                 <div class="table__cell-content align-center">
                   <div class="checkbox-wrapper mx-center">
-                    <input type="checkbox" class="checkbox pseudo" name="subjects[]" value="{{ $subject->id }}"/>
+                    <input type="checkbox" class="checkbox pseudo" name="tests[]" value="{{ $test->id }}"/>
                     <div class="checkbox__body">
                       <svg class="checkbox__icon icon icon--white" viewBox="0 0 448 512">
                         <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -58,17 +45,27 @@
                 </div>
               </td>
               <td class="table__cell">
-                <a href="{{ route('admin.subject.show', ['subject' => $subject->id]) }}"
+                <a href="{{ route('admin.test.show', ['test' => $test->id]) }}"
                    class="table__cell-content hover hover--underline">
-                  {{ $subject->name }}
+                  {{ $test->name }}
                 </a>
               </td>
+              <td class="table__cell align-right">
+               <div class="table__cell-content">
+                  {{$test_requirement->where('test_id', '=', $test->id)->count()}}
+                 </div>
+              </td>
+            
             </tr>
           @endforeach
           </tbody>
         </table>
+        <div class="actions mb-4 delete">
+          <button class="button button--primary" type="submit"
+                  data-action="open-popup">{{ __('app.action.delete') }}</button>
+        </div>
       </form>
-      @include('admin.parts.pagination', ['currentUrl' => 'admin.subject.index'])
+      @include('admin.parts.pagination', ['currentUrl' => 'admin.test.index'])
     </div>  
   </div>
 @endsection

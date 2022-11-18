@@ -34,7 +34,6 @@ class ResultController extends Controller
 
     public function store(Request $request)
     {
-      
       $applicant_cookies = json_decode(Cookie::get('personal'));
 
       $applicant = Applicant::create([
@@ -47,13 +46,14 @@ class ResultController extends Controller
         'status' => 'pending'
       ]);
 
+
       $division_subject = SubjectRequirement::
       join('subject', 'subject_requirement.subject_id', '=', 'subject.id')
       ->where('division_id', '=', intval($applicant_cookies->division_id))
-      ->get();
+      ->get(); 
 
       foreach ($division_subject as $subject){
-        $get_grade = $request->post('subject_', $subject->subject_id);
+        $get_grade = $request->post('subject_'. $subject->subject_id);
         SubjectGrade::create([
           'subject_id' => $subject->subject_id,
           'applicant_id' => $applicant->id,
@@ -68,11 +68,11 @@ class ResultController extends Controller
       ->get();
 
       foreach ($division_test as $test){
-        $get_grade = $request->post('test_', $test->test_id);
+        $get_score = $request->post('test_'. $test->test_id);
         TestScore::create([
           'test_id' => $test->test_id,
           'applicant_id' => $applicant->id,
-          'score' =>  70,
+          'score' =>  $get_score,
           'points' => 70 
         ]);
       }

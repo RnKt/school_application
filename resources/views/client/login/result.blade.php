@@ -18,17 +18,19 @@
       </div>
       <div class="form_applicant-results">   
         @foreach($subjectRequirements as $subjectRequirement)
+        {{$subjectRequirement->subject_id}}
           <div class="input_box">
             <label for="first_name">{{ $subjectRequirement->name }}</label>
             <select class="actions__select input input--empty "
                   name="subject_{{ $subjectRequirement->subject_id }}"
+                  id="subject_{{ $subjectRequirement->subject_id }}"
                   >
               <option value="">none</option>
               <option value="1" >1</option>
-              <option value="1" >2</option>
-              <option value="1" >3</option>
-              <option value="1" >4</option>
-              <option value="1" >5</option>
+              <option value="2" >2</option>
+              <option value="3" >3</option>
+              <option value="4" >4</option>
+              <option value="5" >5</option>
             </select>
           </div>
         @endforeach  

@@ -33,26 +33,29 @@
         <h4>Predmet</h4>
         <h4>Znamka</h4>
         <h4>Body</h4>
+      </div>  
+      @foreach($applicant_grades as $grade)
+        <div class="applicant__table-row">
+          <span>{{ $grade->name }}</span>
+          <span>{{ $grade->grade }}</span>
+          <span>{{ $grade->points }}</span>
+        </div>  
+      @endforeach
       </div>
-      <div class="applicant__table-row">
-        <span>Matematika</span>
-        <span>1</span>
-        <span>20</span>
-      </div>
-    </div>
     <div class="applicant__table">
       <div class="applicant__table-header">
         <h4>Testy</h4>
         <h4>hodnotenie</h4>
         <h4>Body</h4>
       </div>
-      <div class="applicant__table-row">
-        <span>Monitor MAT</span>
-        <span>65%</span>
-        <span>32.5</span>
+      @foreach($applicant_scores as $score)
+        <div class="applicant__table-row">
+          <span>{{ $score->name }}</span>
+          <span>{{ $score->score }}</span>
+          <span>{{ $score->points }}</span>
+        </div>  
+      @endforeach
       </div>
-    </div>
-  </div>
 @endsection
 
 @section('scripts_body')

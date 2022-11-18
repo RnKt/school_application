@@ -39,17 +39,6 @@
             </select>
           </div>
 
-          <div class="w-20 mr-3 wrapper">
-            <label class="mb-4"  for="order_by_points">zoradit body</label>
-            <select class="actions__select input input--empty "
-                    name="order_by_points"
-                    id="action__order_by_points"
-                    >
-              <option value="none">nezoradene</option>
-              <option value="down">zhor dole</option>
-              <option value="up">zdola hore</option>
-            </select>
-          </div>
           <button class="button button--primary ml-auto" type="submit">
             {{ __('app.action.perform') }}
           </button>
@@ -81,7 +70,8 @@
           </tr>
           </thead>
           <tbody class="table__body">
-          @foreach($applicants as $applicant)
+          @foreach($subjectGrades as $subjectGrade)
+          <?php $applicant = $applicants->find($subjectGrade['applicant_id']) ?>
             <tr class="table__row" data-id="{{ $applicant->id }}">
               <td class="table__cell">
                 <div class="table__cell-content align-center">
