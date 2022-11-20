@@ -42,7 +42,7 @@
       </div>
       <div class="form_applicant-footer">
         <button class="personal_form-submit" type="submit">Submit</button>
-        <a href="">Zistit udaje</a>
+        <a href="{{route('login.code.index')}}">Zistit udaje</a>
       </div>
     </div>
   </form>

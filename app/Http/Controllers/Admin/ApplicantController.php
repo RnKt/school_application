@@ -26,46 +26,24 @@ class ApplicantController extends Controller
 
         if($filter_division != 'all' && $filter_year != 'all'){
             $applicants = Applicant::where('division_id', '=', $filter_division)
-            ->where('school_year', '=', $filter_year);
+            ->where('school_year', '=', $filter_year)
+            ->orderBy('points', 'DESC');
         }
         else if($filter_division != 'all' && $filter_year == 'all'){
-            $applicants = Applicant::where('division_id', '=', $filter_division);
+            $applicants = Applicant::where('division_id', '=', $filter_division)
+            ->orderBy('points', 'DESC');
         } 
         else if($filter_division == 'all' && $filter_year != 'all'){
-            $applicants = Applicant::where('school_year', '=', $filter_year);
+            $applicants = Applicant::where('school_year', '=', $filter_year)
+            ->orderBy('points', 'DESC');
         }
-
-
-       
+ 
+   
         $totalCount = $applicants->count();
         $page = $request->get('page') ? $request->get('page') : 1;
         $lastPage = ceil($totalCount / 20);
 
         $applicants = $applicants->paginate(20);
-
-        $subjectGrades = [];
-        foreach($applicants as $applicant){
-            $applicant_points = 0;
-            foreach(
-                SubjectGrade::where('applicant_id', '=', $applicant->id)->pluck('points')
-                as $grade_points
-            ){
-                $applicant_points += $grade_points;
-            }
-            foreach(
-                TestScore::where('applicant_id', '=', $applicant->id)->pluck('score')
-                as $score_points
-            ){
-                $applicant_points += $score_points;
-            }
-
-            array_push($subjectGrades, [
-                'applicant_id' => $applicant->id,
-                'points' =>  $applicant_points
-            ]);
-        }  
-
-        sort($subjectGrades);
 
         return view('admin.applicant.index',
          compact(
@@ -76,7 +54,6 @@ class ApplicantController extends Controller
             'divisions', 
             'filter_division', 
             'filter_year',
-            'subjectGrades'
         ));
     }
 

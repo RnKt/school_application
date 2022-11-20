@@ -24,6 +24,10 @@
           <h4 class="mb-1 mr-12"  >{{ __('app.applicant.application_created') }}:</h4>
           <span name="created">{{$applicant->created_at}}</span>
         </div>
+        <div class="wrapper__personal-box"> 
+          <h4 class="mb-1 mr-12"  >{{ __('app.applicant.points') }}:</h4>
+          <span name="created">{{$applicant->points}}</span>
+        </div>
       </div>
       <div class="wrapper__foto">
       </div>
@@ -38,7 +42,13 @@
         <div class="applicant__table-row">
           <span>{{ $grade->name }}</span>
           <span>{{ $grade->grade }}</span>
-          <span>{{ $grade->points }}</span>
+          <span>
+            @if($grade->grade == 1){{20}}@endif
+            @if($grade->grade == 2){{15}}@endif
+            @if($grade->grade == 3){{10}}@endif
+            @if($grade->grade == 4){{5}}@endif
+            @if($grade->grade == 5){{0}}@endif
+           </span>
         </div>  
       @endforeach
       </div>
@@ -52,7 +62,7 @@
         <div class="applicant__table-row">
           <span>{{ $score->name }}</span>
           <span>{{ $score->score }}</span>
-          <span>{{ $score->points }}</span>
+          <span>{{ $score->score }}</span>
         </div>  
       @endforeach
       </div>

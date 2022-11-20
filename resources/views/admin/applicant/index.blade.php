@@ -70,8 +70,7 @@
           </tr>
           </thead>
           <tbody class="table__body">
-          @foreach($subjectGrades as $subjectGrade)
-          <?php $applicant = $applicants->find($subjectGrade['applicant_id']) ?>
+          @foreach($applicants as $applicant)
             <tr class="table__row" data-id="{{ $applicant->id }}">
               <td class="table__cell">
                 <div class="table__cell-content align-center">
@@ -96,21 +95,17 @@
               <td class="table__cell">
                 <a href="{{ route('admin.division.show', ['division' => $applicant->division_id, 'type' => 'show']) }}"
                    class="table__cell-content hover hover--underline">
-                {{ $divisions->where('id', '=', $applicant->division_id)->pluck('name')->first() }}
+                  {{ $divisions->where('id', '=', $applicant->division_id)->pluck('name')->first() }}
                 </a>
               </td>
               <td class="table__cell">
                 <div class="table__cell-content">
-                {{ $applicant->email }} 
+                  {{ $applicant->email }} 
                 </div>
               </td>
               <td class="table__cell">
                 <div class="table__cell-content">
-                  @foreach($subjectGrades as $subjectGrade)
-                    @if($subjectGrade['applicant_id'] == $applicant->id)
-                      {{$subjectGrade['points']}}
-                    @endif
-                  @endforeach
+                  {{ $applicant->points }}
                 </div>
               </td>
               <td class="table__cell align-right">

@@ -17,6 +17,7 @@ class Applicant extends Model
         'division_id',
         'school_year',
         'date_of_birth',
+        'points',
         'email',
         'status',
     ];

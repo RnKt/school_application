@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 use App\Models\Applicant;
 use App\Models\SubjectRequirement;
 use App\Models\TestRequirement;
 use App\Models\SubjectGrade;
 use App\Models\TestScore;
+use App\Models\Code;
 
 class ResultController extends Controller
 {
@@ -43,22 +46,23 @@ class ResultController extends Controller
         'school_year' => date("Y"),
         'date_of_birth' =>  date($applicant_cookies->date_of_birth),
         'email' => $applicant_cookies->email,
-        'status' => 'pending'
+        'status' => 'pending',
+        'points' => 0
       ]);
-
 
       $division_subject = SubjectRequirement::
       join('subject', 'subject_requirement.subject_id', '=', 'subject.id')
       ->where('division_id', '=', intval($applicant_cookies->division_id))
       ->get(); 
 
+      
       foreach ($division_subject as $subject){
         $get_grade = $request->post('subject_'. $subject->subject_id);
         SubjectGrade::create([
           'subject_id' => $subject->subject_id,
           'applicant_id' => $applicant->id,
           'grade' =>  $get_grade,
-          'points' => 20 
+          'points' => 0
         ]);
       }
 
@@ -76,6 +80,55 @@ class ResultController extends Controller
           'points' => 70 
         ]);
       }
+
+
+      function getGrade($grade){
+        switch($grade){
+          case 1: return 20;
+          case 2: return 15;
+          case 3: return 10;
+          case 4: return 5;
+          case 5: return 0;
+        }
+      }
+
+      $applicant_points = 0;
+      foreach(
+          SubjectGrade::where('applicant_id', '=', $applicant->id)->pluck('grade')
+          as $grade
+      ){
+          $applicant_points += getGrade($grade);
+      }
+      foreach(
+          TestScore::where('applicant_id', '=', $applicant->id)->pluck('score')
+          as $score_points
+      ){
+          $applicant_points += $score_points;
+      }
+
+      $applicant->update([
+        'points' => $applicant_points
+      ]);
+
+
+      function create_passwd($codes, $applicant){
+        $setCode = Str::random(8);
+        foreach($codes as $code){
+          if (Hash::check($setCode, $code->code)) {
+            create_passwd(Code::all());
+          }
+          else{
+            break;
+          }
+        }
+        Code::create([
+          'code' => Hash::make($setCode),
+          'applicant_id' => $applicant->id
+        ]);
+        dd($setCode);
+      }
+
+      create_passwd(Code::all(), $applicant); 
 
       return redirect(route('login.personal.index'));
     }
