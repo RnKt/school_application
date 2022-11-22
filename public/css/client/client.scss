@@ -66,6 +66,7 @@ $grey-light: #aaaaaa;
         width: 100%;
         display: flex;
         flex-direction: column;
+        
         &-header {
             display: flex;
             justify-content: center;
@@ -112,16 +113,23 @@ $grey-light: #aaaaaa;
         }
     }
     .form_applicant-container{
-        margin-left: 17rem;    
+       display: flex;
+       flex-direction: column;
+       margin-left: 7rem;
+       input{    
+            height: 30px;
+            width: 70%;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 2px solid red; 
+        }
+        .personal_form-submit{
+            border: 2px solid blue; 
         
-        &-input_box{
-           
-        input{    
-           
-        }
-        &-submit_img{
-            
-        }
+        .form_applicant-submit_img{
+
+            }
     }
 }
 
