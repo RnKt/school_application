@@ -14,6 +14,7 @@ use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Client\PersonalController;
 use App\Http\Controllers\Client\ResultController;
 use App\Http\Controllers\Client\CodeController;
+use App\Http\Controllers\Client\TestClientController;
 
 Route::group(['as' => 'admin.'], function () {
     Route::group(['middleware' => ['auth.admin']], function () {
