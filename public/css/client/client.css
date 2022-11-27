@@ -69,8 +69,8 @@
   border-radius: 1rem;
   padding: 1rem 2rem;
   margin: 1rem auto;
-  width: 50%;
-  color: white;
+  width: 60%;
+  color: black;
 }
 
 .index_wrapper .form_division .choose:hover {
@@ -95,7 +95,6 @@
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
-  border: 1px solid green;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -178,16 +177,21 @@
   margin-left: 7rem;
 }
 
+.index_wrapper .form_applicant-container h3 {
+  margin-top: 4rem;
+}
+
 .index_wrapper .form_applicant-container input {
+  margin-top: 0.5rem;
   height: 30px;
-  width: 70%;
+  width: 60%;
   font-size: 16px;
   border-radius: 5px;
   padding-left: 15px;
-  border: 2px solid red;
+  border: 2px solid black;
 }
 
 .index_wrapper .form_applicant-container .personal_form-submit {
-  border: 2px solid blue;
+  margin-left: 2rem;
 }
 /*# sourceMappingURL=client.css.map */

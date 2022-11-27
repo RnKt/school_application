@@ -67,7 +67,7 @@ Route::group(['as' => 'login.'], function () {
 
 
 Route::group(['as' => 'testclient.'], function () {
-    Route::resource('/test/slovencina', TestClientController::class)
+    Route::resource('/test', TestClientController::class)
     ->only(['index']);
 });
 
