@@ -34,12 +34,14 @@ Route::group(['as' => 'admin.'], function () {
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
 
         Route::post('/admin/applicant/filter', [ApplicantController::class, 'filter'])->name('applicant.filter');
+        Route::post('/admin/applicant/delete', [ApplicantController::class, 'delete'])->name('applicant.delete');
+        Route::post('/admin/applicant/summary', [ApplicantController::class, 'summary'])->name('applicant.summary');
         Route::resource('/admin/applicant', ApplicantController::class)
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
 
         Route::post('/admin/exam/delete', [ExamController::class, 'delete'])->name('exam.delete');
         Route::resource('/admin/exam', ExamController::class)
-            ->only(['index', 'show', 'store', 'create', 'update', 'destroy', 'question']);
+            ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
 
         
         Route::post('/admin/examCategory/delete', [ExamCategoryController::class, 'delete'])->name('examCategory.delete');

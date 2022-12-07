@@ -7,11 +7,11 @@
   <div class="content">
     <div class="heading-action mb-8">
       <h1 class="heading heading--2 d-inline-block">{{ __('app.applicant.title.many') }}</h1>
-      <a href="{{ route('admin.applicant.create') }}"
+      <a href="{{ route('login.personal.index') }}"
          class="heading-action__button button button--small">{{ __('app.applicant.create') }}</a>
     </div>
     <div class="content__wrapper">
-      <form action="{{ route('admin.applicant.filter') }}" method="POST" id="main_form">
+      <form action="{{ route('admin.applicant.filter') }}" method="POST" id="filter_form">
         @csrf
         <div class="actions mb-4">
           <div class="w-20 mr-3 wrapper">
@@ -43,6 +43,9 @@
             {{ __('app.action.perform') }}
           </button>
         </div>
+      </form>
+      <form action="{{ route('admin.applicant.delete') }}" method="POST" id="delete_form">
+        @csrf
         <table class="table mb-8">
           <thead class="table__head">
           <tr class="table__row table__row--head">
@@ -71,7 +74,13 @@
           </thead>
           <tbody class="table__body">
           @foreach($applicants as $applicant)
-            <tr class="table__row" data-id="{{ $applicant->id }}">
+            <tr class="table__row"
+                style="
+                  @if($divisions->where('id', '=', $applicant->division_id)->pluck('student_count')->first() == $loop->index + 1)
+                    border-bottom: 3px solid var(--color-grey-dark);
+                  @endif
+                 "
+                data-id="{{ $applicant->id }}">
               <td class="table__cell">
                 <div class="table__cell-content align-center">
                   <div class="checkbox-wrapper mx-center">
@@ -119,6 +128,24 @@
           @endforeach
           </tbody>
         </table>
+        <div class="actions delete">
+          <button class="button button--primary" type="submit">
+            {{ __('app.action.delete') }}
+          </button>
+        </div>
+      </form>
+      <form 
+        action="{{ route('admin.applicant.summary', 
+                  ['division_id' => $filter_division, 'year' => $filter_year])
+            }}"
+        method="POST" 
+        id="summary_form">
+        @csrf  
+        <div class="actions delete">
+          <button class="button button--primary mr-4" type="submit">
+            ukoncit SS
+          </button>
+        </div>
       </form>
       @include('admin.parts.pagination', ['currentUrl' => 'admin.applicant.index'])
     </div>  
