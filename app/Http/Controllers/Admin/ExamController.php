@@ -58,6 +58,7 @@ class ExamController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $question = Question::create([
             'exam_id' => $id,
             'question' => $request->post('question')
@@ -67,7 +68,7 @@ class ExamController extends Controller
             Answer::create([
                 'answer' => $answer,
                 'question_id' => $question->id,
-                'isTrue' => True
+                'isTrue' => $request->post('iscorrect') == null ? false : true
             ]);
         }
        

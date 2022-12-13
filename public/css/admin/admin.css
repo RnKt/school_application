@@ -1419,4 +1419,8 @@ input[type="file"]::file-selector-button {
       grid-template-columns: repeat(3, 1fr);
   border-bottom: 1px solid gray;
 }
+
+.delete_answer {
+  border: 1px solid red;
+}
 /*# sourceMappingURL=admin.css.map */
