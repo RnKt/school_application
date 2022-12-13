@@ -5,19 +5,25 @@
 @section('content')
   <div class="content">
       <h1>{{ __('app.exam.question.add') }}</h1>
-        <form action="{{ route('admin.exam.store') }}" id="main_form" method="POST">
+        <form action="{{ route('admin.exam.update', ['exam' => $exam->id]) }}" id="main_form" method="POST">
           @csrf
           @method('PUT')
             @foreach($questions as $question)
-              <div>{{$question->id}}</div>
+              <div>{{$question->question}}</div>
+              @foreach($answers as $answer)
+                @if($answer->question_id == $question->id)
+                  <div>{{$answer->answer}}</div>
+                @endif         
+              @endforeach
             @endforeach
             <label class="label label--required mb-2" for="name"><span
-                class="label__text">{{ __('app.manage.name') }}</span>
+                class="label__text">pridat otazku</span>
               <input class="input" type="text"
-                    name="name" id="name"
-                    placeholder="{{ __('app.manage.name') }}">
+                    name="question" id="name"
+                    placeholder="otazka">
             </label>
-           
+            <div id="answers"></div>
+            <button type="button" onClick="addAnswer()">pridat odpoved</button>
             <button class="button" type="submit">{{ __('app.action.save') }}</button>
         </form>
   </div>
@@ -26,22 +32,30 @@
 @section('scripts_body')
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script>
-    var quill = new Quill('#editor', {
-      theme: 'snow'
-    });
+    let count_answers = 0
+    const addAnswer = () => {
+      console.log('click')
+      const parent = document.getElementById('answers')
+      const label = document.createElement('label')
+      const input = document.createElement('input')
+      const span = document.createElement('span')
 
-    new Modules.Datatable('#datatable_1')
+      label.classList.add("label")
+      label.classList.add("label--required")
+      label.classList.add("mb-2")
 
-    function handleTabChange(table_id, tab_id) {
-      $(`#${table_id} .datatable__menu-item[data-toggle!=${tab_id}]`).removeClass('datatable__menu-item--active')
-      $(`#${table_id} .datatable__menu-item[data-toggle=${tab_id}]`).addClass('datatable__menu-item--active')
-      $(`#${table_id} .datatable__tab[data-id!=${tab_id}]`).removeClass('datatable__tab--active')
-      $(`#${table_id} .datatable__tab[data-id=${tab_id}]`).addClass('datatable__tab--active')
+      span.innerHTML = count_answers + "odpoved"
+      span.classList.add("label__text")
+
+      input.placeholder = "odpoved"
+      input.type = "text"
+      input.name = "answers[]"
+
+      label.appendChild(span)
+      label.appendChild(input)
+      parent.appendChild(label)
+      
+      count_answers++    
     }
-
-    document.querySelector('#main_form').addEventListener('submit', function (e) {
-      const data = document.querySelector('#editor').children[0].innerHTML
-      document.querySelector('#content__input').setAttribute('value', data)
-    })
   </script>
 @endsection

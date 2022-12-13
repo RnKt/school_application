@@ -28,6 +28,24 @@
           <h4 class="mb-1 mr-12"  >{{ __('app.applicant.points') }}:</h4>
           <span name="created">{{$applicant->points}}</span>
         </div>
+        <div class="wrapper__personal-box"> 
+          <h4 class="mb-1 mr-12"  >{{ __('app.applicant.status') }}:</h4>
+       <form action="{{ route('admin.applicant.update', ['applicant' => $applicant->id]) }}" method="POST" id="status_form">
+        @csrf   
+        @method('PUT')
+          <div class="w-20 mr-3 wrapper">
+            <select class="actions__select input input--empty "
+                    name="status"
+                    id="status"
+                    onchange="this.form.submit()"
+                    >
+                <option value="pending">Pending</option>
+                <option value="accepted">Accepted</option>
+                <option value="notaccpeted">Not Accepted</option>
+              </select>
+          </div>
+        </from>        
+        </div>
       </div>
       <div class="wrapper__foto">
       </div>
@@ -71,6 +89,6 @@
 @section('scripts_body')
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script>
-
+      document.getElementById('status').value = '{{$applicant->status}}'
   </script>
 @endsection

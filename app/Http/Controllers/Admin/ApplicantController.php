@@ -82,6 +82,17 @@ class ApplicantController extends Controller
         }   
     }
 
+    public function update(Request $request, $id){
+        
+        $applicant = Applicant::find($id);
+
+        $applicant->update([
+            'status' => $request->post('status')
+        ]);
+
+        return redirect(route('admin.applicant.show', ['applicant' => $id, 'type' => 'show']));
+    }
+
 
     
     public function filter(Request $request)
@@ -130,5 +141,6 @@ class ApplicantController extends Controller
         
         return redirect(route('admin.applicant.index'));
     }
+    
 
 }

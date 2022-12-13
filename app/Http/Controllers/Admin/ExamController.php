@@ -16,8 +16,6 @@ class ExamController extends Controller
     {
         $exams = new Exam();
         $questions = Question::where('exam_id', '=', 1);
-        
-        dd($questions);
 
         $totalCount = $exams->count();
         $page = $request->get('page') ? $request->get('page') : 1;
@@ -31,18 +29,14 @@ class ExamController extends Controller
     public function show(Request $request, $id)
     {
         $exam = Exam::find($id);
-        $questions = new Question();
 
-        $questions = Question::where('exam_id', '=', $id);
-        $answers = [];
+        $questions = Question::
+        where('question.exam_id', '=', $id)
+        ->get();
 
-        foreach($questions as $question){
-            if($question == $id){
-                array_push($answers, $question->id);
-            }
-        }
+        $answers = Answer::all();
 
-        return view('admin.exam.show', compact('exam', 'id', 'questions'));
+        return view('admin.exam.show', compact('exam', 'id', 'questions', 'answers'));
     }
 
     public function create()
@@ -64,15 +58,20 @@ class ExamController extends Controller
 
     public function update(Request $request, $id)
     {
-        $exam = Exam::find($id);
-        $exam->update([
-            'name' => $request->post('name'),
-            'slug' => $request->post('slug'),
+        $question = Question::create([
+            'exam_id' => $id,
+            'question' => $request->post('question')
         ]);
 
-        $exam_categories = ExamCategory::all();
-
-        return redirect(route('admin.exam.show', ['exam' => $id], compact('exam_categories')));
+        foreach ($request->post('answers') as $answer) {
+            Answer::create([
+                'answer' => $answer,
+                'question_id' => $question->id,
+                'isTrue' => True
+            ]);
+        }
+       
+        return redirect(route('admin.exam.show', ['exam' => $id]));
     }
 
     public function delete(Request $request)

@@ -43,7 +43,7 @@ Route::group(['as' => 'admin.'], function () {
         Route::resource('/admin/exam', ExamController::class)
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
 
-        
+            
         Route::post('/admin/examCategory/delete', [ExamCategoryController::class, 'delete'])->name('examCategory.delete');
         Route::resource('/admin/examCategory', ExamCategoryController::class)
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
