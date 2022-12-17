@@ -58,19 +58,21 @@ class ExamController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $question = Question::create([
             'exam_id' => $id,
             'question' => $request->post('question')
         ]);
+        
 
-        foreach ($request->post('answers') as $answer) {
-            Answer::create([
+        foreach ($request->post('answers') as $key => $answer) {
+           Answer::create([
                 'answer' => $answer,
                 'question_id' => $question->id,
-                'isTrue' => $request->post('iscorrect') == null ? false : true
-            ]);
+                'isTrue' => $request->post('iscorrect')[$key] == 0 ? false : true
+            ]);   
         }
+
+       
        
         return redirect(route('admin.exam.show', ['exam' => $id]));
     }

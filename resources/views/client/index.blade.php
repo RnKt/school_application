@@ -1,4 +1,9 @@
-  <div class="content">
+@extends('client.parts.setupblade')
+
+@section('title', 'Prehľad')
+
+@section('content')
+<div class="content">
     <div class="index_wrapper">
       <a href="{{ route('login.personal.index')}}" class="box">
         <h2>{{__('client.client.login')}}</h2>
@@ -10,3 +15,4 @@
       </a>
     </div>
   </div>
+@endsection

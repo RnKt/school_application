@@ -76,7 +76,7 @@
           @foreach($applicants as $applicant)
             <tr class="table__row"
                 style="
-                  @if($divisions->where('id', '=', $applicant->division_id)->pluck('student_count')->first() == $loop->index + 1)
+                  @if($divisions->where('id', '=', $applicant->division_id)->pluck('student_count')->first() == $loop->index + 1 && $filter_division != 'all')
                     border-bottom: 3px solid var(--color-grey-dark);
                   @endif
                  "
@@ -119,7 +119,9 @@
               </td>
               <td class="table__cell align-right">
                 <div class="table__cell-content">
-                  <div class="{{$applicant->status == 'accepted' ? 'status-green' : 'status-orange'}}">
+                  <div class="{{$applicant->status == 'accepted' ? 'status-green' : '' }} 
+                              {{$applicant->status == 'notaccepted' ? 'status-red' : '' }}
+                              {{$applicant->status == 'pending' ? 'status-orange' : '' }}">
                     {{ $applicant->status }}
                   </div>        
                 </div>

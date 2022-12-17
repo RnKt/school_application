@@ -8,11 +8,22 @@
         <form action="{{ route('admin.exam.update', ['exam' => $exam->id]) }}" id="main_form" method="POST">
           @csrf
           @method('PUT')
-            @foreach($questions as $question)
-              <h1 class="question">{{$question->question}}</h1>
+            @foreach($questions as $key => $question)
+            <?php $a = -1 ?>
+              <h2 class="question">{{$key + 1}}. {{$question->question}}?</h2>
               @foreach($answers as $answer)
                 @if($answer->question_id == $question->id)
-                  <div class="answer">{{$answer->answer}}</div>
+                  <?php 
+                    $a++;
+                    $alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+                  ?>
+                  <div
+                    style="
+                        @if($answer->isTrue)
+                          color: green;
+                        @endif
+                      "
+                   class="answer">{{$alphabet[$a]}}. {{$answer->answer}}</div>
                 @endif         
               @endforeach
             @endforeach
@@ -41,6 +52,7 @@
       const input = document.createElement('input')
       const span = document.createElement('span')
       const iscorrect = document.createElement('input')
+      const hidden = document.createElement('input')
       const delete_button = document.createElement('span')
 
       label.classList.add("label")
@@ -57,7 +69,14 @@
       input.name = "answers[]"
 
       iscorrect.type = "checkbox"
-      iscorrect.name = "iscorrect";
+      iscorrect.addEventListener("click", () => {
+         hidden.value = 1
+        });
+
+      hidden.value = 0
+      hidden.type = 'hidden'
+      hidden.name = "iscorrect[]"
+     
 
       delete_button.innerHTML = "X"
       delete_button.classList.add("delete_answer")
@@ -72,6 +91,7 @@
       label.appendChild(span)
       label.appendChild(input)
       label.appendChild(iscorrect)
+      label.appendChild(hidden)
       label.appendChild(delete_button)
       parent.appendChild(label)
       

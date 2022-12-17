@@ -178,5 +178,13 @@
 }
 
 .delete_answer {
-    border: 1px solid red;
+}
+
+.question {
+    text-transform: uppercase;
+    margin: 1rem 0;
+}
+
+.answer {
+    margin: 0.5rem 2rem;
 }

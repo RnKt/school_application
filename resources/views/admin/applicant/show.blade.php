@@ -41,7 +41,7 @@
                     >
                 <option value="pending">Pending</option>
                 <option value="accepted">Accepted</option>
-                <option value="notaccpeted">Not Accepted</option>
+                <option value="notaccepted">Not Accepted</option>
               </select>
           </div>
         </from>        
