@@ -1,5 +1,11 @@
 $primary: #5ba7de;
+$secondary: #ea9b1c;
+$light-yellow: rgb(247, 210, 1);
 $grey-light: #aaaaaa;
+body {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+}
 .index_wrapper {
     display: flex;
     width: 70%;
@@ -10,20 +16,34 @@ $grey-light: #aaaaaa;
     left: 50%;
     transform: translate(-50%, -50%);
     justify-content: space-between;
-    border: 1px solid;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
+    @media (max-width: 1000px) {
+        width: 100%;
+    }
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
     .box {
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-decoration: none;
+        color: $secondary;
         img {
             width: 40%;
             transform: rotate(25deg);
         }
         h2 {
             margin: 3rem 0;
+
+            &:hover {
+                color: var(--color-grey-dark);
+            }
         }
         &:nth-child(1) {
             background-color: $primary;
@@ -37,23 +57,37 @@ $grey-light: #aaaaaa;
         display: flex;
         flex-direction: column;
         background-color: #5ba7de;
+        position: relative;
+        .img_school {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            opacity: 0.3;
+            @media (max-width: 500px) {
+                display: none;
+            }
+        }
         .choose {
             text-align: center;
             border: 1px solid white;
+            color: white;
             border-radius: 1rem;
             padding: 1rem 2rem;
             margin: 1rem auto;
             width: 60%;
-            color: black;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+            cursor: pointer;
             &:hover {
-                color: rgb(247, 210, 1);
-                border-color: rgb(247, 210, 1);
+                color: $light-yellow;
+                border-color: $light-yellow;
                 transition: 0.3s;
             }
         }
         .radio[type="radio"]:checked + label {
-            color: rgb(247, 210, 1);
-            border-color: rgb(247, 210, 1);
+            color: $light-yellow;
+            border-color: $light-yellow;
             transition: 0.3s;
         }
         .radio {
@@ -65,75 +99,96 @@ $grey-light: #aaaaaa;
         width: 100%;
         display: flex;
         flex-direction: column;
-        
+        justify-content: space-around;
         &-header {
-            display: flex;
-            justify-content: center;
+            text-align: center;
+            margin: 2rem;
+            font-size: 30px;
+            font-weight: bold;
         }
         &-inputs {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             .input_box {
-                margin-bottom: 30px;
-                width: calc(100% / 2 - 40px);
+                margin-bottom: 2.5rem;
+                width: 100%;
+                opacity: 0.7;
                 label {
+                    margin-left: 10%;
                     display: block;
                     margin-bottom: 8px;
+                    font-size: 20px;
                 }
                 input {
-                    height: 30px;
-                    width: 70%;
-                    font-size: 16px;
+                    margin-left: 10%;
+                    width: 80%;
+                    height: 2.5rem;
                     border-radius: 5px;
-                    padding-left: 15px;
-                    border: 2px solid black;
+                    border: 2px solid;
                 }
+                &:hover {
+                    opacity: 1;
+                }
+            }
+            @media (max-width: 660px) {
+                grid-template-columns: 1fr;
             }
         }
         &-results {
         }
         &-footer {
             display: flex;
-            align-content: center;
-            height: 40px;
-            margin: 30px auto;
+            flex-direction: column;
+            margin: 0 auto;
+            text-align: center;
+            padding-bottom: 20%;
             .personal_form-submit {
-                padding: 20px;
-                height: 100%;
-                width: 100%;
+                text-align: center;
                 border-radius: 1rem;
-                color: black;
+                padding: 1rem 2rem;
                 font-size: 18px;
-                font-weight: 5px;
+                border-color: $primary;
+                color: $primary;
+                font-weight: bold;
                 cursor: pointer;
+                &:hover {
+                    border-color: $secondary;
+                    color: $secondary;
+                }
+            }
+            a {
+                text-decoration: none;
+                font-size: 18px;
+                color: $primary;
+                font-weight: bold;
+                margin: 0.5rem 0;
+                &:hover {
+                    color: $secondary;
+                }
             }
         }
     }
-    .form_applicant-container{
-       display: flex;
-       flex-direction: column;
-       margin-left: 7rem;
-       h3{
-        margin-top: 4rem; 
-       }
-       input{    
+    .form_applicant-container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 7rem;
+        h3 {
+            margin-top: 4rem;
+        }
+        input {
             margin-top: 0.5rem;
             height: 30px;
             width: 60%;
             font-size: 16px;
             border-radius: 5px;
             padding-left: 15px;
-            border: 2px solid black; 
+            border: 2px solid black;
         }
-        .personal_form-submit{
+        .personal_form-submit {
             margin-left: 2rem;
-        
-        .form_applicant-submit_img{
-            
-            }
-    }
-}
 
+            .form_applicant-submit_img {
+            }
+        }
+    }
 }

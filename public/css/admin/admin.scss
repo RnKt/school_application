@@ -120,13 +120,13 @@
 
 .status {
     &-green {
-        color: #2acc3a;
+        color: var(--color-success);
     }
     &-red {
-        color: red;
+        color: var(--color-error);
     }
     &-orange {
-        color: orange;
+        color: var(--color-warning);
     }
 }
 
@@ -177,9 +177,6 @@
     }
 }
 
-.delete_answer {
-}
-
 .question {
     text-transform: uppercase;
     margin: 1rem 0;
@@ -187,4 +184,34 @@
 
 .answer {
     margin: 0.5rem 2rem;
+}
+
+.new_answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 1rem 0;
+    margin-left: 5%;
+    .delete_answer {
+        transform: rotate(45deg);
+        font-size: 2.25rem;
+        cursor: pointer;
+        &:hover {
+            color: var(--color-error);
+        }
+    }
+    span {
+        font-weight: 500;
+        font-size: 1.5rem;
+        margin: auto 1rem;
+    }
+    &-input {
+    }
+    &-checkbox {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        margin: 0 0.5rem;
+    }
 }

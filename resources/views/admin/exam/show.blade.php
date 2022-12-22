@@ -56,35 +56,37 @@
       const delete_button = document.createElement('span')
 
       label.classList.add("label")
-      label.classList.add("label--required")
-      label.classList.add("mb-2")
+      label.classList.add("new_answer")
 
       span.innerHTML = count_answers + "odpoved"
       span.id = count_answers
       current_answers.push(span.id)
-      span.classList.add("label__text")
+
 
       input.placeholder = "odpoved"
+      input.classList.add("input")
+      input.classList.add("new_answer-input")
+      
       input.type = "text"
       input.name = "answers[]"
 
       iscorrect.type = "checkbox"
+      iscorrect.classList.add("new_answer-checkbox")
       iscorrect.addEventListener("click", () => {
          hidden.value = 1
         });
-
       hidden.value = 0
       hidden.type = 'hidden'
       hidden.name = "iscorrect[]"
      
 
-      delete_button.innerHTML = "X"
+      delete_button.innerHTML = "+"
       delete_button.classList.add("delete_answer")
       delete_button.addEventListener("click", () => { 
         label.parentNode.removeChild(label)
         current_answers = current_answers.filter((e) => { return e !== span.id })
         for(let i = 0; i < current_answers.length; i++){
-          document.getElementById(current_answers[i]).innerHTML = alphabet[i]
+          document.getElementById(current_answers[i]).innerHTML = alphabet[i] + ". "
         }
       })
  
@@ -98,7 +100,7 @@
       count_answers++    
 
       for(let i = 0; i < current_answers.length; i++){
-        document.getElementById(current_answers[i]).innerHTML = alphabet[i]
+        document.getElementById(current_answers[i]).innerHTML = alphabet[i] + ". "
       }
     }
   </script>

@@ -16,11 +16,9 @@ class ExamController extends Controller
     {
         $exams = new Exam();
         $questions = Question::where('exam_id', '=', 1);
-
         $totalCount = $exams->count();
         $page = $request->get('page') ? $request->get('page') : 1;
         $lastPage = ceil($totalCount / 20);
-
         $exams = $exams->paginate(20);
         
         return view('admin.exam.index', compact('exams', 'totalCount', 'page', 'lastPage'));
@@ -33,7 +31,6 @@ class ExamController extends Controller
         $questions = Question::
         where('question.exam_id', '=', $id)
         ->get();
-
         $answers = Answer::all();
 
         return view('admin.exam.show', compact('exam', 'id', 'questions', 'answers'));
@@ -63,7 +60,6 @@ class ExamController extends Controller
             'question' => $request->post('question')
         ]);
         
-
         foreach ($request->post('answers') as $key => $answer) {
            Answer::create([
                 'answer' => $answer,
@@ -72,8 +68,6 @@ class ExamController extends Controller
             ]);   
         }
 
-       
-       
         return redirect(route('admin.exam.show', ['exam' => $id]));
     }
 

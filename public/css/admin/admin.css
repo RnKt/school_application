@@ -1340,15 +1340,15 @@ input[type="file"]::file-selector-button {
 }
 
 .status-green {
-  color: #2acc3a;
+  color: var(--color-success);
 }
 
 .status-red {
-  color: red;
+  color: var(--color-error);
 }
 
 .status-orange {
-  color: orange;
+  color: var(--color-warning);
 }
 
 .actions {
@@ -1427,5 +1427,44 @@ input[type="file"]::file-selector-button {
 
 .answer {
   margin: 0.5rem 2rem;
+}
+
+.new_answer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin: 1rem 0;
+  margin-left: 5%;
+}
+
+.new_answer .delete_answer {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  font-size: 2.25rem;
+  cursor: pointer;
+}
+
+.new_answer .delete_answer:hover {
+  color: var(--color-error);
+}
+
+.new_answer span {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: auto 1rem;
+}
+
+.new_answer-checkbox {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  margin: 0 0.5rem;
 }
 /*# sourceMappingURL=admin.css.map */
