@@ -15,17 +15,19 @@ use App\Models\Applicant;
 
 use App\Models\SubjectGrade;
 use App\Models\TestScore;
+use App\Models\Division;
 
 class CodeController extends Controller
 {
     public function index()
     {
-
-      return view('client.login.code');
+      $division = Division::find(intval(json_decode(Cookie::get('personal'))->division_id));
+      return view('client.login.code', compact( 'division'));
     }
 
     public function store(Request $request)
     {
+      $division = Division::find(intval(json_decode(Cookie::get('personal'))->division_id));
       $codes = Code::all();
       $applicant = new Applicant();
 
@@ -50,8 +52,9 @@ class CodeController extends Controller
       }
 
 
-      
-      return view('client.login.code', compact('applicant', 'applicant_points'));
+      $code = $request->post('code');
+
+      return view('client.login.code', compact('applicant', 'applicant_points', 'division', 'code'));
     }
 
 }

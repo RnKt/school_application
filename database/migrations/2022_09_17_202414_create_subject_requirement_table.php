@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('subject_requirement', function (Blueprint $table) {
             $table->id();
             $table->foreignId('division_id');
-            $table->foreignId('subject_id');
+            $table->foreignId('subject_id')->onDelete('cascade');;
             $table->softDeletes();
             $table->timestamps();
         });

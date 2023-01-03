@@ -15,12 +15,13 @@ use App\Models\TestRequirement;
 use App\Models\SubjectGrade;
 use App\Models\TestScore;
 use App\Models\Code;
+use App\Models\Division;
 
 class ResultController extends Controller
 {
     public function index()
     {
-
+      $division = Division::find(intval(json_decode(Cookie::get('personal'))->division_id));
       $subjectRequirements = SubjectRequirement::
       join('subject', 'subject_requirement.subject_id', '=', 'subject.id')
       ->where('division_id', '=', intval(json_decode(Cookie::get('personal'))->division_id))
@@ -32,7 +33,7 @@ class ResultController extends Controller
       ->get();
      
 
-        return view('client.login.result', compact('subjectRequirements', 'testRequirements'));
+        return view('client.login.result', compact('subjectRequirements', 'testRequirements', 'division'));
     }
 
     public function store(Request $request)

@@ -39,7 +39,6 @@ class TestController extends Controller
     {
         Test::create([
             'name' => $request->post('name'),
-            'slug' => $request->post('slug'),
         ]);
 
         return redirect(route('admin.test.index'));
@@ -50,7 +49,6 @@ class TestController extends Controller
         $test = Test::find($id);
         $test->update([
             'name' => $request->post('name'),
-            'slug' => $request->post('slug'),
         ]);
         return redirect(route('admin.test.show', ['test' => $id]));
     }

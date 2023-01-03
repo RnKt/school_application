@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', __('app.subject.title.one'))
+@section('title', 'Predmety'))
 
 
 @section('content')

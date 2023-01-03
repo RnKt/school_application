@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('code', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->foreignId('applicant_id');
+            $table->foreignId('applicant_id')->onDelete('cascade');;
             $table->softDeletes();
             $table->timestamps();
         });

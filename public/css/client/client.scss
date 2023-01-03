@@ -84,6 +84,10 @@ body {
                 border-color: $light-yellow;
                 transition: 0.3s;
             }
+            &-clicked {
+                color: $light-yellow;
+                border-color: $light-yellow;
+            }
         }
         .radio[type="radio"]:checked + label {
             color: $light-yellow;
@@ -99,12 +103,17 @@ body {
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        @media (min-width: 500px) {
+            max-height: 80vmin;
+        }
         &-header {
             text-align: center;
             margin: 2rem;
             font-size: 30px;
             font-weight: bold;
+            h3 {
+                margin: 0;
+            }
         }
         &-inputs {
             display: grid;
@@ -135,13 +144,36 @@ body {
             }
         }
         &-results {
+            margin-bottom: 2rem;
+            overflow-y: scroll;
+
+            .input_box {
+                margin: 2rem;
+                display: flex;
+                flex-direction: column;
+                padding-left: 2rem;
+
+                label {
+                    display: block;
+                    margin-bottom: 8px;
+                    font-size: 20px;
+                }
+                input,
+                select {
+                    margin-left: 5%;
+                    width: 80%;
+                    height: 2.5rem;
+                    border-radius: 5px;
+                    border: 2px solid;
+                }
+            }
         }
         &-footer {
             display: flex;
             flex-direction: column;
             margin: 0 auto;
             text-align: center;
-            padding-bottom: 20%;
+            padding-bottom: 10%;
             .personal_form-submit {
                 text-align: center;
                 border-radius: 1rem;
@@ -151,6 +183,7 @@ body {
                 color: $primary;
                 font-weight: bold;
                 cursor: pointer;
+                background: none;
                 &:hover {
                     border-color: $secondary;
                     color: $secondary;
@@ -171,9 +204,18 @@ body {
     .form_applicant-container {
         display: flex;
         flex-direction: column;
-        margin-left: 7rem;
+        margin-left: 2rem;
+        &-boxes {
+            margin-left: 2rem;
+            div {
+                margin-top: 1rem;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
         h3 {
-            margin-top: 4rem;
+            margin: 0;
+            font-size: 16px;
         }
         input {
             margin-top: 0.5rem;
@@ -184,10 +226,19 @@ body {
             padding-left: 15px;
             border: 2px solid black;
         }
-        .personal_form-submit {
-            margin-left: 2rem;
-
-            .form_applicant-submit_img {
+        button {
+            text-align: center;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 16px;
+            border-color: $primary;
+            color: $primary;
+            font-weight: bold;
+            background: none;
+            cursor: pointer;
+            &:hover {
+                border-color: $secondary;
+                color: $secondary;
             }
         }
     }

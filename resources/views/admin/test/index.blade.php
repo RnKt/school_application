@@ -1,14 +1,14 @@
 @extends('admin.parts.setupblade')
 
-@section('title', __('app.test.title.one'))
+@section('title', 'testy')
 
 
 @section('content')
   <div class="content">
-    <div class="heading-action mb-1">
+    <div class="heading-action mb-8">
       <h1 class="heading heading--2 d-inline-block">{{ __('app.test.title.many') }}</h1>
       <a href="{{ route('admin.test.create') }}"
-         class="heading-action__button button button--small">{{ __('app.testtest.create') }}</a>
+         class="heading-action__button button button--small">{{ __('app.test.create') }}</a>
     </div>
     <div class="content__wrapper">
       <form action="{{ route('admin.test.delete') }}" method="POST" id="main_form">

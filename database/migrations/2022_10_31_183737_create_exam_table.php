@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('exam', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('exam_category');
+            $table->foreignId('exam_category')->onDelete('cascade');;
             $table->softDeletes();
             $table->timestamps();
         });

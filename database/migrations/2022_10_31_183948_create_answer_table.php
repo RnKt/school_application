@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('answer', function (Blueprint $table) {
             $table->id();
             $table->string('answer');
-            $table->foreignId('question_id');
+            $table->foreignId('question_id')->onDelete('cascade');;
             $table->boolean('isTrue')->default(0);
             $table->softDeletes();
             $table->timestamps();

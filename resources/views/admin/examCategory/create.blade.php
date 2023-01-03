@@ -14,12 +14,6 @@
                     name="name" id="name"
                     placeholder="{{ __('app.manage.name') }}">
             </label>
-            <label class="label label--grid mb-4" for="slug"><span
-                class="label__text">{{ __('app.manage.slug') }}</span>
-              <input class="input input--small" type="text"
-                    name="slug" id="slug"
-                    placeholder="{{ __('app.manage.slug') }}">
-            </label>
             <button class="button" type="submit">{{ __('app.action.save') }}</button>
         </form>
     </div>

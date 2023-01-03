@@ -124,6 +124,11 @@ body {
   transition: 0.3s;
 }
 
+.index_wrapper .form_division .choose-clicked {
+  color: #f7d201;
+  border-color: #f7d201;
+}
+
 .index_wrapper .form_division .radio[type="radio"]:checked + label {
   color: #f7d201;
   border-color: #f7d201;
@@ -147,8 +152,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+}
+
+@media (min-width: 500px) {
+  .index_wrapper .form_applicant {
+    max-height: 80vmin;
+  }
 }
 
 .index_wrapper .form_applicant-header {
@@ -156,6 +165,10 @@ body {
   margin: 2rem;
   font-size: 30px;
   font-weight: bold;
+}
+
+.index_wrapper .form_applicant-header h3 {
+  margin: 0;
 }
 
 .index_wrapper .form_applicant-inputs {
@@ -197,6 +210,38 @@ body {
   }
 }
 
+.index_wrapper .form_applicant-results {
+  margin-bottom: 2rem;
+  overflow-y: scroll;
+}
+
+.index_wrapper .form_applicant-results .input_box {
+  margin: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 2rem;
+}
+
+.index_wrapper .form_applicant-results .input_box label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.index_wrapper .form_applicant-results .input_box input,
+.index_wrapper .form_applicant-results .input_box select {
+  margin-left: 5%;
+  width: 80%;
+  height: 2.5rem;
+  border-radius: 5px;
+  border: 2px solid;
+}
+
 .index_wrapper .form_applicant-footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -207,7 +252,7 @@ body {
           flex-direction: column;
   margin: 0 auto;
   text-align: center;
-  padding-bottom: 20%;
+  padding-bottom: 10%;
 }
 
 .index_wrapper .form_applicant-footer .personal_form-submit {
@@ -219,6 +264,7 @@ body {
   color: #5ba7de;
   font-weight: bold;
   cursor: pointer;
+  background: none;
 }
 
 .index_wrapper .form_applicant-footer .personal_form-submit:hover {
@@ -246,11 +292,22 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-left: 7rem;
+  margin-left: 2rem;
+}
+
+.index_wrapper .form_applicant-container-boxes {
+  margin-left: 2rem;
+}
+
+.index_wrapper .form_applicant-container-boxes div {
+  margin-top: 1rem;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .index_wrapper .form_applicant-container h3 {
-  margin-top: 4rem;
+  margin: 0;
+  font-size: 16px;
 }
 
 .index_wrapper .form_applicant-container input {
@@ -263,7 +320,20 @@ body {
   border: 2px solid black;
 }
 
-.index_wrapper .form_applicant-container .personal_form-submit {
-  margin-left: 2rem;
+.index_wrapper .form_applicant-container button {
+  text-align: center;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  border-color: #5ba7de;
+  color: #5ba7de;
+  font-weight: bold;
+  background: none;
+  cursor: pointer;
+}
+
+.index_wrapper .form_applicant-container button:hover {
+  border-color: #ea9b1c;
+  color: #ea9b1c;
 }
 /*# sourceMappingURL=client.css.map */

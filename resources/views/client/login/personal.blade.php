@@ -1,6 +1,6 @@
 @extends('client.parts.setupblade')
 
-@section('title', 'osobné údaje')
+@section('title', 'Osobné údaje')
 
 @section('content')
   <form action="{{ route('login.personal.store') }}" method="POST" id="index_wrapper" class="index_wrapper">
@@ -25,32 +25,26 @@
       </div>
       <div class="form_applicant-inputs">
         <div class="input_box">
-          <label for="first_name">first name</label>
+          <label for="first_name">First name</label>
           <input type="Text" name="first_name"/>
         </div>
         <div class="input_box">
-          <label for="last_name">last name</label>
+          <label for="last_name">Last name</label>
           <input type="Text" name="last_name"/>
         </div>
         <div class="input_box">
-          <label for="date_of_birth">datum narodenia</label>
+          <label for="date_of_birth">Dátum narodenia</label>
           <input type="date" name="date_of_birth"/>
         </div>
         <div class="input_box">
-          <label for="email">email</label>
+          <label for="email">E-mail</label>
           <input type="Text" name="email"/>
         </div>
       </div>
       <div class="form_applicant-footer">
-        <button class="personal_form-submit" type="submit">Submit</button>
-        <a href="{{route('login.code.index')}}">Zistit udaje</a>
+        <button class="personal_form-submit" type="submit">Ďalej</button>
+        <a href="{{route('login.code.index')}}">Zistiť údaje</a>
       </div>
     </div>
   </form>
-@endsection
-
-@section('scripts_body')
-<script>
-
-</script>
 @endsection

@@ -61,7 +61,6 @@ class DivisionController extends Controller
     {
         $division = Division::create([
             'name' => $request->post('name'),
-            'slug' => $request->post('slug'),
             'student_count' => $request->post('student_count'),
         ]);
 
@@ -93,7 +92,6 @@ class DivisionController extends Controller
 
         $division->update([
             'name' => $request->post('name'),
-            'slug' => $request->post('slug'),
             'student_count' => $request->post('student_count'),
         ]);
 

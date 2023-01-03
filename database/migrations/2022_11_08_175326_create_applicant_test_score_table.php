@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('applicant_test_score', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('test_id');
+            $table->foreignId('test_id')->onDelete('cascade');
             $table->foreignId('applicant_id');
             $table->integer('score');
             $table->integer('points');

@@ -6,10 +6,9 @@
   <form action="{{ route('login.result.store') }}" method="POST" id="index_wrapper" class="index_wrapper">
     @csrf  
     <div class="form_division">
-      <!-- <img src="" alt="">
-      <button class= "form_division-button">Lyceum</button>
-      <button class= "form_division-button">PCI</button>
-      <button class= "form_division-button">ELE</button> -->
+      <img class="img_school" src="{{asset('media/icons/school.png')}}" alt="">
+      <input type="hidden" id="division" name="division">    
+      <label class= "choose choose-clicked" for="{{$division->id}}">{{$division->name}}</label>
     </div>
     <div class="form_applicant">
       <div class="form_applicant-header">
@@ -18,7 +17,6 @@
       </div>
       <div class="form_applicant-results">   
         @foreach($subjectRequirements as $subjectRequirement)
-        {{$subjectRequirement->subject_id}}
           <div class="input_box">
             <label for="first_name">{{ $subjectRequirement->name }}</label>
             <select class="actions__select input input--empty "
@@ -34,8 +32,6 @@
             </select>
           </div>
         @endforeach  
-      </div>
-      <div class="form_applicant-results">
         @foreach($testRequirements as $testRequirement)
           <div class="input_box">
             <label for="first_name">{{ $testRequirement->name }}</label>
@@ -44,8 +40,8 @@
         @endforeach  
       </div>
       <div class="form_applicant-footer">
-        <button class="personal_form-submit" type="submit">Submit</button>
-        <a href="">Zistit udaje</a>
+        <button class="personal_form-submit" type="submit">Ďalej</button>
+        <a href="{{route('login.code.index')}}">Zistiť údaje</a>
       </div>
     </div>
   </form>

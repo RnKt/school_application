@@ -1,24 +1,18 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Vytvorit')
+@section('title', 'Vytvorit predmet')
 
 @section('content')
   <div class="content">
     <div>
-      <h1>{{ __('app.class.create') }}</h1>
+      <h1 class="mb-4">{{ __('app.subject.create') }}</h1>
         <form action="{{ route('admin.subject.store') }}" id="main_form" method="POST">
           @csrf
-            <label class="label label--required mb-2" for="name"><span
+            <label class="label label--required mb-4" for="name"><span
                 class="label__text">{{ __('app.manage.name') }}</span>
               <input class="input" type="text"
                     name="name" id="name"
                     placeholder="{{ __('app.manage.name') }}">
-            </label>
-            <label class="label label--grid mb-4" for="slug"><span
-                class="label__text">{{ __('app.manage.slug') }}</span>
-              <input class="input input--small" type="text"
-                    name="slug" id="slug"
-                    placeholder="{{ __('app.manage.slug') }}">
             </label>
             <button class="button" type="submit">{{ __('app.action.save') }}</button>
         </form>

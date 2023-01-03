@@ -6,27 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('test_requirement', function (Blueprint $table) {
             $table->id();
             $table->foreignId('division_id');
-            $table->foreignId('test_id');
+            $table->foreignId('test_id')->onDelete('cascade');;
             $table->softDeletes();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('test_requirement');
