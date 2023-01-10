@@ -95,6 +95,7 @@ body {
   position: absolute;
   bottom: 0;
   opacity: 0.3;
+  z-index: 1;
 }
 
 @media (max-width: 500px) {
@@ -104,6 +105,7 @@ body {
 }
 
 .index_wrapper .form_division .choose {
+  z-index: 2;
   text-align: center;
   border: 1px solid white;
   color: white;

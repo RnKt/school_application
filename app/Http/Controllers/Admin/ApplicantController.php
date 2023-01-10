@@ -9,7 +9,7 @@ use App\Models\Division;
 
 use App\Models\SubjectGrade;
 use App\Models\TestScore;
-
+use App\Models\Code;
 
 class ApplicantController extends Controller
 {
@@ -136,9 +136,6 @@ class ApplicantController extends Controller
             ]);
         }
 
-      
-       
-        
         return redirect(route('admin.applicant.index'));
     }
     

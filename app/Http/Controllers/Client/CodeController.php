@@ -47,7 +47,7 @@ class CodeController extends Controller
       foreach(
           TestScore::where('applicant_id', '=', $applicant->id)->pluck('score')
           as $test_points
-      ){
+      ){      
           $applicant_points += $test_points;
       }
 

@@ -43,7 +43,6 @@ class DivisionController extends Controller
        }
        $required_tests = implode(',', $required_tests);
 
-
         return view('admin.division.show', 
             compact('division', 'id', 'subjects', 'tests', 'required_subjects', 'required_tests'));
     }

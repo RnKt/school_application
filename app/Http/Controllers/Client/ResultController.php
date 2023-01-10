@@ -56,6 +56,16 @@ class ResultController extends Controller
       ->where('division_id', '=', intval($applicant_cookies->division_id))
       ->get(); 
 
+      function getGrade($grade){
+        switch($grade){
+          case 1: return 20;
+          case 2: return 15;
+          case 3: return 10;
+          case 4: return 5;
+          case 5: return 0;
+        }
+      }
+
       
       foreach ($division_subject as $subject){
         $get_grade = $request->post('subject_'. $subject->subject_id);
@@ -63,7 +73,7 @@ class ResultController extends Controller
           'subject_id' => $subject->subject_id,
           'applicant_id' => $applicant->id,
           'grade' =>  $get_grade,
-          'points' => 0
+          'points' => getGrade($get_grade),
         ]);
       }
 
@@ -80,17 +90,6 @@ class ResultController extends Controller
           'score' =>  $get_score,
           'points' => 70 
         ]);
-      }
-
-
-      function getGrade($grade){
-        switch($grade){
-          case 1: return 20;
-          case 2: return 15;
-          case 3: return 10;
-          case 4: return 5;
-          case 5: return 0;
-        }
       }
 
       $applicant_points = 0;
