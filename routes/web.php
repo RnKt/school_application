@@ -40,6 +40,7 @@ Route::group(['as' => 'admin.'], function () {
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
 
         Route::post('/admin/exam/delete', [ExamController::class, 'delete'])->name('exam.delete');
+        Route::post('/admin/exam/delete_questixampn', [ExamController::class, 'delete_question'])->name('question.delete_question');
         Route::resource('/admin/exam', ExamController::class)
             ->only(['index', 'show', 'store', 'create', 'update', 'destroy']);
 
@@ -70,7 +71,7 @@ Route::group(['as' => 'login.'], function () {
 
 
 Route::group(['as' => 'testclient.'], function () {
-    Route::resource('/test', TestClientController::class)
+    Route::resource('/tests', TestClientController::class)
     ->only(['index']);
 });
 

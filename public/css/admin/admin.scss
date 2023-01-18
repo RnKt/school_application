@@ -180,6 +180,8 @@
 .question {
     text-transform: uppercase;
     margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .answer {

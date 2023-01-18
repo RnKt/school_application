@@ -18,6 +18,7 @@
     crossorigin="anonymous"></script>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
   <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css"/>
+  <link href="{{ asset('css/client/test.css') }}" rel="stylesheet" type="text/css"/>
   <link href="{{ asset('css/client/client.css') }}" rel="stylesheet" type="text/css"/>
   @yield('head', '')
 </head>

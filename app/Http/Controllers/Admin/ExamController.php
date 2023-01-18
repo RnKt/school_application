@@ -78,4 +78,13 @@ class ExamController extends Controller
         }
         return redirect(route('admin.exam.index'));
     }
+
+    public function delete_question(Request $request)
+    {
+        dd($request->post('question'));
+        foreach ($request->post('question') as $id) {
+            Question::destroy($id);
+        }
+        return redirect(route('admin.exam.index'));
+    }
 }

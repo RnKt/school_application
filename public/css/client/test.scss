@@ -1,0 +1,22 @@
+.filter_wrapper {
+    border: 1px solid red;
+    padding: 0 7%;
+}
+.tests_wrapper {
+    width: 100%;
+    padding: 0 7%;
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    &-pick {
+        border: 1px solid;
+        width: 6rem;
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem;
+        font-size: 2rem;
+        border-radius: 12rem;
+    }
+}

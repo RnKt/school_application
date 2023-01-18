@@ -4,39 +4,47 @@
 
 @section('content')
   <div class="content">
-      <h1>{{ __('app.exam.question.add') }}</h1>
-        <form action="{{ route('admin.exam.update', ['exam' => $exam->id]) }}" id="main_form" method="POST">
-          @csrf
-          @method('PUT')
-            @foreach($questions as $key => $question)
-            <?php $a = -1 ?>
-              <h2 class="question">{{$key + 1}}. {{$question->question}}?</h2>
-              @foreach($answers as $answer)
-                @if($answer->question_id == $question->id)
-                  <?php 
-                    $a++;
-                    $alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
-                  ?>
-                  <div
-                    style="
-                        @if($answer->isTrue)
-                          color: green;
-                        @endif
-                      "
-                   class="answer">{{$alphabet[$a]}}. {{$answer->answer}}</div>
-                @endif         
-              @endforeach
-            @endforeach
-            <label class="label label--required mb-2" for="name"><span
-                class="label__text">pridat otazku</span>
-              <input class="input" type="text"
-                    name="question" id="name"
-                    placeholder="otazka">
-            </label>
-            <div id="answers"></div>
-            <button type="button" onClick="addAnswer()">pridat odpoved</button>
-            <button class="button" type="submit">{{ __('app.action.save') }}</button>
-        </form>
+    <h1>{{ __('app.exam.question.add') }}</h1>
+    <form action="{{ route('admin.question.delete_question') }}" id="delete_form" method="POST">
+      @csrf
+      @method('PUT')  
+      @foreach($questions as $key => $question)
+      <?php $a = -1 ?>
+        <h2 class="question">
+          <span>{{$key + 1}}. {{$question->question}}?</span>
+            <button class="button button--primary" type="submit"
+                data-action="open-popup">{{ __('app.action.delete') }}</button>
+        </h2>
+        @foreach($answers as $answer)
+          @if($answer->question_id == $question->id)
+            <?php 
+              $a++;
+              $alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+            ?>
+            <div
+              style="
+                  @if($answer->isTrue)
+                    color: green;
+                  @endif
+                "
+            class="answer">{{$alphabet[$a]}}. {{$answer->answer}}</div>
+          @endif         
+        @endforeach
+      @endforeach
+    </form>
+    <form action="{{ route('admin.exam.update', ['exam' => $exam->id]) }}" id="main_form" method="POST">
+      @csrf
+      @method('PUT')  
+        <label class="label label--required mb-2" for="name"><span
+            class="label__text">pridat otazku</span>
+          <input class="input" type="text"
+                name="question" id="name"
+                placeholder="otazka">
+        </label>
+        <div id="answers"></div>
+        <button type="button" onClick="addAnswer()">pridat odpoved</button>
+        <button class="button" type="submit">{{ __('app.action.save') }}</button>
+    </form>
   </div>
 @endsection
 

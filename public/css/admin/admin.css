@@ -1423,6 +1423,12 @@ input[type="file"]::file-selector-button {
 .question {
   text-transform: uppercase;
   margin: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .answer {

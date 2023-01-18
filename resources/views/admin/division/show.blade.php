@@ -35,7 +35,7 @@
             </label> 
             <div class="popup" if="popup">
               <div id="selected_hidden" ></div>
-              <!-- <div class="popup__selected" id="selected-subject" ></div> -->
+              <div class="popup__selected" id="selected-subject" ></div>
               <div class="popup__items">
                 <input type="hidden" name="subject_hidden" id="subject_hidden" 
                   value="{{$required_subjects}}">
@@ -48,7 +48,7 @@
             </div>
             <div class="popup" if="popup">
               <div id="selected_hidden" ></div>
-              <!-- <div class="popup__selected" id="selected-test" ></div> -->
+              <div class="popup__selected" id="selected-test" ></div>
               <div class="popup__items">
               <input type="hidden" name="test_hidden" 
               id="test_hidden" value="{{$required_tests}}">
