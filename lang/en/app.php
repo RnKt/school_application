@@ -32,6 +32,8 @@ return [
     ],
 
     'action' => [
+        'add_answer' => 'Pridať odpoveď',
+        'add_question' => 'Pridať otázku',
         'add' => 'Pridať',
         'delete' => 'Zmazať',
         'save' => 'Uložiť',

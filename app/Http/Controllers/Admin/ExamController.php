@@ -81,10 +81,8 @@ class ExamController extends Controller
 
     public function delete_question(Request $request)
     {
-        dd($request->post('question'));
-        foreach ($request->post('question') as $id) {
-            Question::destroy($id);
-        }
-        return redirect(route('admin.exam.index'));
+        Question::destroy($request->post('question'));
+        
+        return redirect(route('admin.exam.show', ['exam' => $request->post('exam')]));
     }
 }

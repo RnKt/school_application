@@ -4,13 +4,14 @@
 
 @section('content')
   <div class="content">
-    <h1>{{ __('app.exam.question.add') }}</h1>
-    <form action="{{ route('admin.question.delete_question') }}" id="delete_form" method="POST">
+    <h1>{{$exam->name}}</h1>
+    <form action="{{ route('admin.question.delete') }}" id="delete_form" method="POST">
       @csrf
-      @method('PUT')  
       @foreach($questions as $key => $question)
       <?php $a = -1 ?>
         <h2 class="question">
+          <input type="hidden" name="exam" value="{{$exam->id}}">
+          <input type="hidden" name="question" value="{{$question->id}}">
           <span>{{$key + 1}}. {{$question->question}}?</span>
             <button class="button button--primary" type="submit"
                 data-action="open-popup">{{ __('app.action.delete') }}</button>
@@ -32,18 +33,18 @@
         @endforeach
       @endforeach
     </form>
-    <form action="{{ route('admin.exam.update', ['exam' => $exam->id]) }}" id="main_form" method="POST">
+    <form action="{{ route('admin.exam.update', ['exam' => $exam->id]) }}" class="add_answer_form" id="main_form" method="POST">
       @csrf
       @method('PUT')  
         <label class="label label--required mb-2" for="name"><span
-            class="label__text">pridat otazku</span>
+            class="label__text">{{ __('app.action.add_question') }}</span>
           <input class="input" type="text"
                 name="question" id="name"
                 placeholder="otazka">
         </label>
         <div id="answers"></div>
-        <button type="button" onClick="addAnswer()">pridat odpoved</button>
-        <button class="button" type="submit">{{ __('app.action.save') }}</button>
+        <button class="button  mt-4" type="button" onClick="addAnswer()">{{ __('app.action.add_answer') }}</button>
+        <button class="button mt-8" type="submit">{{ __('app.action.save') }}</button>
     </form>
   </div>
 @endsection
@@ -81,7 +82,7 @@
       iscorrect.type = "checkbox"
       iscorrect.classList.add("new_answer-checkbox")
       iscorrect.addEventListener("click", () => {
-         hidden.value = 1
+        hidden.value == 1 ? hidden.value = 0 : hidden.value = 1  
         });
       hidden.value = 0
       hidden.type = 'hidden'

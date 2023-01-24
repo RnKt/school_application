@@ -110,6 +110,7 @@ class ResultController extends Controller
         'points' => $applicant_points
       ]);
 
+       
 
       function create_passwd($codes, $applicant){
         $setCode = Str::random(8);
@@ -125,12 +126,13 @@ class ResultController extends Controller
           'code' => Hash::make($setCode),
           'applicant_id' => $applicant->id
         ]);
-        dd($setCode);
+        return $setCode;
       }
 
-      create_passwd(Code::all(), $applicant); 
+      $your_code = create_passwd(Code::all(), $applicant); 
 
-      return redirect(route('login.personal.index'));
+      $division = Division::find(intval(json_decode(Cookie::get('personal'))->division_id));
+      return view('client.login.showcode', compact('your_code', 'division'));
     }
 
 }
