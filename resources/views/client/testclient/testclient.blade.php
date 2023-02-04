@@ -16,7 +16,7 @@
   <div class="tests_wrapper">
     @foreach($tests as $key => $test)
       <div class="tests_wrapper-pick">
-          <span>{{$key += 1}}</span>
+          <a href="{{ route('testclient.tests.show', ['test' => $test->id])}}">{{$key += 1}}</a>
       </div>
     @endforeach
   </div>

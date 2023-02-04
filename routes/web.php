@@ -71,8 +71,10 @@ Route::group(['as' => 'login.'], function () {
 
 
 Route::group(['as' => 'testclient.'], function () {
+
+    Route::post('/tests/answers', [TestClientController::class, 'correct'])->name('tests.correct');
     Route::resource('/tests', TestClientController::class)
-    ->only(['index']);
+    ->only(['index', 'show']);
 });
 
 
