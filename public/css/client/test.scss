@@ -1,22 +1,97 @@
-.filter_wrapper {
-    border: 1px solid red;
-    padding: 0 7%;
+$primary: #5ba7de;
+$secondary: #ea9b1c;
+$light-yellow: rgb(247, 210, 1);
+$grey-light: #aaaaaa;
+
+.test_header {
+    padding: 1rem 7%;
+    display: flex;
+    justify-content: space-between;
+    background-color: $primary;
+    color: white;
+    align-items: center;
+    flex-wrap: wrap;
+    select {
+        color: white;
+        background: none;
+        padding: 0.7rem 3rem;
+        border-radius: 1rem;
+        border-color: white;
+        font-size: 1.3rem;
+        font-weight: bold;
+        cursor: pointer;
+        border-width: 3px;
+    }
 }
 .tests_wrapper {
     width: 100%;
     padding: 0 7%;
-    border: 1px solid red;
     display: flex;
     flex-wrap: wrap;
-    &-pick {
-        border: 1px solid;
-        width: 6rem;
-        height: 6rem;
+    &-pick > a {
+        text-decoration: none;
+        color: $primary;
+        border-color: $primary;
+        border: 4px solid;
+        width: 4rem;
+        height: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 2rem;
         font-size: 2rem;
         border-radius: 12rem;
+        &:hover {
+            color: $secondary;
+            border-color: $secondary;
+        }
+    }
+}
+.question_correct {
+    margin: 1rem auto;
+    width: 100%;
+    color: $primary;
+    text-align: center;
+}
+.test_wrap {
+    margin: 2rem 7%;
+    text-align: center;
+    .question {
+        margin: 1rem auto;
+        width: 60%;
+        color: $primary;
+    }
+    .answer_wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem auto;
+        width: 60%;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 0.3rem 0.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+                rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                rgba(0, 0, 0, 0.17) 0px 12px 13px,
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+    }
+    button {
+        cursor: pointer;
+        color: $primary;
+        border-color: $primary;
+        background: none;
+        padding: 0.7rem 3rem;
+        border-radius: 1rem;
+        font-size: 1.3rem;
+        font-weight: bold;
+        border: 3px solid;
+        margin: 2rem 0;
+        &:hover {
+            color: $secondary;
+            border-color: $secondary;
+        }
     }
 }

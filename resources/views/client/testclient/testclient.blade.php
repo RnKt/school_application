@@ -3,11 +3,10 @@
 @section('title', 'osobné údaje')
 
 @section('content')
-  <form action="{{ route('login.code.store') }}" method="POST"  id="index_wrapper" class="filter_wrapper">
+  <form action="{{ route('login.code.store') }}" method="POST"  id="index_wrapper" class="test_header">
    @csrf    
     <h1>Testy</h1>
-    <select name="test_categories" id="" onchange="this.form.submit()"
-                   >
+    <select name="test_categories" id="" onchange="this.form.submit()">
       @foreach($test_categories as $category)
         <option value="{{$category->id}}">{{$category->name}}</option>
       @endforeach
