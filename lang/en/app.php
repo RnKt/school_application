@@ -118,7 +118,7 @@ return [
         'create' => 'Pridať Test', 
         'overview' => 'Prehľad testov',
         'edit' => 'Upraviť test', 
-        'used_in' => 'použité v testoch', 
+        'used_in' => 'Testy', 
         'exam_created' => 'Vytvorenie testu',
         'question' => [
             'add' => 'Pridať otázku'
@@ -130,6 +130,7 @@ return [
                 'many' => 'Kategorie skušobných testov',
                 'one' => 'Kategoria skušobneho testu',
             ],
+            'create' => 'Pridať kategoriu testov', 
         ]
     ],
 ];

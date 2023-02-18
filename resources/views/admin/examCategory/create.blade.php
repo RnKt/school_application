@@ -5,8 +5,8 @@
 @section('content')
   <div class="content">
     <div>
-      <h1>{{ __('app.class.create') }}</h1>
-        <form action="{{ route('admin.examCategory.store') }}" id="main_form" method="POST">
+      <h1>{{ __('app.exam.exam_category.create') }}</h1>
+        <form class="mt-4" action="{{ route('admin.examCategory.store') }}" id="main_form" method="POST">
           @csrf
             <label class="label label--required mb-2" for="name"><span
                 class="label__text">{{ __('app.manage.name') }}</span>
@@ -14,7 +14,7 @@
                     name="name" id="name"
                     placeholder="{{ __('app.manage.name') }}">
             </label>
-            <button class="button" type="submit">{{ __('app.action.save') }}</button>
+            <button class="button mt-4" type="submit">{{ __('app.action.save') }}</button>
         </form>
     </div>
   </div>

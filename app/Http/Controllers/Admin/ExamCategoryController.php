@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ExamCategory;
+use App\Models\Exam;
 
 class ExamCategoryController extends Controller
 {
     public function index(Request $request)
     {
         $exam_categories = new ExamCategory();
+        $exams = Exam::all();
 
         $totalCount = $exam_categories->count();
         $page = $request->get('page') ? $request->get('page') : 1;
@@ -18,7 +20,7 @@ class ExamCategoryController extends Controller
 
         $exam_categories = $exam_categories->paginate(20);
         
-        return view('admin.examCategory.index', compact('exam_categories', 'totalCount', 'page', 'lastPage'));
+        return view('admin.examCategory.index', compact('exam_categories', 'exams', 'totalCount', 'page', 'lastPage'));
     }
 
     public function show(Request $request, $id)

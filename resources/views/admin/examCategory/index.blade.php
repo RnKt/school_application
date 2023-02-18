@@ -52,7 +52,7 @@
               </td>
               <td class="table__cell align-right">
                <div class="table__cell-content">
-                asd
+                {{ $exams->WHERE('exam_category', '=', $exam_category->id)->count() }}
                 </div>
               </td>
             </tr>

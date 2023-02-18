@@ -6,7 +6,7 @@
 <div class="test_header">
   <h1>{{$exam->name}}</h1>
 </div>
-<form action="{{ route('admin.question.delete') }}" id="delete_form" method="POST">
+<div>
   @csrf
   @foreach($questions as $key => $question)
   <?php $a = -1 ?>
@@ -26,7 +26,7 @@
           <div
             style="
                 @if($answer->isTrue)
-                      color: orange;
+                      color: orange;        
                 @endif
                 @if(!$answer->isTrue && isset($my_answers))
                   @foreach($my_answers as $my_answer)
@@ -41,7 +41,7 @@
       @endforeach
     </div>
   @endforeach
-</form>
+</div>
 @endsection
 
 
