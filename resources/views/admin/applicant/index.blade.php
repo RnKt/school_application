@@ -144,9 +144,11 @@
         id="summary_form">
         @csrf  
         <div class="actions delete">
-          <button class="button button--primary mr-4" type="submit">
-            ukoncit SS
-          </button>
+          @if($filter_division != "all" && $filter_year != "all")
+            <button class="button button--primary mr-4" type="submit">
+              {{__('app.applicant.end_application')}}
+            </button>
+          @endif
         </div>
       </form>
       @include('admin.parts.pagination', ['currentUrl' => 'admin.applicant.index'])

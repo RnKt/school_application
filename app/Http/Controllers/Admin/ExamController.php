@@ -15,13 +15,13 @@ class ExamController extends Controller
     public function index(Request $request)
     {
         $exams = new Exam();
-        $questions = Question::where('exam_id', '=', 1);
+        $questions = Question::all();
         $totalCount = $exams->count();
         $page = $request->get('page') ? $request->get('page') : 1;
         $lastPage = ceil($totalCount / 20);
         $exams = $exams->paginate(20);
         
-        return view('admin.exam.index', compact('exams', 'totalCount', 'page', 'lastPage'));
+        return view('admin.exam.index', compact('exams', 'totalCount', 'page', 'lastPage', 'questions'));
     }
 
     public function show(Request $request, $id)

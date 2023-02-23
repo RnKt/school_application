@@ -97,6 +97,7 @@ return [
             'one' => 'Uchádzač',
             'few' => 'Uchádzačov',
         ],
+        'end_application' => 'Ukoncit nabor',
         'create' => 'Pridať prihlášku', 
         'name' => 'Meno',
         'age' => 'Vek',
@@ -111,10 +112,11 @@ return [
 
     'exam' => [
         'title' => [
-            'many' => 'Skúšobne Testy',
+            'many' => 'Skúšobné Testy',
             'one' => 'Skúšobny Test',
             'few' => 'Skúšobnych Testov',
         ],
+        'question_count' => 'Pocet otazok',
         'create' => 'Pridať Test', 
         'overview' => 'Prehľad testov',
         'edit' => 'Upraviť test', 

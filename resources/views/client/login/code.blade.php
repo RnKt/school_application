@@ -5,10 +5,8 @@
 @section('content')
   <form action="{{ route('login.code.store') }}" method="POST"  id="index_wrapper" class="index_wrapper">
    @csrf    
-   <div class="form_division">
+    <div class="form_division">
       <img class="img_school" src="{{asset('media/icons/school.png')}}" alt="">
-      <input type="hidden" id="division" name="division">    
-      <label class= "choose choose-clicked" for="{{$division->id}}">{{$division->name}}</label>
     </div>
     <div class="form_applicant">
       <div class="form_applicant-header">

@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Vytvorit')
+@section('title', 'Uzivatel')
 
 @section('content')
   <div class="content content--split">
@@ -46,8 +46,6 @@
           </div>
         </from>        
         </div>
-      </div>
-      <div class="wrapper__foto">
       </div>
     </div>
     <div class="applicant__table">

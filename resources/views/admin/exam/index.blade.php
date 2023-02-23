@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', __('app.exam.title.one'))
+@section('title', __('app.exam.title.many'))
 
 
 @section('content')
@@ -23,11 +23,7 @@
             </th>
             <th class="table__cell table__cell--head align-right">
               <div
-                class="table__cell-content table__cell-content--head">pocet otazok SS</div>
-            </th>
-            <th class="table__cell table__cell--head align-right">
-              <div
-                class="table__cell-content table__cell-content--head">viditelne SS</div>
+                class="table__cell-content table__cell-content--head">{{ __('app.exam.question_count') }}</div>
             </th>
           </tr>
           </thead>
@@ -56,15 +52,10 @@
               </td>
               <td class="table__cell align-right">
                <div class="table__cell-content">
-                  asd
+                  {{$questions->where('exam_id', '=', $exam->id)->count()}}
                 </div>
               </td>
-              <td class="table__cell align-right">
-               <div class="table__cell-content">
-                  asd
-                </div>
-              </td>
-            </tr>
+             </tr>
           @endforeach
           </tbody>
         </table>

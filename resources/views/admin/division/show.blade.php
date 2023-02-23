@@ -18,14 +18,6 @@
                     placeholder="{{$division->name}}"
                     value="{{$division->name}}">
             </label>
-            <label class="label label--grid mb-4" for="slug"><span
-                class="label__text">{{ __('app.manage.slug') }}</span>
-              <input class="input input--small" type="text"
-                    name="slug" id="slug"
-                    placeholder="{{$division->slug}}"
-                    value="{{$division->slug}}">
-            </label>
-
             <label class="label label--grid mb-4" for="student_count"><span
                 class="label__text">{{ __('app.division.student_count') }}</span>
               <input class="input input--small" type="number"
