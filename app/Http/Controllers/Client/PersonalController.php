@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-
+use App\Http\Requests\PersonalValidationRequest;
 use App\Models\Division;
 
 
@@ -19,8 +19,11 @@ class PersonalController extends Controller
         return view('client.login.personal', compact('divisions'));
     }
 
-    public function store(Request $request)
+    public function store(PersonalValidationRequest $request)
     {
+        
+      $request->validated();
+
       $getData = array(
         "division_id" => $request->post('division'),
         "first_name" => $request->post('first_name'), 

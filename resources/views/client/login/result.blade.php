@@ -19,8 +19,8 @@
         @foreach($subjectRequirements as $subjectRequirement)
           <div class="input_box">
             <label for="first_name">{{ $subjectRequirement->name }}</label>
-            <select class="actions__select input input--empty "
-                  name="subject_{{ $subjectRequirement->subject_id }}"
+            <select class="actions__select input input--empty"
+                  name="subjects[]"
                   id="subject_{{ $subjectRequirement->subject_id }}"
                   >
               <option value="">none</option>
@@ -33,9 +33,10 @@
           </div>
         @endforeach  
         @foreach($testRequirements as $testRequirement)
+        <input type="hidden" name="test_id[]" vlaue="{{$testRequirement->id}}">
           <div class="input_box">
             <label for="first_name">{{ $testRequirement->name }}</label>
-            <input type="number" name="test_{{ $testRequirement->test_id }}">
+            <input type="number" name="tests[]">
           </div>
         @endforeach  
       </div>
@@ -45,4 +46,11 @@
       </div>
     </div>
   </form>
+  <div class="error_wrapper">
+        @if($errors->any())
+          @foreach($errors->all() as $error)     
+            <div class="error_wrapper-error">{{$error}}</div>
+          @endforeach
+        @endif
+      </div>
 @endsection

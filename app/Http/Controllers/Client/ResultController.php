@@ -16,6 +16,7 @@ use App\Models\SubjectGrade;
 use App\Models\TestScore;
 use App\Models\Code;
 use App\Models\Division;
+use App\Http\Requests\ResultValidationRequest;
 
 class ResultController extends Controller
 {
@@ -36,8 +37,10 @@ class ResultController extends Controller
         return view('client.login.result', compact('subjectRequirements', 'testRequirements', 'division'));
     }
 
-    public function store(Request $request)
+    public function store(ResultValidationRequest $request)
     {
+      $request->validated();
+      
       $applicant_cookies = json_decode(Cookie::get('personal'));
 
       $applicant = Applicant::create([
@@ -66,31 +69,31 @@ class ResultController extends Controller
         }
       }
 
+
+        foreach($division_subject as $key => $subject){
+          SubjectGrade::create([
+            'subject_id' => $subject->subject_id,
+            'applicant_id' => $applicant->id,
+            'grade' =>  $request->post('subjects')[$key],
+            'points' => getGrade($request->post('subjects')[$key]),
+          ]);
+        }
+    
+
+        $division_test = TestRequirement::
+        join('test', 'test_requirement.test_id', '=', 'test.id')
+        ->where('division_id', '=', intval($applicant_cookies->division_id))
+        ->get();
+
+        foreach($division_test as $key => $test){
+          TestScore::create([
+            'test_id' => $test->test_id,
+            'applicant_id' => $applicant->id,
+            'score' =>  $request->post('tests')[$key],
+            'points' => 70 
+          ]);
+        }
       
-      foreach ($division_subject as $subject){
-        $get_grade = $request->post('subject_'. $subject->subject_id);
-        SubjectGrade::create([
-          'subject_id' => $subject->subject_id,
-          'applicant_id' => $applicant->id,
-          'grade' =>  $get_grade,
-          'points' => getGrade($get_grade),
-        ]);
-      }
-
-      $division_test = TestRequirement::
-      join('test', 'test_requirement.test_id', '=', 'test.id')
-      ->where('division_id', '=', intval($applicant_cookies->division_id))
-      ->get();
-
-      foreach ($division_test as $test){
-        $get_score = $request->post('test_'. $test->test_id);
-        TestScore::create([
-          'test_id' => $test->test_id,
-          'applicant_id' => $applicant->id,
-          'score' =>  $get_score,
-          'points' => 70 
-        ]);
-      }
 
       $applicant_points = 0;
       foreach(

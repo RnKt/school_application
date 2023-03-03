@@ -21,8 +21,8 @@ class CodeController extends Controller
 {
     public function index()
     {
-      $division = Division::find(intval(json_decode(Cookie::get('personal'))->division_id));
-      return view('client.login.code', compact( 'division'));
+     
+      return view('client.login.code');
     }
 
     public function store(Request $request)
