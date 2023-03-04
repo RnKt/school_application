@@ -80,8 +80,9 @@ function fillSession(){
     }
     fillSession()
     function addSubject(id, session){
+      console.log(sessionStorage.getItem(session))
       var item = document.getElementById(session + id)      
-      item.checked =  !item.checked
+      item.checked = !item.checked
 
       var selectedDiv =  document.getElementById('selected-' + session)  
       var sessionItems = sessionStorage.getItem(session)
@@ -107,20 +108,18 @@ function fillSession(){
       } 
 
       selectedDiv.innerHTML = ""
-      JSON.parse(sessionStorage.getItem(session)).map(id => {
-        var itemWrapper = document.createElement('div')
-        var closeSpan = document.createElement('span')
-        var getInput = document.getElementById(session + id).value
+      // JSON.parse(sessionStorage.getItem(session)).map(id => {
+      //   var itemWrapper = document.createElement('div')
+      //   var closeSpan = document.createElement('span')
+      //   var getInput = document.getElementById(session + id).value
 
-        itemWrapper.classList.add('popup__selected-part')    
+      //   itemWrapper.classList.add('popup__selected-part')    
 
-        itemWrapper.append(getInput)
-        selectedDiv.append(itemWrapper)
-      })
+      //   itemWrapper.append(getInput)
+      //   selectedDiv.append(itemWrapper)
+      // })
       
       document.getElementById(session + '_hidden').value = JSON.parse(sessionStorage.getItem(session))
-
-      console.log(document.getElementById(session + '_hidden').value)
     }
 
 

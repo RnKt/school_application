@@ -1477,4 +1477,9 @@ input[type="file"]::file-selector-button {
   height: 25px;
   margin: 0 0.5rem;
 }
+
+.error_wrapper {
+  color: red;
+  margin: 1rem;
+}
 /*# sourceMappingURL=admin.css.map */

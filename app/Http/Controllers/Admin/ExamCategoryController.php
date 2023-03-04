@@ -37,6 +37,10 @@ class ExamCategoryController extends Controller
 
     public function store(Request $request)
     {
+        $request ->validate([
+            'name' => 'required'
+        ]);
+
         ExamCategory::create([
             'name' => $request->post('name'),
         ]);
@@ -46,6 +50,10 @@ class ExamCategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request ->validate([
+            'name' => 'required'
+        ]);
+
         $exam_category = ExamCategory::find($id);
         $exam_category->update([
             'name' => $request->post('name'),
@@ -54,7 +62,10 @@ class ExamCategoryController extends Controller
     }
 
     public function delete(Request $request)
-    {
+    {   
+        $request ->validate([
+            'exam_categories' => 'required'
+        ]);
         foreach ($request->post('exam_categories') as $id) {
             ExamCategory::destroy($id);
         }

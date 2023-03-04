@@ -6,6 +6,11 @@
   <div class="content">
     <div>
       <h1>{{ __('app.division.create') }}</h1>
+        <ul class="error_wrapper">       
+          @if($errors->any()) 
+              <li class="error_wrapper-error">{{$errors->first()}}</li>
+          @endif
+        </ul>
         <form action="{{ route('admin.division.store') }}" id="main_form" method="POST">
           @csrf
             <label class="label label--required mb-2" for="name"><span

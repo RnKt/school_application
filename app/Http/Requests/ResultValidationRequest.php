@@ -15,15 +15,15 @@ class ResultValidationRequest extends FormRequest
     public function rules()
     {
         return [         
-            'subjects' => 'required',
-            'tests' => 'required',
+            'subjects.*' => 'required',
+            'tests.*' => 'required',
         ];
     }
     public function messages(){
         
         return [
-           
-
+            'subjects.*.required' => 'Vyplň všetky polia',
+            'tests.*.required' => 'Vyplň všetky polia',
         ];
     }
 }

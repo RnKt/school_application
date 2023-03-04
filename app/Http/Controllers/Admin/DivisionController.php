@@ -10,6 +10,8 @@ use App\Models\SubjectRequirement;
 use App\Models\TestRequirement;
 use App\Models\Test;
 
+use App\Http\Requests\DivisionValidationRequest;
+
 class DivisionController extends Controller
 {
     public function index(Request $request)
@@ -56,15 +58,16 @@ class DivisionController extends Controller
         return view('admin.division.create', compact('divisions', 'subjects', 'tests'));
     }
 
-    public function store(Request $request)
+    public function store(DivisionValidationRequest $request)
     {
+        $request->validated();
+
         $division = Division::create([
             'name' => $request->post('name'),
             'student_count' => $request->post('student_count'),
         ]);
 
-        if($request->post('subject_hidden'))
-        {
+        if($request->post('subject_hidden')){
             foreach (explode(',', $request->post('subject_hidden'))  as $subject){
                 SubjectRequirement::create([
                     'division_id' => $division->id,
@@ -73,8 +76,7 @@ class DivisionController extends Controller
             }
         }
 
-        if($request->post('test_hidden'))
-        {
+        if($request->post('test_hidden')){
             foreach (explode(',', $request->post('test_hidden'))  as $test){
                 TestRequirement::create([
                     'division_id' => $division->id,
@@ -82,11 +84,14 @@ class DivisionController extends Controller
                 ]);
             }
         }     
+
         return redirect(route('admin.home'));
     }
 
-    public function update(Request $request, $id)
+    public function update(DivisionValidationRequest $request, $id)
     {
+        $request->validated();
+        
         $division = Division::find($id);
 
         $division->update([
@@ -127,6 +132,10 @@ class DivisionController extends Controller
 
     public function delete(Request $request)
     {
+        $request->validate([
+            'divisions' => 'required'
+        ]);
+
         foreach ($request->post('divisions') as $id) {
             Division::destroy($id);
         }

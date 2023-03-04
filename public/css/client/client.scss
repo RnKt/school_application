@@ -148,11 +148,13 @@ body {
             }
         }
         &-results {
+            margin: 0 1rem;
             margin-bottom: 2rem;
             overflow-y: scroll;
-
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+                rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
             .input_box {
-                margin: 2rem;
+                margin: 2rem 1rem;
                 display: flex;
                 flex-direction: column;
                 padding-left: 2rem;
@@ -246,4 +248,8 @@ body {
             }
         }
     }
+}
+
+.error_wrapper {
+    color: red;
 }

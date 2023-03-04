@@ -44,7 +44,12 @@ class ExamController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        $request ->validate([
+            'name' => 'required',
+            'exam_category' => 'required'
+        ]);
+
         $exam = Exam::create([
             'name' => $request->post('name'),
             'exam_category' => $request->post('exam_category')
@@ -55,6 +60,11 @@ class ExamController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request ->validate([
+            'name' => 'required',
+            'exam_category' => 'required'
+        ]);
+
         $question = Question::create([
             'exam_id' => $id,
             'question' => $request->post('question')
@@ -73,6 +83,10 @@ class ExamController extends Controller
 
     public function delete(Request $request)
     {
+        $request ->validate([
+            'exams' => 'required',
+        ]);
+
         foreach ($request->post('exams') as $id) {
             Exam::destroy($id);
         }

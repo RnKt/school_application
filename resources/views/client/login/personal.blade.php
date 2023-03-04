@@ -45,14 +45,11 @@
         <button class="personal_form-submit" type="submit">Ďalej</button>
         <a href="{{route('login.code.index')}}">Zistiť údaje</a>
       </div>
-      <div class="error_wrapper">
-        
-        @if($errors->any())
-          @foreach($errors->all() as $error)     
-            <div class="error_wrapper-error">{{$error}}</div>
-          @endforeach
+      <ul class="error_wrapper">       
+        @if($errors->any()) 
+            <li class="error_wrapper-error">{{$errors->first()}}</li>
         @endif
-      </div>
+      </ul>
     </div> 
   </form>
   

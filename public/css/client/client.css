@@ -216,12 +216,15 @@ body {
 }
 
 .index_wrapper .form_applicant-results {
+  margin: 0 1rem;
   margin-bottom: 2rem;
   overflow-y: scroll;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+          box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .index_wrapper .form_applicant-results .input_box {
-  margin: 2rem;
+  margin: 2rem 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -340,5 +343,9 @@ body {
 .index_wrapper .form_applicant-container button:hover {
   border-color: #ea9b1c;
   color: #ea9b1c;
+}
+
+.error_wrapper {
+  color: red;
 }
 /*# sourceMappingURL=client.css.map */

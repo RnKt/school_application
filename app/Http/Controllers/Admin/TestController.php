@@ -37,6 +37,10 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
+        $request ->validate([
+            'name' => 'required'
+        ]);
+
         Test::create([
             'name' => $request->post('name'),
         ]);
@@ -46,6 +50,10 @@ class TestController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request ->validate([
+            'name' => 'required'
+        ]);
+
         $test = Test::find($id);
         $test->update([
             'name' => $request->post('name'),
@@ -55,6 +63,10 @@ class TestController extends Controller
 
     public function delete(Request $request)
     {
+        $request ->validate([
+            'tests' => 'required'
+        ]);
+
         foreach ($request->post('tests') as $id) {
             Test::destroy($id);
         }

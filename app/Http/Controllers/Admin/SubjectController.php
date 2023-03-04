@@ -38,7 +38,11 @@ class SubjectController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        $request ->validate([
+            'name' => 'required'
+        ]);
+
         Subject::create([
             'name' => $request->post('name'),
         ]);
@@ -48,6 +52,10 @@ class SubjectController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request ->validate([
+            'name' => 'required'
+        ]);
+
         $subject = Subject::find($id);
         $subject->update([
             'name' => $request->post('name'),
@@ -57,7 +65,10 @@ class SubjectController extends Controller
 
     public function delete(Request $request)
     {
-        
+        $request ->validate([
+            'subjects' => 'required'
+        ]);
+
         foreach ($request->post('subjects') as $id) {
             Subject::destroy($id);
         }
