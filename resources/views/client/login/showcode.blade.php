@@ -1,6 +1,6 @@
 @extends('client.parts.setupblade')
 
-@section('title', 'osobné údaje')
+@section('title', 'Osobné údaje')
 
 @section('content')
   <div id="index_wrapper" class="index_wrapper">

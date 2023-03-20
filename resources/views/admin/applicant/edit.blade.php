@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Vytvorit')
+@section('title', __('app.applicant.edit'))
 
 @section('content')
   <div class="content content--split">

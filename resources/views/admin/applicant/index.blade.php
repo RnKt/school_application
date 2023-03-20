@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Uchádzači')
+@section('title', __('app.applicant.title.many'))
 
 
 @section('content')
@@ -120,7 +120,7 @@
               <td class="table__cell align-right">
                 <div class="table__cell-content">
                   <div class="{{$applicant->status == 'accepted' ? 'status-green' : '' }} 
-                              {{$applicant->status == 'notaccepted' ? 'status-red' : '' }}
+                              {{$applicant->status == 'declined' ? 'status-red' : '' }}
                               {{$applicant->status == 'pending' ? 'status-orange' : '' }}">
                     {{ $applicant->status }}
                   </div>        

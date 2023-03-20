@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Vytvorit')
+@section('title', __('app.division.edit'))
 
 @section('content')
   <div class="content content--split">
@@ -122,27 +122,5 @@ function fillSession(){
       document.getElementById(session + '_hidden').value = JSON.parse(sessionStorage.getItem(session))
     }
 
-
-    var quill = new Quill('#editor', {
-      theme: 'snow'
-    });
-
-    new Modules.Datatable('#datatable_1')
-
-    function handleTabChange(table_id, tab_id) {
-      $(`#${table_id} .datatable__menu-item[data-toggle!=${tab_id}]`).removeClass('datatable__menu-item--active')
-      $(`#${table_id} .datatable__menu-item[data-toggle=${tab_id}]`).addClass('datatable__menu-item--active')
-      $(`#${table_id} .datatable__tab[data-id!=${tab_id}]`).removeClass('datatable__tab--active')
-      $(`#${table_id} .datatable__tab[data-id=${tab_id}]`).addClass('datatable__tab--active')
-    }
-
-    document.querySelector('#main_form').addEventListener('submit', function (e) {
-      const data = document.querySelector('#editor').children[0].innerHTML
-      document.querySelector('#content__input').setAttribute('value', data)
-    })
-
-    if(document.getElementById('hidden__visibility__input').value == 1){
-      document.getElementById('visibility__input').checked = true;
-    }
   </script>
 @endsection

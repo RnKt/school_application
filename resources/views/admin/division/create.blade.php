@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Vytvorit')
+@section('title', __('app.division.create'))
 
 @section('content')
   <div class="content">

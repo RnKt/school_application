@@ -23,16 +23,16 @@
       <div class="form_applicant-container-boxes">
         @isset($applicant)
           <div>
-            Kod: {{ $code}}
+            Kod: {{$code}}
           </div>
           <div>
             Meno: {{ $applicant->first_name }} {{ $applicant->last_name }}
+          </div>        
+          <div>
+            Body: {{ $applicant_points }}
           </div>
           <div>
            Status: {{ $applicant->status }}
-          </div>
-          <div>
-            Body: {{ $applicant_points }}
           </div>
         @endisset
       </div>

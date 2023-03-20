@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Vytvorit')
+@section('title', $exam->name)
 
 @section('content')
   <div class="content">

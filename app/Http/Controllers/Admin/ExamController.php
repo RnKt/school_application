@@ -61,8 +61,7 @@ class ExamController extends Controller
     public function update(Request $request, $id)
     {
         $request ->validate([
-            'name' => 'required',
-            'exam_category' => 'required'
+            'question' => 'required',
         ]);
 
         $question = Question::create([

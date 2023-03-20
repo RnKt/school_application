@@ -1,6 +1,6 @@
 @extends('client.parts.setupblade')
 
-@section('title', 'osobné údaje')
+@section('title', Testy)
 
 @section('content')
   <form action="{{ route('testclient.tests.index')}}" method="GET" id="index_wrapper" class="test_header">

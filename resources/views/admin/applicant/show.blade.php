@@ -1,6 +1,6 @@
 @extends('admin.parts.setupblade')
 
-@section('title', 'Uzivatel')
+@section('title', $applicant->first_name . " " . $applicant->last_name)
 
 @section('content')
   <div class="content content--split">
@@ -41,7 +41,7 @@
                     >
                 <option value="pending">Pending</option>
                 <option value="accepted">Accepted</option>
-                <option value="notaccepted">Not Accepted</option>
+                <option value="declined">Not Accepted</option>
               </select>
           </div>
         </from>        

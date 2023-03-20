@@ -83,7 +83,6 @@ class ApplicantController extends Controller
     }
 
     public function update(Request $request, $id){
-        
         $applicant = Applicant::find($id);
 
         $applicant->update([
@@ -129,14 +128,29 @@ class ApplicantController extends Controller
         ->orderBy('points', 'DESC')
         ->take($division->student_count)
         ->get();
+
+        $count = Applicant::where('division_id', '=', $filter_division)->count();
+        $applicants_to_decline = Applicant::where('division_id', '=', $filter_division)
+        ->where('school_year', '=', $filter_year)
+        ->orderBy('points', 'DESC')
+        ->skip($division->student_count)
+        ->take($count - $division->student_count)
+        ->get();
+
        
         foreach($applicants_to_accept as $applicant){
             $applicant->update([
                 'status' => 'accepted'
             ]);
         }
+        foreach($applicants_to_decline as $applicant){
+            $applicant->update([
+                'status' => 'declined'
+            ]);
+        }
 
-        return redirect(route('admin.applicant.index'));
+        return redirect(route('admin.applicant.index',
+         ['year' => $filter_year, 'division' =>  $filter_division]));
     }
     
 

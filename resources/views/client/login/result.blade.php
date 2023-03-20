@@ -1,6 +1,6 @@
 @extends('client.parts.setupblade')
 
-@section('title', 'osobné údaje')
+@section('title', 'Hodnotenie')
 
 @section('content')
   <form action="{{ route('login.result.store') }}" method="POST" id="index_wrapper" class="index_wrapper">
