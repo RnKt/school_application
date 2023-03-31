@@ -43,7 +43,7 @@ class ApplicantController extends Controller
         $page = $request->get('page') ? $request->get('page') : 1;
         $lastPage = ceil($totalCount / 20);
 
-        $applicants = $applicants->paginate(20);
+        $applicants = $applicants->paginate(50);
 
         $divisions->where('division_id', '=', $filter_division);
 

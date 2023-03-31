@@ -88,9 +88,12 @@ class DivisionController extends Controller
         return redirect(route('admin.home'));
     }
 
-    public function update(DivisionValidationRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $request->validated();
+        $request->validate([
+            'name' => 'required',
+            'student_count' => 'required',
+        ]);
         
         $division = Division::find($id);
 
