@@ -36,7 +36,7 @@
         <input type="hidden" name="test_id[]" vlaue="{{$testRequirement->id}}">
           <div class="input_box">
             <label for="first_name">{{ $testRequirement->name }}</label>
-            <input type="number" name="tests[]">
+            <input type="number" min="0" max="100" name="tests[]">
           </div>
         @endforeach  
       </div>

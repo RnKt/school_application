@@ -34,7 +34,7 @@
         </div>
         <div class="input_box">
           <label for="date_of_birth">Dátum narodenia</label>
-          <input type="date" name="date_of_birth"/>
+          <input type="date" max="2007-1-1" name="date_of_birth"/>
         </div>
         <div class="input_box">
           <label for="email">E-mail</label>
