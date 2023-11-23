@@ -20,7 +20,7 @@ class ApplicantController extends Controller
 
         $filter_division = $request->get('division');
         $filter_year = $request->get('year');
-       
+
         if($filter_division == null){$filter_division = 'all';}
         if($filter_year == null){$filter_year = 'all';}
 
@@ -32,29 +32,29 @@ class ApplicantController extends Controller
         else if($filter_division != 'all' && $filter_year == 'all'){
             $applicants = Applicant::where('division_id', '=', $filter_division)
             ->orderBy('points', 'DESC');
-        } 
+        }
         else if($filter_division == 'all' && $filter_year != 'all'){
             $applicants = Applicant::where('school_year', '=', $filter_year)
             ->orderBy('points', 'DESC');
         }
- 
-   
+
+
         $totalCount = $applicants->count();
         $page = $request->get('page') ? $request->get('page') : 1;
         $lastPage = ceil($totalCount / 20);
 
         $applicants = $applicants->paginate(50);
 
-        $divisions->where('division_id', '=', $filter_division);
+//        $divisions->where('division_id', '=', $filter_division);
 
         return view('admin.applicant.index',
          compact(
-            'applicants', 
-            'totalCount', 
-            'page', 
-            'lastPage', 
-            'divisions', 
-            'filter_division', 
+            'applicants',
+            'totalCount',
+            'page',
+            'lastPage',
+            'divisions',
+            'filter_division',
             'filter_year',
         ));
     }
@@ -67,19 +67,19 @@ class ApplicantController extends Controller
         join('subject', 'applicant_subject_grades.subject_id', '=', 'subject.id')
         ->where('applicant_id', '=', $applicant->id)
         ->get();
-        
+
         $applicant_scores = TestScore::
         join('test', 'applicant_test_score.test_id', '=', 'test.id')
         ->where('applicant_id', '=', $applicant->id)
         ->get();
 
         if($request->get('type') == 'show'){
-            return view('admin.applicant.show', 
+            return view('admin.applicant.show',
             compact('applicant', 'id', 'divisions', 'applicant_grades', 'applicant_scores'));
         }
         else if($request->get('type') == 'edit'){
             return view('admin.applicant.edit', compact('applicant', 'id', 'divisions'));
-        }   
+        }
     }
 
     public function update(Request $request, $id){
@@ -93,7 +93,7 @@ class ApplicantController extends Controller
     }
 
 
-    
+
     public function filter(Request $request)
     {
         $year = $request->post('year');
@@ -112,7 +112,7 @@ class ApplicantController extends Controller
                 Applicant::destroy($id);
             }
         }
-     
+
         return redirect(route('admin.applicant.index'));
     }
 
@@ -137,7 +137,7 @@ class ApplicantController extends Controller
         ->take($count - $division->student_count)
         ->get();
 
-       
+
         foreach($applicants_to_accept as $applicant){
             $applicant->update([
                 'status' => 'accepted'
@@ -152,6 +152,6 @@ class ApplicantController extends Controller
         return redirect(route('admin.applicant.index',
          ['year' => $filter_year, 'division' =>  $filter_division]));
     }
-    
+
 
 }

@@ -29,9 +29,5 @@ class DatabaseSeeder extends Seeder
         foreach ($data['administrators'] as $administrator) {
             Administrator::create($administrator);
         }
-        SettingsService::bootstrap();
-        if (env('APP_ENV')) {
-            //
-        }
     }
 }

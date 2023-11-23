@@ -59,7 +59,6 @@
 @section('scripts_body')
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script>
-
     function clearSession(){
       if(sessionStorage.getItem('subject')){
         sessionStorage.setItem('subject', '')
@@ -67,18 +66,17 @@
       if(sessionStorage.getItem('test')){
         sessionStorage.setItem('test', '')
       }
-      console.log("aa")
     }
     clearSession()
     function addSubject(id, session){
       var item = document.getElementById(session + id)
-      item.checked =  !item.checked
+      item.checked = !item.checked
 
       var selectedDiv =  document.getElementById('selected-' + session)  
       var sessionItems = sessionStorage.getItem(session)
         
       if(sessionStorage.getItem(session)){
-         sessionItems = JSON.parse(sessionItems)
+        sessionItems = JSON.parse(sessionItems)
       }
 
       if(Array.isArray(sessionItems)){
@@ -96,7 +94,6 @@
         
       }
       else{
-        console.log("else")
         var array = [id]
         sessionStorage.setItem(session, JSON.stringify(array));  
       } 
@@ -117,15 +114,5 @@
 
       console.log(document.getElementById(session + '_hidden').value)
     }
-
-    var quill = new Quill('#editor', {
-      theme: 'snow'
-    });
-
-
-    document.querySelector('#main_form').addEventListener('submit', function (e) {
-      const data = document.querySelector('#editor').children[0].innerHTML
-      document.querySelector('#content__input').setAttribute('value', data)
-    })
   </script>
 @endsection

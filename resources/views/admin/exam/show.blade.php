@@ -87,7 +87,6 @@
       hidden.value = 0
       hidden.type = 'hidden'
       hidden.name = "iscorrect[]"
-     
 
       delete_button.innerHTML = "+"
       delete_button.classList.add("delete_answer")
@@ -98,7 +97,7 @@
           document.getElementById(current_answers[i]).innerHTML = alphabet[i] + ". "
         }
       })
- 
+
       label.appendChild(span)
       label.appendChild(input)
       label.appendChild(iscorrect)

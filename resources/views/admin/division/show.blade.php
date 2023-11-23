@@ -88,7 +88,7 @@ function fillSession(){
       var sessionItems = sessionStorage.getItem(session)
         
       if(sessionStorage.getItem(session)){
-         sessionItems = JSON.parse(sessionItems)
+        sessionItems = JSON.parse(sessionItems)
       }
 
       if(Array.isArray(sessionItems)){

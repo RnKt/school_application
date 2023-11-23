@@ -8,7 +8,7 @@
     <div class="heading-action mb-8">
       <h1 class="heading heading--2 d-inline-block">{{ __('app.applicant.title.many') }}</h1>
       <a href="{{ route('login.personal.index') }}"
-         class="heading-action__button button button--small">{{ __('app.applicant.create') }}</a>
+        class="heading-action__button button button--small">{{ __('app.applicant.create') }}</a>
     </div>
     <div class="content__wrapper">
       <form action="{{ route('admin.applicant.filter') }}" method="POST" id="filter_form">
@@ -79,7 +79,6 @@
                   @if($divisions->where('id', '=', $applicant->division_id)->pluck('student_count')->first() == $loop->index + 1 && $filter_division != 'all')
                     border-bottom: 3px solid var(--color-grey-dark);
                   @endif
-                 "
                 data-id="{{ $applicant->id }}">
               <td class="table__cell">
                 <div class="table__cell-content align-center">
